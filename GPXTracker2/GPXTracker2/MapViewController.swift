@@ -42,6 +42,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     let userInfo: Dictionary<String, String> = notification.userInfo as! Dictionary<String, String>
     let file: String = userInfo[SelectedFilePath]!
     print(file)
+    title = file
+    
+    mapView.removeOverlays(mapView.overlays)
+    mapView.removeAnnotations(mapView.annotations)
     if(file == "111"){
       createPolyline()
     }
@@ -51,9 +55,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
   }
   
   func createPolyline(){
-    
-    mapView.removeOverlays(mapView.overlays)
-    
     var points1: [CLLocationCoordinate2D] = [
       //      CLLocationCoordinate2DMake(37.4961927, 126.86879750000001),
       CLLocationCoordinate2DMake(37.4956309, 126.86897990000001),
@@ -146,19 +147,29 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
       CLLocationCoordinate2DMake(37.3931753, 126.7800379)
     ]
     
-    
     let line1 = MKGeodesicPolyline(coordinates: &points1, count: points1.count)
     mapView.addOverlay(line1)
     
     let line2 = MKGeodesicPolyline(coordinates: &points2, count: points2.count)
     mapView.addOverlay(line2)
     
+    var pins: [MKAnnotation] = []
+    pins.append(ColorPin(title: "Start", coordinate: points1.first!, color: UIColor.greenColor()))
+    pins.append(ColorPin(title: "Start", coordinate: points2.first!, color: UIColor.greenColor()))
+    pins.append(ColorPin(title: "End", coordinate: points1.last!, color: UIColor.redColor()))
+    pins.append(ColorPin(title: "End", coordinate: points2.last!, color: UIColor.redColor()))
+    mapView.addAnnotations(pins)
+    
     var allPoints: [CLLocationCoordinate2D] = []
     allPoints.appendContentsOf(points1)
     allPoints.appendContentsOf(points2)
-    let allLine = MKGeodesicPolyline(coordinates: &allPoints, count: allPoints.count)
     
-    mapView.setVisibleMapRect(allLine.boundingMapRect, edgePadding: UIEdgeInsetsMake(10, 10, 10, 10), animated: true)
+    for pin in pins{
+      allPoints.append(pin.coordinate)
+    }
+
+    let allLine = MKGeodesicPolyline(coordinates: &allPoints, count: allPoints.count)
+    mapView.setVisibleMapRect(allLine.boundingMapRect, edgePadding: UIEdgeInsetsMake(50, 50, 50, 50), animated: true)
   }
   
   func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
@@ -172,24 +183,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
   }
   
   func addPin(){
-    mapView.removeAnnotations(mapView.annotations)
-    
     var pins: [MKAnnotation] = []
+    pins.append(ImagePin(title: "New York City",
+      coordinate: CLLocationCoordinate2DMake(40.730872, -74.003066),
+      url: "http://www.gstatic.com/mapspro/images/stock/1387-rec-sailing.png"))
     
-    let location1 = CLLocationCoordinate2DMake(40.730872, -74.003066)
-    let pin1 = MKPointAnnotation()
-    pin1.coordinate = location1
-    pin1.title = "New York City"
-    pin1.subtitle = "subtitle"
-    pins.append(pin1)
-    
-
-    let location2 = CLLocationCoordinate2DMake(37.3939166, 126.83926609999999)
-    let pin2 = MKPointAnnotation()
-    pin2.coordinate = location2
-    pin2.title = "test"
-    pin2.subtitle = "subtitle2"
-    pins.append(pin2)
+    pins.append(ImagePin(title: "test",
+      coordinate: CLLocationCoordinate2DMake(37.3939166, -100.83926609999999),
+      url: "http://www.gstatic.com/mapspro/images/stock/1253-poi-garden.png"))
     
     mapView.showAnnotations(pins, animated: true);
   }
@@ -199,20 +200,63 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
       return nil
     }
     
-    let reuseId = "pin"
+    var pinView: MKPinAnnotationView = MKPinAnnotationView()
     
-    var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? MKPinAnnotationView
-    if pinView == nil {
-      pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-      pinView!.canShowCallout = true
-      pinView!.animatesDrop = true
-      pinView!.pinTintColor = UIColor.greenColor()
-    }
-    else {
-      pinView!.annotation = annotation
+    if let pin = annotation as? ColorPin{
+      let reuseId = pin.identifier
+      
+      if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? MKPinAnnotationView
+      {
+        pinView = dequeuedView
+        pinView.annotation = annotation
+      }
+      else
+      {
+        pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+        pinView.canShowCallout = true
+        pinView.animatesDrop = true
+        pinView.pinTintColor = pin.color
+
+        let navigationButton = UIButton(type: .DetailDisclosure)
+        navigationButton.setImage(UIImage(named: "car"), forState: UIControlState.Normal)
+        pinView.leftCalloutAccessoryView = navigationButton
+        
+//        if let imagePin = annotation as? ImagePin{
+//          print(imagePin.url)
+//          pinView.image = UIImage(named: "car")
+//          let url : NSURL = NSURL(string: imagePin.url)!
+//          let request: NSURLRequest = NSURLRequest(URL: url)
+//          
+//          NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: { (data, response, error) in
+//            if data == nil{
+//              return
+//            }
+//            print("===")
+//            print(data)
+//            pinView.image = UIImage(data: data!)
+//          }).resume()
+//        }
+      }
     }
     
+    if let imagePin = annotation as? ImagePin{
+      print(imagePin.url)
+      print("========")
+      pinView.image = UIImage(named: "car")
+    }
     return pinView
+  }
+  
+  func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
+    if control == view.leftCalloutAccessoryView {
+      let annotation = view.annotation
+      let placeMark = MKPlacemark(coordinate: annotation!.coordinate, addressDictionary: nil)
+      let mapItem = MKMapItem(placemark: placeMark)
+      mapItem.name = annotation!.title!
+      
+      let launchOptions = [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving]
+      mapItem.openInMapsWithLaunchOptions(launchOptions)
+    }
   }
 }
 

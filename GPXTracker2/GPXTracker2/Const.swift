@@ -7,3 +7,5 @@
 
 let SelectFile = "SelectFile"
 let SelectedFilePath = "SelectedFilePath"
+let START = "Start"
+let END = "End"

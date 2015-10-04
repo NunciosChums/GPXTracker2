@@ -56,8 +56,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
   }
   
   func createPolyline(){
-    var points1: [CLLocationCoordinate2D] = [
-      //      CLLocationCoordinate2DMake(37.4961927, 126.86879750000001),
+    let points1: [CLLocationCoordinate2D] = [
+      CLLocationCoordinate2DMake(37.4961927, 126.86879750000001),
       CLLocationCoordinate2DMake(37.4956309, 126.86897990000001),
       CLLocationCoordinate2DMake(37.4954266, 126.86845420000002),
       CLLocationCoordinate2DMake(37.4948477, 126.86879750000001),
@@ -112,11 +112,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
       CLLocationCoordinate2DMake(37.3986069, 126.84458709999998),
       CLLocationCoordinate2DMake(37.3975518, 126.8440453),
       CLLocationCoordinate2DMake(37.3962581, 126.84427599999998),
-      //      CLLocationCoordinate2DMake(37.3951707, 126.8437504),
-      
+      CLLocationCoordinate2DMake(37.3951707, 126.8437504),
     ]
     
-    var points2: [CLLocationCoordinate2D] = [
+    let points2: [CLLocationCoordinate2D] = [
       CLLocationCoordinate2DMake(37.3939166, 126.83926609999999),
       CLLocationCoordinate2DMake(37.3930107, 126.83939560000002),
       CLLocationCoordinate2DMake(37.39245600000001, 126.83926969999999),
@@ -148,25 +147,25 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
       CLLocationCoordinate2DMake(37.3931753, 126.7800379)
     ]
     
-    let line1 = MKGeodesicPolyline(coordinates: &points1, count: points1.count)
+    let line1 = Line(coordinates: points1, color: UIColor.blueColor(), lineWidth: 3)
     mapView.addOverlay(line1)
     
-    let line2 = MKGeodesicPolyline(coordinates: &points2, count: points2.count)
+    let line2 = Line(coordinates: points2, color: UIColor.redColor(), lineWidth: 4)
     mapView.addOverlay(line2)
-    
-    var pins: [MKAnnotation] = []
-    pins.append(ColorPin(title: "Start", coordinate: points1.first!, color: UIColor.greenColor()))
-    pins.append(ColorPin(title: "Start", coordinate: points2.first!, color: UIColor.greenColor()))
-    pins.append(ColorPin(title: "End", coordinate: points1.last!, color: UIColor.redColor()))
-    pins.append(ColorPin(title: "End", coordinate: points2.last!, color: UIColor.redColor()))
-    mapView.addAnnotations(pins)
+
+    mapView.addAnnotation(line1.startPin)
+    mapView.addAnnotation(line1.endPin)
+    mapView.addAnnotation(line2.startPin)
+    mapView.addAnnotation(line2.endPin)
     
     var allPoints: [CLLocationCoordinate2D] = []
-    allPoints.appendContentsOf(points1)
-    allPoints.appendContentsOf(points2)
-    
-    for pin in pins{
-      allPoints.append(pin.coordinate)
+    allPoints.appendContentsOf(line1.coordinates)
+    allPoints.appendContentsOf(line2.coordinates)
+    for annotation in mapView.annotations{
+      if annotation is MKUserLocation{
+        continue
+      }
+      allPoints.append(annotation.coordinate)
     }
     
     let allLine = MKGeodesicPolyline(coordinates: &allPoints, count: allPoints.count)
@@ -174,10 +173,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
   }
   
   func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
-    if overlay is MKPolyline {
-      let polylineRenderer = MKPolylineRenderer(overlay: overlay)
-      polylineRenderer.strokeColor = UIColor.blueColor()
-      polylineRenderer.lineWidth = 3
+    if let line = overlay as? Line{
+      let polylineRenderer = MKPolylineRenderer(overlay: line)
+      polylineRenderer.strokeColor = line.color
+      polylineRenderer.lineWidth = line.lineWidth
       return polylineRenderer
     }
     return nil

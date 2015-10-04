@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import Alamofire
 
 class MapViewController: UIViewController, CLLocationManagerDelegate {
   let locationManager = CLLocationManager()
@@ -167,7 +168,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     for pin in pins{
       allPoints.append(pin.coordinate)
     }
-
+    
     let allLine = MKGeodesicPolyline(coordinates: &allPoints, count: allPoints.count)
     mapView.setVisibleMapRect(allLine.boundingMapRect, edgePadding: UIEdgeInsetsMake(50, 50, 50, 50), animated: true)
   }
@@ -216,33 +217,17 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         pinView.canShowCallout = true
         pinView.animatesDrop = true
         pinView.pinTintColor = pin.color
-
+        
         let navigationButton = UIButton(type: .DetailDisclosure)
         navigationButton.setImage(UIImage(named: "car"), forState: UIControlState.Normal)
         pinView.leftCalloutAccessoryView = navigationButton
-        
-//        if let imagePin = annotation as? ImagePin{
-//          print(imagePin.url)
-//          pinView.image = UIImage(named: "car")
-//          let url : NSURL = NSURL(string: imagePin.url)!
-//          let request: NSURLRequest = NSURLRequest(URL: url)
-//          
-//          NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: { (data, response, error) in
-//            if data == nil{
-//              return
-//            }
-//            print("===")
-//            print(data)
-//            pinView.image = UIImage(data: data!)
-//          }).resume()
-//        }
       }
     }
     
     if let imagePin = annotation as? ImagePin{
-      print(imagePin.url)
-      print("========")
-      pinView.image = UIImage(named: "car")
+      Alamofire.request(.GET, imagePin.url).response() {(_, _, data, _) in
+        pinView.image = UIImage(data: data!)
+      }
     }
     return pinView
   }

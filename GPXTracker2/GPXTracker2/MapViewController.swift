@@ -148,16 +148,17 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     ]
     
     let line1 = Line(coordinates: points1, color: UIColor.blueColor(), lineWidth: 3)
-    mapView.addOverlay(line1)
-    
-    let line2 = Line(coordinates: points2, color: UIColor.redColor(), lineWidth: 4)
-    mapView.addOverlay(line2)
+    mapView.addOverlay(line1.polyLine)
 
+    let line2 = Line(coordinates: points2, color: UIColor.redColor(), lineWidth: 4)
+    mapView.addOverlay(line2.polyLine)
+    
     mapView.addAnnotation(line1.startPin)
     mapView.addAnnotation(line1.endPin)
     mapView.addAnnotation(line2.startPin)
     mapView.addAnnotation(line2.endPin)
-    
+
+//    zoom to fit
     var allPoints: [CLLocationCoordinate2D] = []
     allPoints.appendContentsOf(line1.coordinates)
     allPoints.appendContentsOf(line2.coordinates)
@@ -168,18 +169,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
       allPoints.append(annotation.coordinate)
     }
     
-    let allLine = MKGeodesicPolyline(coordinates: &allPoints, count: allPoints.count)
+    let allLine = MKPolyline(coordinates: &allPoints, count: allPoints.count)
     mapView.setVisibleMapRect(allLine.boundingMapRect, edgePadding: UIEdgeInsetsMake(50, 50, 50, 50), animated: true)
-  }
-  
-  func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
-    if let line = overlay as? Line{
-      let polylineRenderer = MKPolylineRenderer(overlay: line)
-      polylineRenderer.strokeColor = line.color
-      polylineRenderer.lineWidth = line.lineWidth
-      return polylineRenderer
-    }
-    return nil
   }
   
   func addPin(){
@@ -193,6 +184,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
       url: "http://www.gstatic.com/mapspro/images/stock/1253-poi-garden.png"))
     
     mapView.showAnnotations(pins, animated: true);
+  }
+  
+  // MARK: MKMapView
+  func mapView(mapView: MKMapView!, rendererForOverlay overlay: GTPolyLine!) -> MKOverlayRenderer! {
+    let polylineRenderer = MKPolylineRenderer(overlay: overlay)
+    polylineRenderer.strokeColor = overlay.strokeColor
+    polylineRenderer.lineWidth = overlay.lineWidth
+    return polylineRenderer
   }
   
   func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
@@ -242,5 +241,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
       mapItem.openInMapsWithLaunchOptions(launchOptions)
     }
   }
+  
+  
 }
 

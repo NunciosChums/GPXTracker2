@@ -20,6 +20,7 @@
 		7D1651971BA4060B00A6E73D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D1651961BA4060B00A6E73D /* CoreLocation.framework */; };
 		7D1651991BA41A4400A6E73D /* FileListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1651981BA41A4400A6E73D /* FileListViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		7D1651BB1BA45CD300A6E73D /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1651BA1BA45CD300A6E73D /* Const.swift */; settings = {ASSET_TAGS = (); }; };
+		7DD5CCF61BD2946300BCAB69 /* GTPolyLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD5CCF51BD2946300BCAB69 /* GTPolyLine.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		7D1651961BA4060B00A6E73D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		7D1651981BA41A4400A6E73D /* FileListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileListViewController.swift; sourceTree = "<group>"; };
 		7D1651BA1BA45CD300A6E73D /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		7DD5CCF51BD2946300BCAB69 /* GTPolyLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTPolyLine.swift; sourceTree = "<group>"; };
 		B9411FD7F44219FEAF85F189 /* Pods-GPXTracker2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPXTracker2.release.xcconfig"; path = "Pods/Target Support Files/Pods-GPXTracker2/Pods-GPXTracker2.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -59,8 +61,6 @@
 		7D09CC381BBFF764003B8BF6 /* models */ = {
 			isa = PBXGroup;
 			children = (
-				7D09CC391BBFF78C003B8BF6 /* ColorPin.swift */,
-				7D09CC3B1BC0207C003B8BF6 /* ImagePin.swift */,
 				7D09CC3D1BC0EA65003B8BF6 /* Line.swift */,
 			);
 			name = models;
@@ -87,6 +87,7 @@
 		7D1651801BA3FF0D00A6E73D /* GPXTracker2 */ = {
 			isa = PBXGroup;
 			children = (
+				7DD5CCF71BD297A100BCAB69 /* mapview_items */,
 				7D09CC381BBFF764003B8BF6 /* models */,
 				7D1651811BA3FF0D00A6E73D /* AppDelegate.swift */,
 				7D1651831BA3FF0D00A6E73D /* MapViewController.swift */,
@@ -108,6 +109,16 @@
 				6F77324D9FE50E54971AB810 /* Pods_GPXTracker2.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7DD5CCF71BD297A100BCAB69 /* mapview_items */ = {
+			isa = PBXGroup;
+			children = (
+				7D09CC391BBFF78C003B8BF6 /* ColorPin.swift */,
+				7D09CC3B1BC0207C003B8BF6 /* ImagePin.swift */,
+				7DD5CCF51BD2946300BCAB69 /* GTPolyLine.swift */,
+			);
+			name = mapview_items;
 			sourceTree = "<group>";
 		};
 		C5DB45D3C6B9E7AF6150DFA6 /* Pods */ = {
@@ -243,6 +254,7 @@
 			files = (
 				7D09CC3C1BC0207C003B8BF6 /* ImagePin.swift in Sources */,
 				7D09CC3A1BBFF78C003B8BF6 /* ColorPin.swift in Sources */,
+				7DD5CCF61BD2946300BCAB69 /* GTPolyLine.swift in Sources */,
 				7D1651841BA3FF0D00A6E73D /* MapViewController.swift in Sources */,
 				7D1651BB1BA45CD300A6E73D /* Const.swift in Sources */,
 				7D1651821BA3FF0D00A6E73D /* AppDelegate.swift in Sources */,

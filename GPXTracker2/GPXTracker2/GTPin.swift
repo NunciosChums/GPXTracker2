@@ -9,16 +9,18 @@
 import Foundation
 import MapKit
 
-class ColorPin: NSObject, MKAnnotation {
+class GTPin: NSObject, MKAnnotation {
   let identifier: String
   let title: String?
   let coordinate: CLLocationCoordinate2D
   let color: UIColor
+  let iconUrl: String?
   
-  init(title: String, coordinate: CLLocationCoordinate2D, color: UIColor){
+  init(title: String, coordinate: CLLocationCoordinate2D, color: UIColor = UIColor.purpleColor(), iconUrl: String){
     self.identifier = String(random())
     self.title = title
     self.coordinate = coordinate
     self.color = color
+    self.iconUrl = iconUrl;
   }
 }

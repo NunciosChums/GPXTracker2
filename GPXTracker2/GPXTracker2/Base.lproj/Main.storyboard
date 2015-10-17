@@ -25,14 +25,35 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="rwC-O4-Sfm"/>
                                 </connections>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dww-6k-bnZ">
+                                <rect key="frame" x="540" y="540" width="40" height="40"/>
+                                <animations/>
+                                <state key="normal" image="route"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="85X-vv-4ak">
+                                <rect key="frame" x="490" y="540" width="40" height="40"/>
+                                <animations/>
+                                <state key="normal" image="red_pin"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JuR-pG-fa5">
+                                <rect key="frame" x="440" y="540" width="40" height="40"/>
+                                <animations/>
+                                <state key="normal" image="green_pin"/>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="wbR-cE-jus" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="L4P-6O-h1c"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Dww-6k-bnZ" secondAttribute="bottom" constant="20" id="Rl7-Ux-30L"/>
+                            <constraint firstItem="Dww-6k-bnZ" firstAttribute="leading" secondItem="85X-vv-4ak" secondAttribute="trailing" constant="10" id="ekw-rK-5SB"/>
+                            <constraint firstItem="85X-vv-4ak" firstAttribute="leading" secondItem="JuR-pG-fa5" secondAttribute="trailing" constant="10" id="jlH-X6-aAV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Dww-6k-bnZ" secondAttribute="trailing" id="lj5-Eu-Dc7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="wbR-cE-jus" secondAttribute="trailing" constant="-20" id="mhB-ej-EKu"/>
+                            <constraint firstItem="JuR-pG-fa5" firstAttribute="centerY" secondItem="85X-vv-4ak" secondAttribute="centerY" id="nnb-wJ-daG"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="wbR-cE-jus" secondAttribute="bottom" id="qX3-Im-dEA"/>
                             <constraint firstItem="wbR-cE-jus" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="soo-QV-GdW"/>
+                            <constraint firstItem="85X-vv-4ak" firstAttribute="centerY" secondItem="Dww-6k-bnZ" secondAttribute="centerY" id="ycS-4i-Yla"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Map" id="xr3-jZ-GEI">
@@ -156,4 +177,9 @@
             <point key="canvasLocation" x="1597" y="406"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="green_pin" width="40" height="40"/>
+        <image name="red_pin" width="40" height="40"/>
+        <image name="route" width="40" height="40"/>
+    </resources>
 </document>

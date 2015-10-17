@@ -175,13 +175,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
   
   func addPin(){
     var pins: [MKAnnotation] = []
-    pins.append(ImagePin(title: "New York City",
+    pins.append(GTPin(title: "New York City",
       coordinate: CLLocationCoordinate2DMake(40.730872, -74.003066),
-      url: "http://www.gstatic.com/mapspro/images/stock/1387-rec-sailing.png"))
+      iconUrl: "http://www.gstatic.com/mapspro/images/stock/1387-rec-sailing.png"))
     
-    pins.append(ImagePin(title: "test",
+    pins.append(GTPin(title: "test",
       coordinate: CLLocationCoordinate2DMake(37.3939166, -100.83926609999999),
-      url: "http://www.gstatic.com/mapspro/images/stock/1253-poi-garden.png"))
+      iconUrl: "http://www.gstatic.com/mapspro/images/stock/1253-poi-garden.png"))
     
     mapView.showAnnotations(pins, animated: true);
   }
@@ -201,7 +201,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     var pinView: MKPinAnnotationView = MKPinAnnotationView()
     
-    if let pin = annotation as? ColorPin{
+    if let pin = annotation as? GTPin{
       let reuseId = pin.identifier
       
       if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? MKPinAnnotationView
@@ -219,14 +219,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         let navigationButton = UIButton(type: .DetailDisclosure)
         navigationButton.setImage(UIImage(named: "car"), forState: UIControlState.Normal)
         pinView.leftCalloutAccessoryView = navigationButton
+        
+        if !(pin.iconUrl ?? "").isEmpty {
+          Alamofire.request(.GET, pin.iconUrl!).response() {(_, _, data, _) in
+            pinView.image = UIImage(data: data!)
+          }
+        }
       }
     }
     
-    if let imagePin = annotation as? ImagePin{
-      Alamofire.request(.GET, imagePin.url).response() {(_, _, data, _) in
-        pinView.image = UIImage(data: data!)
-      }
-    }
     return pinView
   }
   

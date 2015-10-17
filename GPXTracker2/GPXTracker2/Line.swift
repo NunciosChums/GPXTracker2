@@ -12,8 +12,8 @@ import MapKit
 class Line {
   let coordinates: [CLLocationCoordinate2D]
   let polyLine: GTPolyLine
-  let startPin: ColorPin
-  let endPin: ColorPin
+  let startPin: GTPin
+  let endPin: GTPin
 
   init(var coordinates: [CLLocationCoordinate2D], color: UIColor, lineWidth: CGFloat){
     self.coordinates = coordinates;
@@ -21,7 +21,7 @@ class Line {
     self.polyLine.strokeColor = color ?? UIColor.blueColor()
     self.polyLine.lineWidth = lineWidth ?? 3
     
-    self.startPin = ColorPin(title: START, coordinate: coordinates.first!, color: UIColor.greenColor())
-    self.endPin = ColorPin(title: END, coordinate: coordinates.last!, color: UIColor.redColor())
+    self.startPin = GTPin(title: START, coordinate: coordinates.first!, color: UIColor.greenColor())
+    self.endPin = GTPin(title: END, coordinate: coordinates.last!, color: UIColor.redColor())
   }
 }

@@ -16,11 +16,19 @@ class GTPin: NSObject, MKAnnotation {
   let color: UIColor
   let iconUrl: String?
   
-  init(title: String, coordinate: CLLocationCoordinate2D, color: UIColor = UIColor.purpleColor(), iconUrl: String){
+  init(title: String, coordinate: CLLocationCoordinate2D, color: UIColor = UIColor.purpleColor()){
     self.identifier = String(random())
     self.title = title
     self.coordinate = coordinate
     self.color = color
-    self.iconUrl = iconUrl;
+    self.iconUrl = nil
+  }
+  
+  init(title: String, coordinate: CLLocationCoordinate2D, iconUrl: String = ""){
+    self.identifier = String(random())
+    self.title = title
+    self.coordinate = coordinate
+    self.color = UIColor.purpleColor()
+    self.iconUrl = iconUrl.characters.count == 0 ? nil : iconUrl
   }
 }

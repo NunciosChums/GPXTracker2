@@ -14,6 +14,10 @@ import Alamofire
 class MapViewController: UIViewController, CLLocationManagerDelegate {
   let locationManager = CLLocationManager()
   @IBOutlet var mapView: MKMapView!
+  @IBOutlet var startPinButton: UIButton!
+  @IBOutlet var endPinButton: UIButton!
+  @IBOutlet var zoomToFitButton: UIButton!
+  var allPoints: [CLLocationCoordinate2D] = []
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -45,6 +49,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     print(file)
     title = file
     
+    self.startPinButton.hidden = false
+    self.endPinButton.hidden = false
+    self.zoomToFitButton.hidden = false
+    
+    allPoints.removeAll()
     mapView.removeOverlays(mapView.overlays)
     mapView.removeAnnotations(mapView.annotations)
     if(file == "111"){
@@ -53,6 +62,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     else{
       addPin()
     }
+    
+    for annotation in mapView.annotations{
+      if annotation is MKUserLocation{
+        continue
+      }
+      allPoints.append(annotation.coordinate)
+    }
+    
+    zoomToFit()
   }
   
   func createPolyline(){
@@ -157,20 +175,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     mapView.addAnnotation(line1.endPin)
     mapView.addAnnotation(line2.startPin)
     mapView.addAnnotation(line2.endPin)
-
-//    zoom to fit
-    var allPoints: [CLLocationCoordinate2D] = []
+    
     allPoints.appendContentsOf(line1.coordinates)
     allPoints.appendContentsOf(line2.coordinates)
-    for annotation in mapView.annotations{
-      if annotation is MKUserLocation{
-        continue
-      }
-      allPoints.append(annotation.coordinate)
-    }
-    
-    let allLine = MKPolyline(coordinates: &allPoints, count: allPoints.count)
-    mapView.setVisibleMapRect(allLine.boundingMapRect, edgePadding: UIEdgeInsetsMake(50, 50, 50, 50), animated: true)
   }
   
   func addPin(){
@@ -185,6 +192,17 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     mapView.showAnnotations(pins, animated: true);
   }
+  
+  func zoomToFit() {
+    let allLine = MKPolyline(coordinates: &allPoints, count: allPoints.count)
+    mapView.setVisibleMapRect(allLine.boundingMapRect, edgePadding: UIEdgeInsetsMake(50, 50, 50, 50), animated: true)
+  }
+  
+  // MARK: User Action
+  @IBAction func zoomToFitButtonClicked(sender: AnyObject) {
+    zoomToFit()
+  }
+
   
   // MARK: MKMapView
   func mapView(mapView: MKMapView!, rendererForOverlay overlay: GTPolyLine!) -> MKOverlayRenderer! {
@@ -219,11 +237,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         let navigationButton = UIButton(type: .DetailDisclosure)
         navigationButton.setImage(UIImage(named: "car"), forState: UIControlState.Normal)
         pinView.leftCalloutAccessoryView = navigationButton
-        
-        if !(pin.iconUrl ?? "").isEmpty {
-          Alamofire.request(.GET, pin.iconUrl!).response() {(_, _, data, _) in
-            pinView.image = UIImage(data: data!)
-          }
+      }
+      
+      if !(pin.iconUrl ?? "").isEmpty {
+        Alamofire.request(.GET, pin.iconUrl!).response() {(_, _, data, _) in
+          pinView.image = UIImage(data: data!)
         }
       }
     }

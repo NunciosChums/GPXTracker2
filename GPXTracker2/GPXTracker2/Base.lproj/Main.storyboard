@@ -25,26 +25,56 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="rwC-O4-Sfm"/>
                                 </connections>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dww-6k-bnZ">
-                                <rect key="frame" x="540" y="540" width="40" height="40"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dww-6k-bnZ">
+                                <rect key="frame" x="545" y="545" width="35" height="35"/>
                                 <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="FaY-4a-SQP"/>
+                                    <constraint firstAttribute="width" constant="35" id="fpa-xc-4qf"/>
+                                </constraints>
                                 <state key="normal" image="route"/>
+                                <connections>
+                                    <action selector="zoomToFitButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PrW-KV-3Lk"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="85X-vv-4ak">
-                                <rect key="frame" x="490" y="540" width="40" height="40"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="85X-vv-4ak">
+                                <rect key="frame" x="500" y="545" width="35" height="35"/>
                                 <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="4af-Ge-rLS"/>
+                                    <constraint firstAttribute="height" constant="30" id="9wa-8Y-wFA"/>
+                                </constraints>
                                 <state key="normal" image="red_pin"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="4af-Ge-rLS"/>
+                                        <exclude reference="9wa-8Y-wFA"/>
+                                    </mask>
+                                </variation>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JuR-pG-fa5">
-                                <rect key="frame" x="440" y="540" width="40" height="40"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JuR-pG-fa5">
+                                <rect key="frame" x="455" y="545" width="35" height="35"/>
                                 <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="8bd-9J-qVg"/>
+                                    <constraint firstAttribute="height" constant="30" id="cmk-KE-zXh"/>
+                                </constraints>
                                 <state key="normal" image="green_pin"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="8bd-9J-qVg"/>
+                                        <exclude reference="cmk-KE-zXh"/>
+                                    </mask>
+                                </variation>
                             </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="85X-vv-4ak" firstAttribute="height" secondItem="Dww-6k-bnZ" secondAttribute="height" id="3rj-Y4-Rjc"/>
+                            <constraint firstItem="JuR-pG-fa5" firstAttribute="height" secondItem="Dww-6k-bnZ" secondAttribute="height" id="EZJ-nk-Hc4"/>
                             <constraint firstItem="wbR-cE-jus" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="L4P-6O-h1c"/>
+                            <constraint firstItem="85X-vv-4ak" firstAttribute="width" secondItem="Dww-6k-bnZ" secondAttribute="width" id="OB0-Qj-KXu"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Dww-6k-bnZ" secondAttribute="bottom" constant="20" id="Rl7-Ux-30L"/>
                             <constraint firstItem="Dww-6k-bnZ" firstAttribute="leading" secondItem="85X-vv-4ak" secondAttribute="trailing" constant="10" id="ekw-rK-5SB"/>
                             <constraint firstItem="85X-vv-4ak" firstAttribute="leading" secondItem="JuR-pG-fa5" secondAttribute="trailing" constant="10" id="jlH-X6-aAV"/>
@@ -54,6 +84,7 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="wbR-cE-jus" secondAttribute="bottom" id="qX3-Im-dEA"/>
                             <constraint firstItem="wbR-cE-jus" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="soo-QV-GdW"/>
                             <constraint firstItem="85X-vv-4ak" firstAttribute="centerY" secondItem="Dww-6k-bnZ" secondAttribute="centerY" id="ycS-4i-Yla"/>
+                            <constraint firstItem="JuR-pG-fa5" firstAttribute="width" secondItem="Dww-6k-bnZ" secondAttribute="width" id="zUx-1k-zKp"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Map" id="xr3-jZ-GEI">
@@ -69,7 +100,10 @@
                         </leftBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="endPinButton" destination="85X-vv-4ak" id="OTr-aQ-ubp"/>
                         <outlet property="mapView" destination="wbR-cE-jus" id="4UY-PW-kua"/>
+                        <outlet property="startPinButton" destination="JuR-pG-fa5" id="7li-wI-umM"/>
+                        <outlet property="zoomToFitButton" destination="Dww-6k-bnZ" id="e9k-rm-Lb0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

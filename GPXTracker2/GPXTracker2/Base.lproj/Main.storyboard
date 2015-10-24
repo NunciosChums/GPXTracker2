@@ -158,10 +158,14 @@
                     <navigationItem key="navigationItem" title="Select a log" id="Xk4-GE-S0M">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="5c1-Le-Cle">
                             <connections>
-                                <action selector="cancel:" destination="BeP-Lo-UXN" id="Zo3-Gv-eXK"/>
+                                <action selector="cancelButtonClicked:" destination="BeP-Lo-UXN" id="YzT-6W-BJ3"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="Pgh-FH-2kE"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="Pgh-FH-2kE">
+                            <connections>
+                                <action selector="reloadButtonClicked:" destination="BeP-Lo-UXN" id="Udr-Qs-JGN"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>

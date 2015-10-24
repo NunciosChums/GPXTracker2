@@ -56,7 +56,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     allPoints.removeAll()
     mapView.removeOverlays(mapView.overlays)
     mapView.removeAnnotations(mapView.annotations)
-    if(file == "111"){
+    
+    if(file == "22hills.kml"){
       createPolyline()
     }
     else{
@@ -198,13 +199,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     mapView.setVisibleMapRect(allLine.boundingMapRect, edgePadding: UIEdgeInsetsMake(50, 50, 50, 50), animated: true)
   }
   
-  // MARK: User Action
+  // MARK: - User Action
   @IBAction func zoomToFitButtonClicked(sender: AnyObject) {
     zoomToFit()
   }
 
   
-  // MARK: MKMapView
+  // MARK: - MKMapView
   func mapView(mapView: MKMapView!, rendererForOverlay overlay: GTPolyLine!) -> MKOverlayRenderer! {
     let polylineRenderer = MKPolylineRenderer(overlay: overlay)
     polylineRenderer.strokeColor = overlay.strokeColor

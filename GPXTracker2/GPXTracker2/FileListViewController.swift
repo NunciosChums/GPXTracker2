@@ -9,29 +9,66 @@
 import UIKit
 
 class FileListViewController: UITableViewController {
-  
-  
   var items = [String]()
+  let fileManager = NSFileManager.defaultManager()
+  
   @IBOutlet var cancelButton: UIBarButtonItem!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    if !NSUserDefaults .standardUserDefaults().boolForKey(IS_FIRST_RUN) {
+      copySampleLogFromBundle()
+      NSUserDefaults .standardUserDefaults().setBool(true, forKey: IS_FIRST_RUN)
+    }
+    
     if UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad{
       navigationItem.leftBarButtonItems = []
     }
     
-    items.append("111")
-    items.append("112")
-    items.append("113")
-    items.append("114")
+    reload()
   }
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
   }
   
-  @IBAction func cancel(sender: AnyObject) {
+  func copySampleLogFromBundle() {
+    let path = NSBundle.mainBundle().resourcePath! + "/samples"
+    let files = try! fileManager.contentsOfDirectoryAtPath(path)
+    
+    let destPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true).first!
+    
+    for file in files {
+      do{
+        try fileManager.copyItemAtPath(path + "/" + file, toPath: destPath + "/" + file)
+      } catch {
+      }
+    }
+  }
+  
+  func reload() {
+    items.removeAll()
+    
+    let documentsUrl =  fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
+    
+    do {
+      let files = try fileManager.contentsOfDirectoryAtURL(documentsUrl, includingPropertiesForKeys: nil, options: NSDirectoryEnumerationOptions())
+      
+      for file in files {
+        items.append(file.lastPathComponent!)
+      }
+    } catch let error as NSError {
+      print(error.localizedDescription)
+    }
+  }
+  
+  // MARK: - User Action
+  @IBAction func reloadButtonClicked(sender: AnyObject) {
+    reload()
+  }
+  
+  @IBAction func cancelButtonClicked(sender: AnyObject) {
     close()
   }
   
@@ -39,7 +76,7 @@ class FileListViewController: UITableViewController {
     dismissViewControllerAnimated(true, completion: nil)
   }
   
-  // MARK: - Table view data source
+  // MARK: - UITableView
   override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
   }
@@ -57,7 +94,7 @@ class FileListViewController: UITableViewController {
     
     return cell
   }
-
+  
   override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
     if editingStyle == .Delete {
       items.removeAtIndex(indexPath.row)

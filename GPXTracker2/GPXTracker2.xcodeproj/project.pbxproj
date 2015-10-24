@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5F31C3DBF2ED86E42041BCEA /* Pods_GPXTracker2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F77324D9FE50E54971AB810 /* Pods_GPXTracker2.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		7D09CC3A1BBFF78C003B8BF6 /* GTPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D09CC391BBFF78C003B8BF6 /* GTPin.swift */; settings = {ASSET_TAGS = (); }; };
-		7D09CC3E1BC0EA65003B8BF6 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D09CC3D1BC0EA65003B8BF6 /* Line.swift */; settings = {ASSET_TAGS = (); }; };
+		7D09CC3A1BBFF78C003B8BF6 /* GTPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D09CC391BBFF78C003B8BF6 /* GTPin.swift */; };
+		7D09CC3E1BC0EA65003B8BF6 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D09CC3D1BC0EA65003B8BF6 /* Line.swift */; };
 		7D1651821BA3FF0D00A6E73D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1651811BA3FF0D00A6E73D /* AppDelegate.swift */; };
 		7D1651841BA3FF0D00A6E73D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1651831BA3FF0D00A6E73D /* MapViewController.swift */; };
 		7D1651871BA3FF0D00A6E73D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D1651851BA3FF0D00A6E73D /* Main.storyboard */; };
@@ -17,9 +17,10 @@
 		7D16518C1BA3FF0D00A6E73D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D16518A1BA3FF0D00A6E73D /* LaunchScreen.storyboard */; };
 		7D1651941BA4016100A6E73D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D1651931BA4016100A6E73D /* MapKit.framework */; };
 		7D1651971BA4060B00A6E73D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D1651961BA4060B00A6E73D /* CoreLocation.framework */; };
-		7D1651991BA41A4400A6E73D /* FileListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1651981BA41A4400A6E73D /* FileListViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		7D1651BB1BA45CD300A6E73D /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1651BA1BA45CD300A6E73D /* Const.swift */; settings = {ASSET_TAGS = (); }; };
-		7DD5CCF61BD2946300BCAB69 /* GTPolyLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD5CCF51BD2946300BCAB69 /* GTPolyLine.swift */; settings = {ASSET_TAGS = (); }; };
+		7D1651991BA41A4400A6E73D /* FileListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1651981BA41A4400A6E73D /* FileListViewController.swift */; };
+		7D1651BB1BA45CD300A6E73D /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1651BA1BA45CD300A6E73D /* Const.swift */; };
+		7DD5CCF61BD2946300BCAB69 /* GTPolyLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD5CCF51BD2946300BCAB69 /* GTPolyLine.swift */; };
+		7DD5CCFA1BD3486800BCAB69 /* samples in Resources */ = {isa = PBXBuildFile; fileRef = 7DD5CCF91BD3486800BCAB69 /* samples */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		7D1651981BA41A4400A6E73D /* FileListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileListViewController.swift; sourceTree = "<group>"; };
 		7D1651BA1BA45CD300A6E73D /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		7DD5CCF51BD2946300BCAB69 /* GTPolyLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTPolyLine.swift; sourceTree = "<group>"; };
+		7DD5CCF91BD3486800BCAB69 /* samples */ = {isa = PBXFileReference; lastKnownFileType = folder; name = samples; path = ../../samples; sourceTree = "<group>"; };
 		B9411FD7F44219FEAF85F189 /* Pods-GPXTracker2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPXTracker2.release.xcconfig"; path = "Pods/Target Support Files/Pods-GPXTracker2/Pods-GPXTracker2.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,6 +87,7 @@
 		7D1651801BA3FF0D00A6E73D /* GPXTracker2 */ = {
 			isa = PBXGroup;
 			children = (
+				7DD5CCF91BD3486800BCAB69 /* samples */,
 				7DD5CCF71BD297A100BCAB69 /* map_view_items */,
 				7D09CC381BBFF764003B8BF6 /* models */,
 				7D1651811BA3FF0D00A6E73D /* AppDelegate.swift */,
@@ -188,6 +191,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DD5CCFA1BD3486800BCAB69 /* samples in Resources */,
 				7D16518C1BA3FF0D00A6E73D /* LaunchScreen.storyboard in Resources */,
 				7D1651891BA3FF0D00A6E73D /* Assets.xcassets in Resources */,
 				7D1651871BA3FF0D00A6E73D /* Main.storyboard in Resources */,

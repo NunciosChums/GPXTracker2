@@ -225,34 +225,42 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     let pin = annotation as? GTPin
     let reuseId = pin!.identifier
     
-    if (pin!.iconUrl ?? "").isEmpty
+    let pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+    pinView.canShowCallout = true
+    pinView.animatesDrop = true
+    pinView.pinTintColor = pin!.color
+    
+    let navigationButton = UIButton(type: .DetailDisclosure)
+    navigationButton.setImage(UIImage(named: "car"), forState: UIControlState.Normal)
+    pinView.leftCalloutAccessoryView = navigationButton
+    
+    if !(pin!.iconUrl ?? "").isEmpty
     {
-      let pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-      pinView.canShowCallout = true
-      pinView.animatesDrop = true
-      pinView.pinTintColor = pin!.color
+      let imagePinView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+      imagePinView.canShowCallout = true
       
       let navigationButton = UIButton(type: .DetailDisclosure)
       navigationButton.setImage(UIImage(named: "car"), forState: UIControlState.Normal)
       pinView.leftCalloutAccessoryView = navigationButton
       
-      return pinView
-    }
-    else
-    {
-      let pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-      pinView.canShowCallout = true
-      
-      let navigationButton = UIButton(type: .DetailDisclosure)
-      navigationButton.setImage(UIImage(named: "car"), forState: UIControlState.Normal)
-      pinView.leftCalloutAccessoryView = navigationButton
-      
-      Alamofire.request(.GET, pin!.iconUrl!).response() {(_, _, data, _) in
-        pinView.image = UIImage(data: data!)
+      let url = pin!.iconUrl! + "1"
+      Alamofire.request(.GET, url).response() {(_, _, data, _) in
+        let img = UIImage(data: data!)
+        
+        if img != nil
+        {
+          imagePinView.image = img
+        }
+        else
+        {
+          imagePinView.image = UIImage(named: "car")
+        }
       }
       
-      return pinView;
+      return imagePinView;
     }
+    
+    return pinView;
   }
   
   func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {

@@ -243,18 +243,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
       navigationButton.setImage(UIImage(named: "car"), forState: UIControlState.Normal)
       pinView.leftCalloutAccessoryView = navigationButton
       
-      let url = pin!.iconUrl! + "1"
-      Alamofire.request(.GET, url).response() {(_, _, data, _) in
-        let img = UIImage(data: data!)
-        
-        if img != nil
-        {
-          imagePinView.image = img
-        }
-        else
-        {
-          imagePinView.image = UIImage(named: "car")
-        }
+      Alamofire.request(.GET, pin!.iconUrl!).response() {(_, _, data, _) in
+        imagePinView.image = UIImage(data: data!) ?? pinView.image;
       }
       
       return imagePinView;

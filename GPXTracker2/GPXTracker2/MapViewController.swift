@@ -63,12 +63,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
       createPolyline()
     }
     else{
-      let places = parser.places()
-      if places == nil {
-        return
-      }
+      mapView.showAnnotations(parser.places()!, animated: true)
       
-      mapView.showAnnotations(parser.places()!, animated: true);
+      parser.lines()?.forEach({ line -> () in
+        mapView.addOverlay(line.polyLine)
+        mapView.addAnnotation(line.startPin)
+        mapView.addAnnotation(line.endPin)
+      })
     }
     
     for annotation in mapView.annotations{

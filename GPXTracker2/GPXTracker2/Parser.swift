@@ -12,8 +12,6 @@ import SWXMLHash
 class Parser {
   let path: NSURL
   let xml: XMLIndexer?
-//  let places: [GTPin] = []
-  let lines: [Line] = []
   
   init(path: NSURL) {
     self.path = path
@@ -37,6 +35,14 @@ class Parser {
     if isGPX() {
       return GPXParser.places(self.xml!)
     }
+    return nil
+  }
+  
+  func lines() -> [Line]? {
+    if isGPX() {
+      return GPXParser.lines(self.xml!)
+    }
+    
     return nil
   }
   

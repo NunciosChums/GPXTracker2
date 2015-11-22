@@ -21,15 +21,28 @@ class GPXParser {
       let lat: NSString = (wpt.element?.attributes["lat"])!
       let name: String = (wpt["name"].element?.text)!
       
-      print(lon.doubleValue)
-      print(lat.doubleValue)
-      print(name)
-      
       let location = CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue)
       
       result.append(GTPin(title: name, coordinate: location, color: UIColor.purpleColor()))
     }
     
-    return result;
+    return result
+  }
+  
+  class func lines(xml: XMLIndexer) -> [Line] {
+    var locations: [CLLocationCoordinate2D] = []
+    let trkpts = xml["gpx"]["trk"]["trkseg"]["trkpt"]
+    for trkpt in trkpts {
+      let lon: NSString = (trkpt.element?.attributes["lon"])!
+      let lat: NSString = (trkpt.element?.attributes["lat"])!
+      let location = CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue)
+      locations.append(location)
+    }
+    
+    var result: [Line] = []
+
+    result.append(Line(coordinates: locations, color: UIColor.blueColor(), lineWidth: 3))
+    
+    return result
   }
 }

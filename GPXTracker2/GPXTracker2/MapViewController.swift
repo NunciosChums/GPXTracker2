@@ -69,6 +69,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         mapView.addOverlay(line.polyLine)
         mapView.addAnnotation(line.startPin)
         mapView.addAnnotation(line.endPin)
+        allPoints.appendContentsOf(line.coordinates)
       })
     }
     

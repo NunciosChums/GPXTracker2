@@ -9,7 +9,7 @@
 import UIKit
 
 class FileListViewController: UITableViewController {
-  var items = [String]()
+  var items: [NSURL] = []
   let fileManager = NSFileManager.defaultManager()
   
   @IBOutlet var cancelButton: UIBarButtonItem!
@@ -42,8 +42,7 @@ class FileListViewController: UITableViewController {
     for file in files {
       do{
         try fileManager.copyItemAtPath(path + "/" + file, toPath: destPath + "/" + file)
-      } catch {
-      }
+      } catch {}
     }
   }
   
@@ -53,11 +52,7 @@ class FileListViewController: UITableViewController {
     let documentsUrl =  fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
     
     do {
-      let files = try fileManager.contentsOfDirectoryAtURL(documentsUrl, includingPropertiesForKeys: nil, options: NSDirectoryEnumerationOptions())
-      
-      for file in files {
-        items.append(file.lastPathComponent!)
-      }
+      items = try fileManager.contentsOfDirectoryAtURL(documentsUrl, includingPropertiesForKeys: nil, options: NSDirectoryEnumerationOptions())
     } catch let error as NSError {
       print(error.localizedDescription)
     }
@@ -89,8 +84,10 @@ class FileListViewController: UITableViewController {
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
     
-    cell.textLabel?.text = items[indexPath.row]
-    cell.detailTextLabel?.text = "내용"
+    let path = items[indexPath.row]
+    let parser: Parser = Parser.init(path: path)
+    cell.textLabel?.text = parser.title()
+    cell.detailTextLabel?.text = items[indexPath.row].lastPathComponent
     
     return cell
   }

@@ -44,10 +44,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
   
   func didSelectFile(notification: NSNotification)
   {
-    let userInfo: Dictionary<String, String> = notification.userInfo as! Dictionary<String, String>
-    let file: String = userInfo[SelectedFilePath]!
+    let userInfo: Dictionary<String, NSURL> = notification.userInfo as! Dictionary<String, NSURL>
+    let file: NSURL = userInfo[SelectedFilePath]!
     print(file)
-    title = file
     
     self.startPinButton.hidden = false
     self.endPinButton.hidden = false
@@ -57,11 +56,19 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     mapView.removeOverlays(mapView.overlays)
     mapView.removeAnnotations(mapView.annotations)
     
-    if(file == "22hills.kml"){
+    let parser: Parser = Parser.init(path: file)
+    title = parser.title()
+    
+    if(file.pathExtension == "kml"){
       createPolyline()
     }
     else{
-      addPin()
+      let places = parser.places()
+      if places == nil {
+        return
+      }
+      
+      mapView.showAnnotations(parser.places()!, animated: true);
     }
     
     for annotation in mapView.annotations{

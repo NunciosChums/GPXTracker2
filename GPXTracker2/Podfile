@@ -4,5 +4,6 @@ use_frameworks!
 
 target 'GPXTracker2' do
 	pod 'Alamofire'
+  pod 'SWXMLHash'
 end
 

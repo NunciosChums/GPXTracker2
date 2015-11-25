@@ -69,7 +69,6 @@
 		7D09CC381BBFF764003B8BF6 /* models */ = {
 			isa = PBXGroup;
 			children = (
-				7D71A81E1C00ACE600BFF62A /* Parser.swift */,
 				7D09CC3D1BC0EA65003B8BF6 /* Line.swift */,
 			);
 			name = models;
@@ -125,6 +124,7 @@
 		7D71A8171C00AA6800BFF62A /* parser */ = {
 			isa = PBXGroup;
 			children = (
+				7D71A81E1C00ACE600BFF62A /* Parser.swift */,
 				7D71A8181C00AC9A00BFF62A /* GPXParser.swift */,
 				7D71A81A1C00ACA900BFF62A /* TCXParser.swift */,
 				7D71A81C1C00ACB300BFF62A /* KMLParser.swift */,

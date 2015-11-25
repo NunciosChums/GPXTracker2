@@ -7,6 +7,9 @@
 //
 
 import Foundation
-class TCXParser {
+import SWXMLHash
+import MapKit
 
+class TCXParser {
+  
 }

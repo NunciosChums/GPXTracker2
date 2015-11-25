@@ -26,6 +26,9 @@ class Parser {
     if isKML() {
       return KMLParser.title(self.xml!)
     }
+    else if isGPX() {
+      return GPXParser.title(self.xml!) ?? (self.path.URLByDeletingPathExtension?.lastPathComponent)!
+    }
     else {
       return (self.path.URLByDeletingPathExtension?.lastPathComponent)!
     }
@@ -35,12 +38,18 @@ class Parser {
     if isGPX() {
       return GPXParser.places(self.xml!)
     }
+    else if isKML() {
+      return KMLParser.places(self.xml!)
+    }
     return nil
   }
   
   func lines() -> [Line]? {
     if isGPX() {
       return GPXParser.lines(self.xml!)
+    }
+    else if isKML() {
+      return KMLParser.lines(self.xml!)
     }
     
     return nil

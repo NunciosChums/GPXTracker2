@@ -12,6 +12,10 @@ import MapKit
 
 class GPXParser {
   
+  class func title(xml: XMLIndexer) -> String {
+    return (xml["gpx"]["trk"]["name"].element?.text)!
+  }
+  
   class func places(xml: XMLIndexer) -> [GTPin] {
     var result: [GTPin] = []
     

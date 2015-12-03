@@ -51,6 +51,9 @@
                                         <exclude reference="9wa-8Y-wFA"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="showEndPins:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ARF-uA-n0u"/>
+                                </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JuR-pG-fa5">
                                 <rect key="frame" x="455" y="545" width="35" height="35"/>
@@ -66,6 +69,9 @@
                                         <exclude reference="cmk-KE-zXh"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="showStartPins:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2aL-TS-JPd"/>
+                                </connections>
                             </button>
                         </subviews>
                         <animations/>

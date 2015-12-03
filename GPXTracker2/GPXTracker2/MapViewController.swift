@@ -18,6 +18,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
   @IBOutlet var endPinButton: UIButton!
   @IBOutlet var zoomToFitButton: UIButton!
   var allPoints: [CLLocationCoordinate2D] = []
+  var startPinIndex = 0
+  var endPinIndex = 0
+  var startPins: [GTPin] = []
+  var endPins: [GTPin] = []
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -58,14 +62,17 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     let parser: Parser = Parser(path: file)
     title = parser.title()
     
-      mapView.showAnnotations(parser.places()!, animated: true)
+    mapView.showAnnotations(parser.places()!, animated: true)
+    
+    for line in parser.lines()!{
+      mapView.addOverlay(line.polyLine)
+      mapView.addAnnotation(line.startPin)
+      mapView.addAnnotation(line.endPin)
+      allPoints.appendContentsOf(line.coordinates)
       
-      parser.lines()?.forEach({ line -> () in
-        mapView.addOverlay(line.polyLine)
-        mapView.addAnnotation(line.startPin)
-        mapView.addAnnotation(line.endPin)
-        allPoints.appendContentsOf(line.coordinates)
-      })
+      startPins.append(line.startPin)
+      endPins.append(line.endPin)
+    }
     
     for annotation in mapView.annotations{
       if annotation is MKUserLocation{
@@ -86,7 +93,34 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
   @IBAction func zoomToFitButtonClicked(sender: AnyObject) {
     zoomToFit()
   }
-
+  
+  @IBAction func showStartPins(sender: UIButton) {
+    moveTo(startPins[startPinIndex].coordinate)
+    
+    startPinIndex++
+    if startPinIndex >= startPins.count  {
+      startPinIndex = 0
+    }
+  }
+  
+  @IBAction func showEndPins(sender: UIButton) {
+    moveTo(endPins[endPinIndex].coordinate)
+    
+    endPinIndex++
+    if endPinIndex >= endPins.count {
+      endPinIndex = 0
+    }
+  }
+  
+  func moveTo(location: CLLocationCoordinate2D) {
+    if !CLLocationCoordinate2DIsValid(location) {
+      return;
+    }
+    
+    let span = MKCoordinateSpanMake(0.05, 0.05)
+    let region = MKCoordinateRegion(center: location, span: span)
+    mapView.setRegion(region, animated: true)
+  }
   
   // MARK: - MKMapView
   func mapView(mapView: MKMapView!, rendererForOverlay overlay: GTPolyLine!) -> MKOverlayRenderer! {

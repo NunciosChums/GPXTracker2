@@ -178,5 +178,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
       mapItem.openInMapsWithLaunchOptions(launchOptions)
     }
   }
+  
+  func mapView(mapView: MKMapView, didChangeUserTrackingMode mode: MKUserTrackingMode, animated: Bool) {
+    UIApplication.sharedApplication().idleTimerDisabled = mode == MKUserTrackingMode.Follow || mode == MKUserTrackingMode.FollowWithHeading
+  }
 }
 

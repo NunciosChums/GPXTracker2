@@ -94,6 +94,7 @@ class FileListViewController: UITableViewController {
   
   override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
     if editingStyle == .Delete {
+      try! fileManager.removeItemAtURL(items[indexPath.row])
       items.removeAtIndex(indexPath.row)
       tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
     }

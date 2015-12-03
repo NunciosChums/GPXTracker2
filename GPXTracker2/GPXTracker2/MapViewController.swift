@@ -77,19 +77,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     zoomToFit()
   }
   
-  func addPin(){
-    var pins: [MKAnnotation] = []
-    pins.append(GTPin(title: "New York City",
-      coordinate: CLLocationCoordinate2DMake(40.730872, -74.003066),
-      iconUrl: "http://www.gstatic.com/mapspro/images/stock/1387-rec-sailing.png"))
-    
-    pins.append(GTPin(title: "test",
-      coordinate: CLLocationCoordinate2DMake(37.3939166, -100.83926609999999),
-      iconUrl: "http://www.gstatic.com/mapspro/images/stock/1253-poi-garden.png"))
-    
-    mapView.showAnnotations(pins, animated: true);
-  }
-  
   func zoomToFit() {
     let allLine = MKPolyline(coordinates: &allPoints, count: allPoints.count)
     mapView.setVisibleMapRect(allLine.boundingMapRect, edgePadding: UIEdgeInsetsMake(50, 50, 50, 50), animated: true)

@@ -13,7 +13,8 @@ import MapKit
 class TCXParser {
   
   class func title(xml:XMLIndexer) -> String {
-    return (xml["TrainingCenterDatabase"]["Courses"]["Course"]["Name"].element?.text)!
+    let result = xml["TrainingCenterDatabase"]["Courses"]["Course"]["Name"].element?.text
+    return result ?? ""
   }
   
   class func places(xml: XMLIndexer) -> [GTPin] {

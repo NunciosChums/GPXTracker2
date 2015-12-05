@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PKHUD
 
 class FileListViewController: UITableViewController {
   var items: [NSURL] = []
@@ -16,6 +17,8 @@ class FileListViewController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    
     
     if !NSUserDefaults .standardUserDefaults().boolForKey(IS_FIRST_RUN) {
       copySampleLogFromBundle()
@@ -45,6 +48,16 @@ class FileListViewController: UITableViewController {
   }
   
   func reload() {
+    PKHUD.sharedHUD.contentView = PKHUDProgressView()
+    PKHUD.sharedHUD.show()
+    
+    let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC)))
+    dispatch_after(delayTime, dispatch_get_main_queue()) {
+      self.reloadWithDelay()
+    }
+  }
+  
+  func reloadWithDelay() {
     items.removeAll()
     
     let documentsUrl =  fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
@@ -104,6 +117,12 @@ class FileListViewController: UITableViewController {
     cell.detailTextLabel?.text = items[indexPath.row].lastPathComponent
     
     return cell
+  }
+  
+  override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    if (indexPath.row == items.count - 1) {
+      PKHUD.sharedHUD.hide()
+    }
   }
   
   override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {

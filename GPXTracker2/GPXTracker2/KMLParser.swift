@@ -13,7 +13,8 @@ import MapKit
 class KMLParser {
   
   class func title(xml: XMLIndexer) -> String {
-    return (xml["kml"]["Document"]["name"].element?.text)!
+    let result = xml["kml"]["Document"]["name"].element?.text
+    return result ?? ""
   }
   
   class func places(xml: XMLIndexer) -> [GTPin] {

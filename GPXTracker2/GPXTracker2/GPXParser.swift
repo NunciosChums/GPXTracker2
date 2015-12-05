@@ -13,7 +13,8 @@ import MapKit
 class GPXParser {
   
   class func title(xml: XMLIndexer) -> String {
-    return (xml["gpx"]["trk"]["name"].element?.text)!
+    let result = xml["gpx"]["trk"]["name"].element?.text
+    return result ?? ""
   }
   
   class func places(xml: XMLIndexer) -> [GTPin] {
@@ -44,7 +45,7 @@ class GPXParser {
     }
     
     var result: [Line] = []
-
+    
     result.append(Line(coordinates: locations, color: UIColor.blueColor(), lineWidth: 3))
     
     return result

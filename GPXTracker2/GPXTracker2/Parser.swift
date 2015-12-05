@@ -38,7 +38,7 @@ class Parser {
       title = (self.path.URLByDeletingPathExtension?.lastPathComponent)!
     }
     
-    return title ?? (self.path.URLByDeletingPathExtension?.lastPathComponent)!
+    return title.isEmpty ? (self.path.URLByDeletingPathExtension?.lastPathComponent)! : title
   }
   
   func places() -> [GTPin]? {

@@ -79,6 +79,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
   
   func drawWithDelay(url: NSURL) {
     let parser: Parser = Parser(path: url)
+    title = parser.title()
 
     mapView.showAnnotations(parser.places()!, animated: true)
     

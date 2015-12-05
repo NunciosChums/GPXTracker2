@@ -17,11 +17,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
   @IBOutlet var startPinButton: UIButton!
   @IBOutlet var endPinButton: UIButton!
   @IBOutlet var zoomToFitButton: UIButton!
+  @IBOutlet weak var shareButton: UIBarButtonItem!
   var allPoints: [CLLocationCoordinate2D] = []
   var startPinIndex = 0
   var endPinIndex = 0
   var startPins: [GTPin] = []
   var endPins: [GTPin] = []
+  var selectedFilePath: String = ""
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -50,10 +52,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
   {
     let userInfo: Dictionary<String, NSURL> = notification.userInfo as! Dictionary<String, NSURL>
     let file: NSURL = userInfo[SelectedFilePath]!
+    selectedFilePath = file.path!
     
-    self.startPinButton.hidden = false
-    self.endPinButton.hidden = false
-    self.zoomToFitButton.hidden = false
+    startPinButton.hidden = false
+    endPinButton.hidden = false
+    zoomToFitButton.hidden = false
+    shareButton.enabled = true
     
     allPoints.removeAll()
     mapView.removeOverlays(mapView.overlays)
@@ -96,6 +100,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
   // MARK: - User Action
   @IBAction func zoomToFitButtonClicked(sender: AnyObject) {
     zoomToFit()
+  }
+  
+  @IBAction func shareButtonClicked(sender: UIBarButtonItem) {
+    let url: NSURL = NSURL(fileURLWithPath: selectedFilePath)
+    let activityVC: UIActivityViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+    presentViewController(activityVC, animated: true, completion: nil)
+    let presentationController = activityVC.popoverPresentationController
+    presentationController?.sourceView = view
   }
   
   @IBAction func showStartPins(sender: UIButton) {

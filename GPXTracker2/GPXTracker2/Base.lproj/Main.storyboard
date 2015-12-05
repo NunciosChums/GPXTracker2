@@ -102,12 +102,17 @@
                                     </segue>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem enabled="NO" systemItem="action" id="qJa-wx-EUC"/>
+                            <barButtonItem enabled="NO" systemItem="action" id="qJa-wx-EUC">
+                                <connections>
+                                    <action selector="shareButtonClicked:" destination="BYZ-38-t0r" id="RgV-Iw-bWm"/>
+                                </connections>
+                            </barButtonItem>
                         </leftBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="endPinButton" destination="85X-vv-4ak" id="OTr-aQ-ubp"/>
                         <outlet property="mapView" destination="wbR-cE-jus" id="4UY-PW-kua"/>
+                        <outlet property="shareButton" destination="qJa-wx-EUC" id="FPO-IO-eFE"/>
                         <outlet property="startPinButton" destination="JuR-pG-fa5" id="7li-wI-umM"/>
                         <outlet property="zoomToFitButton" destination="Dww-6k-bnZ" id="e9k-rm-Lb0"/>
                     </connections>

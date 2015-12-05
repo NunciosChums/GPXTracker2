@@ -48,13 +48,21 @@ class FileListViewController: UITableViewController {
     items.removeAll()
     
     let documentsUrl =  fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
+    addFilesInDirectory(documentsUrl)
+    tableView.reloadData()
+  }
+  
+  func addFilesInDirectory(path: NSURL) {
     do {
-      let directoryContents = try fileManager.contentsOfDirectoryAtURL(documentsUrl, includingPropertiesForKeys: nil, options: NSDirectoryEnumerationOptions())
+      let directoryContents = try fileManager.contentsOfDirectoryAtURL(path, includingPropertiesForKeys: nil, options: NSDirectoryEnumerationOptions())
       
       var isDirectory: ObjCBool = false
       for content in directoryContents {
         if fileManager.fileExistsAtPath(content.path!, isDirectory:&isDirectory) {
-          if !isDirectory {
+          if isDirectory {
+            addFilesInDirectory(content)
+          }
+          else {
             items.append(content)
           }
         }

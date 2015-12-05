@@ -58,6 +58,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     allPoints.removeAll()
     mapView.removeOverlays(mapView.overlays)
     mapView.removeAnnotations(mapView.annotations)
+    startPins.removeAll()
+    endPins.removeAll()
+    startPinIndex = 0
+    endPinIndex = 0
     
     let parser: Parser = Parser(path: file)
     title = parser.title()

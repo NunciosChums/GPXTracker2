@@ -41,6 +41,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
   }
 
-
+  func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+    print(url)
+    NSNotificationCenter.defaultCenter().postNotificationName(
+      SelectFile,
+      object: nil,
+      userInfo: [SelectedFilePath: url])
+    return true
+  }
 }
 

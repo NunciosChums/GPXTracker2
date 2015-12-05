@@ -40,9 +40,7 @@ class FileListViewController: UITableViewController {
     let destPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true).first!
     
     for file in files {
-      do{
-        try fileManager.copyItemAtPath(path + "/" + file, toPath: destPath + "/" + file)
-      } catch {}
+      try! fileManager.copyItemAtPath(path + "/" + file, toPath: destPath + "/" + file)
     }
   }
   
@@ -50,9 +48,17 @@ class FileListViewController: UITableViewController {
     items.removeAll()
     
     let documentsUrl =  fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
-    
     do {
-      items = try fileManager.contentsOfDirectoryAtURL(documentsUrl, includingPropertiesForKeys: nil, options: NSDirectoryEnumerationOptions())
+      let directoryContents = try fileManager.contentsOfDirectoryAtURL(documentsUrl, includingPropertiesForKeys: nil, options: NSDirectoryEnumerationOptions())
+      
+      var isDirectory: ObjCBool = false
+      for content in directoryContents {
+        if fileManager.fileExistsAtPath(content.path!, isDirectory:&isDirectory) {
+          if !isDirectory {
+            items.append(content)
+          }
+        }
+      }
     } catch let error as NSError {
       print(error.localizedDescription)
     }

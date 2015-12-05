@@ -1,0 +1,16 @@
+PODS:
+  - Alamofire (3.1.3)
+  - PKHUD (2.2.5)
+  - SWXMLHash (2.0.2)
+
+DEPENDENCIES:
+  - Alamofire
+  - PKHUD
+  - SWXMLHash
+
+SPEC CHECKSUMS:
+  Alamofire: 9f93b56389e48def9220dd57d1f44b1927229a5a
+  PKHUD: 15d9db01fb008bb9247c6d785c585f587955b113
+  SWXMLHash: 9e6bd7db2e8275eaf3d2082265623d6e749e169d
+
+COCOAPODS: 0.39.0

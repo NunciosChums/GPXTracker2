@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A282b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="b27-rm-33e">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="b27-rm-33e">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
@@ -25,14 +25,72 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="rwC-O4-Sfm"/>
                                 </connections>
                             </mapView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dww-6k-bnZ">
+                                <rect key="frame" x="545" y="545" width="35" height="35"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="FaY-4a-SQP"/>
+                                    <constraint firstAttribute="width" constant="35" id="fpa-xc-4qf"/>
+                                </constraints>
+                                <state key="normal" image="route"/>
+                                <connections>
+                                    <action selector="zoomToFitButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PrW-KV-3Lk"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="85X-vv-4ak">
+                                <rect key="frame" x="500" y="545" width="35" height="35"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="4af-Ge-rLS"/>
+                                    <constraint firstAttribute="height" constant="30" id="9wa-8Y-wFA"/>
+                                </constraints>
+                                <state key="normal" image="red_pin"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="4af-Ge-rLS"/>
+                                        <exclude reference="9wa-8Y-wFA"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="showEndPins:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ARF-uA-n0u"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JuR-pG-fa5">
+                                <rect key="frame" x="455" y="545" width="35" height="35"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="8bd-9J-qVg"/>
+                                    <constraint firstAttribute="height" constant="30" id="cmk-KE-zXh"/>
+                                </constraints>
+                                <state key="normal" image="green_pin"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="8bd-9J-qVg"/>
+                                        <exclude reference="cmk-KE-zXh"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="showStartPins:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2aL-TS-JPd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="85X-vv-4ak" firstAttribute="height" secondItem="Dww-6k-bnZ" secondAttribute="height" id="3rj-Y4-Rjc"/>
+                            <constraint firstItem="JuR-pG-fa5" firstAttribute="height" secondItem="Dww-6k-bnZ" secondAttribute="height" id="EZJ-nk-Hc4"/>
                             <constraint firstItem="wbR-cE-jus" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="L4P-6O-h1c"/>
+                            <constraint firstItem="85X-vv-4ak" firstAttribute="width" secondItem="Dww-6k-bnZ" secondAttribute="width" id="OB0-Qj-KXu"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Dww-6k-bnZ" secondAttribute="bottom" constant="20" id="Rl7-Ux-30L"/>
+                            <constraint firstItem="Dww-6k-bnZ" firstAttribute="leading" secondItem="85X-vv-4ak" secondAttribute="trailing" constant="10" id="ekw-rK-5SB"/>
+                            <constraint firstItem="85X-vv-4ak" firstAttribute="leading" secondItem="JuR-pG-fa5" secondAttribute="trailing" constant="10" id="jlH-X6-aAV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Dww-6k-bnZ" secondAttribute="trailing" id="lj5-Eu-Dc7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="wbR-cE-jus" secondAttribute="trailing" constant="-20" id="mhB-ej-EKu"/>
+                            <constraint firstItem="JuR-pG-fa5" firstAttribute="centerY" secondItem="85X-vv-4ak" secondAttribute="centerY" id="nnb-wJ-daG"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="wbR-cE-jus" secondAttribute="bottom" id="qX3-Im-dEA"/>
                             <constraint firstItem="wbR-cE-jus" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="soo-QV-GdW"/>
+                            <constraint firstItem="85X-vv-4ak" firstAttribute="centerY" secondItem="Dww-6k-bnZ" secondAttribute="centerY" id="ycS-4i-Yla"/>
+                            <constraint firstItem="JuR-pG-fa5" firstAttribute="width" secondItem="Dww-6k-bnZ" secondAttribute="width" id="zUx-1k-zKp"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Map" id="xr3-jZ-GEI">
@@ -44,11 +102,19 @@
                                     </segue>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem enabled="NO" systemItem="action" id="qJa-wx-EUC"/>
+                            <barButtonItem enabled="NO" systemItem="action" id="qJa-wx-EUC">
+                                <connections>
+                                    <action selector="shareButtonClicked:" destination="BYZ-38-t0r" id="RgV-Iw-bWm"/>
+                                </connections>
+                            </barButtonItem>
                         </leftBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="endPinButton" destination="85X-vv-4ak" id="OTr-aQ-ubp"/>
                         <outlet property="mapView" destination="wbR-cE-jus" id="4UY-PW-kua"/>
+                        <outlet property="shareButton" destination="qJa-wx-EUC" id="FPO-IO-eFE"/>
+                        <outlet property="startPinButton" destination="JuR-pG-fa5" id="7li-wI-umM"/>
+                        <outlet property="zoomToFitButton" destination="Dww-6k-bnZ" id="e9k-rm-Lb0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -103,10 +169,14 @@
                     <navigationItem key="navigationItem" title="Select a log" id="Xk4-GE-S0M">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="5c1-Le-Cle">
                             <connections>
-                                <action selector="cancel:" destination="BeP-Lo-UXN" id="Zo3-Gv-eXK"/>
+                                <action selector="cancelButtonClicked:" destination="BeP-Lo-UXN" id="YzT-6W-BJ3"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="Pgh-FH-2kE"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="Pgh-FH-2kE">
+                            <connections>
+                                <action selector="reloadButtonClicked:" destination="BeP-Lo-UXN" id="Udr-Qs-JGN"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
@@ -156,4 +226,9 @@
             <point key="canvasLocation" x="1597" y="406"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="green_pin" width="40" height="40"/>
+        <image name="red_pin" width="40" height="40"/>
+        <image name="route" width="40" height="40"/>
+    </resources>
 </document>

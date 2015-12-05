@@ -81,9 +81,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     let parser: Parser = Parser(path: url)
     title = parser.title()
 
-    mapView.showAnnotations(parser.places()!, animated: true)
+    for place in parser.places()! {
+      mapView.addAnnotation(place)
+      allPoints.append(place.coordinate)
+    }
     
-    for line in parser.lines()!{
+    for line in parser.lines()! {
       mapView.addOverlay(line.polyLine)
       mapView.addAnnotation(line.startPin)
       mapView.addAnnotation(line.endPin)
@@ -91,13 +94,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
       
       startPins.append(line.startPin)
       endPins.append(line.endPin)
-    }
-    
-    for annotation in mapView.annotations{
-      if annotation is MKUserLocation{
-        continue
-      }
-      allPoints.append(annotation.coordinate)
     }
     
     zoomToFit()

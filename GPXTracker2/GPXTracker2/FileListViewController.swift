@@ -18,8 +18,6 @@ class FileListViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    
-    
     if !NSUserDefaults .standardUserDefaults().boolForKey(IS_FIRST_RUN) {
       copySampleLogFromBundle()
       NSUserDefaults .standardUserDefaults().setBool(true, forKey: IS_FIRST_RUN)
@@ -51,7 +49,7 @@ class FileListViewController: UITableViewController {
     PKHUD.sharedHUD.contentView = PKHUDProgressView()
     PKHUD.sharedHUD.show()
     
-    let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC)))
+    let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC)))
     dispatch_after(delayTime, dispatch_get_main_queue()) {
       self.reloadWithDelay()
     }

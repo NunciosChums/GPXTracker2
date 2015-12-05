@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 import Alamofire
+import PKHUD
 
 class MapViewController: UIViewController, CLLocationManagerDelegate {
   let locationManager = CLLocationManager()
@@ -50,6 +51,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
   
   func didSelectFile(notification: NSNotification)
   {
+    PKHUD.sharedHUD.contentView = PKHUDProgressView()
+    PKHUD.sharedHUD.show()
+    
     let userInfo: Dictionary<String, NSURL> = notification.userInfo as! Dictionary<String, NSURL>
     let file: NSURL = userInfo[SelectedFilePath]!
     selectedFilePath = file.path!
@@ -67,9 +71,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     startPinIndex = 0
     endPinIndex = 0
     
-    let parser: Parser = Parser(path: file)
-    title = parser.title()
-    
+    let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC)))
+    dispatch_after(delayTime, dispatch_get_main_queue()) {
+      self.drawWithDelay(file)
+    }
+  }
+  
+  func drawWithDelay(url: NSURL) {
+    let parser: Parser = Parser(path: url)
+
     mapView.showAnnotations(parser.places()!, animated: true)
     
     for line in parser.lines()!{
@@ -90,6 +100,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     zoomToFit()
+    
+    PKHUD.sharedHUD.hide(afterDelay: 0.5)
   }
   
   func zoomToFit() {

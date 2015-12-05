@@ -72,8 +72,16 @@ class TCXParser {
   
   class func lines(xml: XMLIndexer) -> [Line] {
     var locations: [CLLocationCoordinate2D] = []
-    let trackPoints = xml["TrainingCenterDatabase"]["Courses"]["Course"]["Track"]["Trackpoint"]
+    var trackPoints = xml["TrainingCenterDatabase"]["Courses"]["Course"]["Track"]["Trackpoint"]
+    if !trackPoints {
+        trackPoints = xml["TrainingCenterDatabase"]["Activities"]["Activity"]["Lap"]["Track"]["Trackpoint"]
+    }
+    
     for point in trackPoints {
+      if !point["Position"] {
+        continue
+      }
+      
       let lat: NSString = (point["Position"]["LatitudeDegrees"].element?.text)!
       let lon: NSString = (point["Position"]["LongitudeDegrees"].element?.text)!
       let location = CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue)

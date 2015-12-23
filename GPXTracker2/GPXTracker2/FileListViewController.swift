@@ -61,6 +61,7 @@ class FileListViewController: UITableViewController {
     let documentsUrl =  fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
     addFilesInDirectory(documentsUrl)
     tableView.reloadData()
+    PKHUD.sharedHUD.hide()
   }
   
   func addFilesInDirectory(path: NSURL) {
@@ -112,15 +113,9 @@ class FileListViewController: UITableViewController {
     let path = items[indexPath.row]
     let parser: Parser = Parser.init(path: path)
     cell.textLabel?.text = parser.title()
-    cell.detailTextLabel?.text = items[indexPath.row].lastPathComponent
-    
+    cell.detailTextLabel?.text = path.lastPathComponent
+
     return cell
-  }
-  
-  override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-    if (indexPath.row == items.count - 1) {
-      PKHUD.sharedHUD.hide()
-    }
   }
   
   override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {

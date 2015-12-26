@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5F31C3DBF2ED86E42041BCEA /* Pods_GPXTracker2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F77324D9FE50E54971AB810 /* Pods_GPXTracker2.framework */; };
+		65730D5AD6CDD12286560282 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C6F4772E26EC3D34AE9834 /* Pods.framework */; };
 		7D09CC3A1BBFF78C003B8BF6 /* GTPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D09CC391BBFF78C003B8BF6 /* GTPin.swift */; };
 		7D09CC3E1BC0EA65003B8BF6 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D09CC3D1BC0EA65003B8BF6 /* Line.swift */; };
 		7D1651821BA3FF0D00A6E73D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1651811BA3FF0D00A6E73D /* AppDelegate.swift */; };
@@ -28,8 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4427B04824558C06288CE44D /* Pods-GPXTracker2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPXTracker2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GPXTracker2/Pods-GPXTracker2.debug.xcconfig"; sourceTree = "<group>"; };
-		6F77324D9FE50E54971AB810 /* Pods_GPXTracker2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GPXTracker2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		09C6F4772E26EC3D34AE9834 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		593CCC3298AE3CF9E28D94E6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7D09CC391BBFF78C003B8BF6 /* GTPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTPin.swift; sourceTree = "<group>"; };
 		7D09CC3D1BC0EA65003B8BF6 /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		7D16517E1BA3FF0D00A6E73D /* GPXTracker2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GPXTracker2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,7 +49,7 @@
 		7D71A81E1C00ACE600BFF62A /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		7DD5CCF51BD2946300BCAB69 /* GTPolyLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTPolyLine.swift; sourceTree = "<group>"; };
 		7DD5CCF91BD3486800BCAB69 /* samples */ = {isa = PBXFileReference; lastKnownFileType = folder; name = samples; path = ../../samples; sourceTree = "<group>"; };
-		B9411FD7F44219FEAF85F189 /* Pods-GPXTracker2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPXTracker2.release.xcconfig"; path = "Pods/Target Support Files/Pods-GPXTracker2/Pods-GPXTracker2.release.xcconfig"; sourceTree = "<group>"; };
+		BE30DCE280088A1E515376CF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +59,7 @@
 			files = (
 				7D1651971BA4060B00A6E73D /* CoreLocation.framework in Frameworks */,
 				7D1651941BA4016100A6E73D /* MapKit.framework in Frameworks */,
-				5F31C3DBF2ED86E42041BCEA /* Pods_GPXTracker2.framework in Frameworks */,
+				65730D5AD6CDD12286560282 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,7 +80,7 @@
 				7D1651801BA3FF0D00A6E73D /* GPXTracker2 */,
 				7D1651951BA4016800A6E73D /* Frameworks */,
 				7D16517F1BA3FF0D00A6E73D /* Products */,
-				C5DB45D3C6B9E7AF6150DFA6 /* Pods */,
+				FFE00A26DEE6AEDF5F21C436 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -116,7 +116,7 @@
 			children = (
 				7D1651961BA4060B00A6E73D /* CoreLocation.framework */,
 				7D1651931BA4016100A6E73D /* MapKit.framework */,
-				6F77324D9FE50E54971AB810 /* Pods_GPXTracker2.framework */,
+				09C6F4772E26EC3D34AE9834 /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -141,11 +141,11 @@
 			name = map_view_items;
 			sourceTree = "<group>";
 		};
-		C5DB45D3C6B9E7AF6150DFA6 /* Pods */ = {
+		FFE00A26DEE6AEDF5F21C436 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				4427B04824558C06288CE44D /* Pods-GPXTracker2.debug.xcconfig */,
-				B9411FD7F44219FEAF85F189 /* Pods-GPXTracker2.release.xcconfig */,
+				593CCC3298AE3CF9E28D94E6 /* Pods.debug.xcconfig */,
+				BE30DCE280088A1E515376CF /* Pods.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -157,12 +157,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7D1651901BA3FF0D00A6E73D /* Build configuration list for PBXNativeTarget "GPXTracker2" */;
 			buildPhases = (
-				DF1DE85803250DBE379E81E2 /* Check Pods Manifest.lock */,
+				F57371860C3D82C390E32D28 /* Check Pods Manifest.lock */,
 				7D16517A1BA3FF0D00A6E73D /* Sources */,
 				7D16517B1BA3FF0D00A6E73D /* Frameworks */,
 				7D16517C1BA3FF0D00A6E73D /* Resources */,
-				3EB1CD9422632F26863D5CD3 /* Embed Pods Frameworks */,
-				0CD66077AB3BC67AF80F865D /* Copy Pods Resources */,
+				252134FC7428E6DD097C9B6F /* Embed Pods Frameworks */,
+				74FA6E6188E98F1616F49A9C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -221,22 +221,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0CD66077AB3BC67AF80F865D /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GPXTracker2/Pods-GPXTracker2-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3EB1CD9422632F26863D5CD3 /* Embed Pods Frameworks */ = {
+		252134FC7428E6DD097C9B6F /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -248,10 +233,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GPXTracker2/Pods-GPXTracker2-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DF1DE85803250DBE379E81E2 /* Check Pods Manifest.lock */ = {
+		74FA6E6188E98F1616F49A9C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F57371860C3D82C390E32D28 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -392,7 +392,7 @@
 		};
 		7D1651911BA3FF0D00A6E73D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4427B04824558C06288CE44D /* Pods-GPXTracker2.debug.xcconfig */;
+			baseConfigurationReference = 593CCC3298AE3CF9E28D94E6 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -406,7 +406,7 @@
 		};
 		7D1651921BA3FF0D00A6E73D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B9411FD7F44219FEAF85F189 /* Pods-GPXTracker2.release.xcconfig */;
+			baseConfigurationReference = BE30DCE280088A1E515376CF /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

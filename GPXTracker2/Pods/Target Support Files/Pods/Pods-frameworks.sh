@@ -84,12 +84,12 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "Pods-GPXTracker2/Alamofire.framework"
-  install_framework "Pods-GPXTracker2/PKHUD.framework"
-  install_framework "Pods-GPXTracker2/SWXMLHash.framework"
+  install_framework "Pods/Alamofire.framework"
+  install_framework "Pods/PKHUD.framework"
+  install_framework "Pods/SWXMLHash.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "Pods-GPXTracker2/Alamofire.framework"
-  install_framework "Pods-GPXTracker2/PKHUD.framework"
-  install_framework "Pods-GPXTracker2/SWXMLHash.framework"
+  install_framework "Pods/Alamofire.framework"
+  install_framework "Pods/PKHUD.framework"
+  install_framework "Pods/SWXMLHash.framework"
 fi

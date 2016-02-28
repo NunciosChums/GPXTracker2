@@ -1,7 +1,7 @@
 PODS:
-  - Alamofire (3.1.4)
-  - PKHUD (2.2.5)
-  - SWXMLHash (2.0.2)
+  - Alamofire (3.2.1)
+  - PKHUD (3.0.0)
+  - SWXMLHash (2.1.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -9,8 +9,8 @@ DEPENDENCIES:
   - SWXMLHash
 
 SPEC CHECKSUMS:
-  Alamofire: fbc829692f351fa1d8a31dd75fd7f7f56fea31fb
-  PKHUD: 15d9db01fb008bb9247c6d785c585f587955b113
-  SWXMLHash: 9e6bd7db2e8275eaf3d2082265623d6e749e169d
+  Alamofire: f11d8624a05f5d39e0c99309b3e600a3ba64298a
+  PKHUD: e1648a176717bcdf480ec4b91ff1f023f8abb8c4
+  SWXMLHash: 7257a358b3ab2f7a209e0b4e4cf552e8b6df5f0f
 
 COCOAPODS: 0.39.0

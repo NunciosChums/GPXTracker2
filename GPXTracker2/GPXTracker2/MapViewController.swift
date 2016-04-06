@@ -40,7 +40,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     NSNotificationCenter.defaultCenter().addObserver(
       self,
-      selector: "didSelectFile:",
+      selector: #selector(MapViewController.didSelectFile(_:)),
       name: SelectFile,
       object: nil)
   }
@@ -122,7 +122,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
   @IBAction func showStartPins(sender: UIButton) {
     moveTo(startPins[startPinIndex].coordinate)
     
-    startPinIndex++
+    startPinIndex += 1
     if startPinIndex >= startPins.count  {
       startPinIndex = 0
     }
@@ -131,7 +131,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
   @IBAction func showEndPins(sender: UIButton) {
     moveTo(endPins[endPinIndex].coordinate)
     
-    endPinIndex++
+    endPinIndex += 1
     if endPinIndex >= endPins.count {
       endPinIndex = 0
     }

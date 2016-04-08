@@ -109,7 +109,7 @@ class KMLParser {
           
           for lineStyle in lineStyles {
             if lineStyle.id == styleUrl {
-              result.append(Line(coordinates: locations, color:lineStyle.color , lineWidth: (lineStyle.width as NSString).floatValue))
+              result.append(Line(coordinates: &locations, color:lineStyle.color , lineWidth: (lineStyle.width as NSString).floatValue))
             }
           }
         }

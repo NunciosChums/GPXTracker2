@@ -15,7 +15,7 @@ class Line {
   let startPin: GTPin
   let endPin: GTPin
 
-  init(var coordinates: [CLLocationCoordinate2D], color: UIColor, lineWidth: Float = 3){
+  init(inout coordinates: [CLLocationCoordinate2D], color: UIColor, lineWidth: Float = 3){
     self.coordinates = coordinates;
     self.polyLine = GTPolyLine(coordinates: &coordinates, count: coordinates.count)
     self.polyLine.strokeColor = color ?? UIColor.blueColor()

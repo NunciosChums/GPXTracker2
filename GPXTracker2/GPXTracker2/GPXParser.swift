@@ -46,7 +46,7 @@ class GPXParser {
     
     var result: [Line] = []
     
-    result.append(Line(coordinates: locations, color: UIColor.blueColor(), lineWidth: 3))
+    result.append(Line(coordinates: &locations, color: UIColor.blueColor(), lineWidth: 3))
     
     return result
   }

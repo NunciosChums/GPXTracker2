@@ -7,24 +7,23 @@
 //
 
 import Foundation
-import SWXMLHash
 import MapKit
+import Kanna
 
 class GPXParser {
   
-  class func title(xml: XMLIndexer) -> String {
-    let result = xml["gpx"]["trk"]["name"].element?.text
+  class func title(xml: XMLDocument) -> String {
+    let result = xml.css("trk name").text
     return result ?? ""
   }
   
-  class func places(xml: XMLIndexer) -> [GTPin] {
+  class func places(xml: XMLDocument) -> [GTPin] {
     var result: [GTPin] = []
     
-    let wpts = xml["gpx"]["wpt"]
-    for wpt in wpts {
-      let lon: NSString = (wpt.element?.attributes["lon"])!
-      let lat: NSString = (wpt.element?.attributes["lat"])!
-      let name: String = (wpt["name"].element?.text)!
+    for wpt in xml.css("wpt") {
+      let lon: NSString = wpt["lon"]!
+      let lat: NSString = wpt["lat"]!
+      let name: String = wpt.css("name").text!
       
       let location = CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue)
       
@@ -34,20 +33,18 @@ class GPXParser {
     return result
   }
   
-  class func lines(xml: XMLIndexer) -> [Line] {
+  class func lines(xml: XMLDocument) -> [Line] {
     var locations: [CLLocationCoordinate2D] = []
-    let trkpts = xml["gpx"]["trk"]["trkseg"]["trkpt"]
-    for trkpt in trkpts {
-      let lon: NSString = (trkpt.element?.attributes["lon"])!
-      let lat: NSString = (trkpt.element?.attributes["lat"])!
+    
+    for trkpt in xml.css("trkpt") {
+      let lon: NSString = trkpt["lon"]!
+      let lat: NSString = trkpt["lat"]!
       let location = CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue)
       locations.append(location)
     }
     
     var result: [Line] = []
-    
     result.append(Line(coordinates: &locations, color: UIColor.blueColor(), lineWidth: 3))
-    
     return result
   }
 }

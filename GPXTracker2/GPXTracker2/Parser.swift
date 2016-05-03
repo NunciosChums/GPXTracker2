@@ -7,15 +7,18 @@
 //
 
 import Foundation
-import SWXMLHash
+import Kanna
 
 class Parser {
   let path: NSURL
-  let xml: XMLIndexer?
+  let xml: XMLDocument?
   
   init(path: NSURL) {
     self.path = path
-    self.xml = SWXMLHash.parse(try! String(contentsOfFile: path.path!, encoding: NSUTF8StringEncoding))
+    let data = NSData(contentsOfURL: path)
+    let datastring = NSString(data: data!, encoding: NSUTF8StringEncoding)
+    let str = datastring!.stringByReplacingOccurrencesOfString("xmlns", withString: "no_xmlns")
+    self.xml = Kanna.XML(xml: str, encoding: NSUTF8StringEncoding)
   }
   
   func title() -> String {
@@ -51,7 +54,9 @@ class Parser {
     else if isTCX() {
       return TCXParser.places(self.xml!)
     }
-    return nil
+    
+    let result: [GTPin] = []
+    return result
   }
   
   func lines() -> [Line]? {
@@ -65,7 +70,8 @@ class Parser {
       return TCXParser.lines(self.xml!)
     }
     
-    return nil
+    let result: [Line] = []
+    return result
   }
   
   func isGPX() -> Bool {

@@ -7,27 +7,26 @@
 //
 
 import Foundation
-import SWXMLHash
 import MapKit
+import Kanna
 
 class TCXParser {
   
-  class func title(xml:XMLIndexer) -> String {
-    let result = xml["TrainingCenterDatabase"]["Courses"]["Course"]["Name"].element?.text
+  class func title(xml:XMLDocument) -> String {
+    let result = xml.css("Course Name").first?.text
     return result ?? ""
   }
   
-  class func places(xml: XMLIndexer) -> [GTPin] {
+  class func places(xml: XMLDocument) -> [GTPin] {
     var result: [GTPin] = []
     
-    let coursePoints = xml["TrainingCenterDatabase"]["Courses"]["Course"]["CoursePoint"]
-    for point in coursePoints {
-      let name: String = (point["Name"].element?.text)!
-      let lat: NSString = (point["Position"]["LatitudeDegrees"].element?.text)!
-      let lon: NSString = (point["Position"]["LongitudeDegrees"].element?.text)!
+    for point in xml.css("CoursePoint") {
+      let name: String = point.css("Name").text!
+      let lat: NSString = point.css("LatitudeDegrees").text!
+      let lon: NSString = point.css("LongitudeDegrees").text!
       let location = CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue)
       
-      let type: String = (point["PointType"].element?.text)!
+      let type: String = point.css("PointType").text!
       var color: UIColor = UIColor.purpleColor()
       
       switch(type.lowercaseString){
@@ -70,28 +69,21 @@ class TCXParser {
     return result
   }
   
-  class func lines(xml: XMLIndexer) -> [Line] {
+  class func lines(xml: XMLDocument) -> [Line] {
     var locations: [CLLocationCoordinate2D] = []
-    var trackPoints = xml["TrainingCenterDatabase"]["Courses"]["Course"]["Track"]["Trackpoint"]
-    if !trackPoints {
-        trackPoints = xml["TrainingCenterDatabase"]["Activities"]["Activity"]["Lap"]["Track"]["Trackpoint"]
-    }
     
-    for point in trackPoints {
-      if !point["Position"] {
-        continue
-      }
+    for point in xml.css("Trackpoint") {
+      let lat: NSString = point.css("LatitudeDegrees").text!
+      let lon: NSString = point.css("LongitudeDegrees").text!
       
-      let lat: NSString = (point["Position"]["LatitudeDegrees"].element?.text)!
-      let lon: NSString = (point["Position"]["LongitudeDegrees"].element?.text)!
       let location = CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue)
       locations.append(location)
     }
     
     var result: [Line] = []
-    
-    result.append(Line(coordinates: &locations, color: UIColor.blueColor(), lineWidth: 3))
-    
+    if locations.count > 0 {
+      result.append(Line(coordinates: &locations, color: UIColor.blueColor(), lineWidth: 3))
+    }
     return result
   }
 }

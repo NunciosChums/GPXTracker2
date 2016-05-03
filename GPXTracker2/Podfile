@@ -1,6 +1,8 @@
 # platform :ios, '9.0'
 use_frameworks!
 
-pod 'Alamofire'
-pod 'SWXMLHash'
-pod 'PKHUD'
+target "GPXTracker2" do
+	pod 'Alamofire'
+	pod 'PKHUD'
+	pod 'Kanna'
+end

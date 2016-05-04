@@ -1,5 +1,5 @@
 //
-//  StartPointPin.swift
+//  GTPin.swift
 //  GPXTracker2
 //
 //  Created by susemi99 on 2015. 10. 3..

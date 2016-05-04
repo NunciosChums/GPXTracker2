@@ -17,7 +17,7 @@ class FileListViewController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+
     if !NSUserDefaults .standardUserDefaults().boolForKey(IS_FIRST_RUN) {
       copySampleLogFromBundle()
       NSUserDefaults .standardUserDefaults().setBool(true, forKey: IS_FIRST_RUN)
@@ -61,7 +61,7 @@ class FileListViewController: UITableViewController {
     let documentsUrl =  fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
     addFilesInDirectory(documentsUrl)
     tableView.reloadData()
-    PKHUD.sharedHUD.hide()
+    PKHUD.sharedHUD.hide(animated: true, completion: nil)
   }
   
   func addFilesInDirectory(path: NSURL) {
@@ -105,7 +105,6 @@ class FileListViewController: UITableViewController {
   override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return items.count
   }
-  
   
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)

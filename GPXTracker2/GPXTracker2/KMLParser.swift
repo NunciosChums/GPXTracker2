@@ -31,16 +31,18 @@ class KMLParser {
     for placemark in xml.css("Placemark") {
       let name:String = placemark.css("name").text!
       
-      if let coordinates = placemark.css("coordinates").text {
-        let split = coordinates.characters.split{$0 == ","}.map(String.init)
-        let lon:NSString = split[0]
-        let lat:NSString = split[1]
-        let location = CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue)
-        let styleUrl = placemark.css("styleUrl").text!.stringByReplacingOccurrencesOfString("#", withString: "")
-        
-        for icon in iconStyles {
-          if icon.id == styleUrl {
-            result.append(GTPin(title: name, coordinate: location, iconUrl: icon.href))
+      for _ in placemark.css("Point") {
+        if let coordinates = placemark.css("coordinates").text {
+          let split = coordinates.characters.split{$0 == ","}.map(String.init)
+          let lon:NSString = split[0]
+          let lat:NSString = split[1]
+          let location = CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue)
+          let styleUrl = placemark.css("styleUrl").text!.stringByReplacingOccurrencesOfString("#", withString: "")
+          
+          for icon in iconStyles {
+            if icon.id == styleUrl {
+              result.append(GTPin(title: name, coordinate: location, iconUrl: icon.href))
+            }
           }
         }
       }

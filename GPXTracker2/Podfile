@@ -2,7 +2,6 @@
 use_frameworks!
 
 target "GPXTracker2" do
-	pod 'Alamofire'
-	pod 'PKHUD'
 	pod 'Kanna'
+	pod 'PKHUD'
 end

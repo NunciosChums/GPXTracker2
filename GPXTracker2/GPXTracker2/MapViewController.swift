@@ -9,7 +9,6 @@
 import UIKit
 import MapKit
 import CoreLocation
-import Alamofire
 import PKHUD
 
 class MapViewController: UIViewController, CLLocationManagerDelegate {
@@ -182,9 +181,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
       imagePinView.canShowCallout = true
       imagePinView.leftCalloutAccessoryView = pinView.leftCalloutAccessoryView
       
-      Alamofire.request(.GET, pin!.iconUrl!).response() {(_, _, data, _) in
-        imagePinView.image = UIImage(data: data!) ?? pinView.image;
+      let imgURL: NSURL = NSURL(string: pin!.iconUrl!)!
+      let request: NSURLRequest = NSURLRequest(URL: imgURL)
+      
+      let session = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) -> Void in
+        if error == nil {
+          dispatch_async(dispatch_get_main_queue()) {
+            let image = UIImage(data: data!)
+            imagePinView.image = image
+          }
+        }
       }
+      session.resume()
       
       return imagePinView;
     }

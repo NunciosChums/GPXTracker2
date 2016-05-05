@@ -1,18 +1,15 @@
 PODS:
-  - Alamofire (3.3.1)
   - Kanna (1.0.6)
   - PKHUD (3.1.0)
 
 DEPENDENCIES:
-  - Alamofire
   - Kanna
   - PKHUD
 
 SPEC CHECKSUMS:
-  Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
   Kanna: 9f30945bbd293a609f698ea164687ccc0990ff60
   PKHUD: 4167eccdb1b3a892fd80ce2b51cb6ba412a889ab
 
-PODFILE CHECKSUM: cb289f63ae876f9d0d48377f5cda6c456113935b
+PODFILE CHECKSUM: 3150e457c784f46d988db3d1de498a5a32f63c80
 
-COCOAPODS: 1.0.0.rc.1
+COCOAPODS: 1.0.0.rc.2

@@ -73,11 +73,13 @@ class TCXParser {
     var locations: [CLLocationCoordinate2D] = []
     
     for point in xml.css("Trackpoint") {
-      let lat: NSString = point.css("LatitudeDegrees").text!
-      let lon: NSString = point.css("LongitudeDegrees").text!
-      
-      let location = CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue)
-      locations.append(location)
+      for position in point.css("Position") {
+        let lat: NSString = position.css("LatitudeDegrees").text!
+        let lon: NSString = position.css("LongitudeDegrees").text!
+        
+        let location = CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue)
+        locations.append(location)
+      }
     }
     
     var result: [Line] = []

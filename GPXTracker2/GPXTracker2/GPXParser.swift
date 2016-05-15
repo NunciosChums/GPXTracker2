@@ -27,7 +27,7 @@ class GPXParser {
       
       let location = CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue)
       
-      result.append(GTPin(title: name, coordinate: location, color: UIColor.purpleColor()))
+      result.append(GTPin(title: name, coordinate: location, color: MKPinAnnotationView.purplePinColor()))
     }
     
     return result

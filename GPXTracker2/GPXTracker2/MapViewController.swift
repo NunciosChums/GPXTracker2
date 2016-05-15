@@ -171,8 +171,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     pinView.animatesDrop = true
     pinView.pinTintColor = pin!.color
     
-    let navigationButton = UIButton(type: .DetailDisclosure)
+    let navigationButton = UIButton(type: .Custom)
     navigationButton.setImage(UIImage(named: "car"), forState: UIControlState.Normal)
+    navigationButton.imageEdgeInsets = UIEdgeInsetsMake(16, 12, 16, 12)
+    navigationButton.frame = CGRect(x: 0, y: 0, width: 50, height: 52)
+    navigationButton.backgroundColor = UIColor(red: 0, green: (122/255.0), blue: (255/255.0), alpha: 1.0)
     pinView.leftCalloutAccessoryView = navigationButton
     
     if !(pin!.iconUrl ?? "").isEmpty

@@ -21,7 +21,7 @@ class Line {
     self.polyLine.strokeColor = color ?? UIColor.blueColor()
     self.polyLine.lineWidth = lineWidth
     
-    self.startPin = GTPin(title: START, coordinate: coordinates.first!, color: UIColor.greenColor())
-    self.endPin = GTPin(title: END, coordinate: coordinates.last!, color: UIColor.redColor())
+    self.startPin = GTPin(title: START, coordinate: coordinates.first!, color: MKPinAnnotationView.greenPinColor())
+    self.endPin = GTPin(title: END, coordinate: coordinates.last!, color: MKPinAnnotationView.redPinColor())
   }
 }

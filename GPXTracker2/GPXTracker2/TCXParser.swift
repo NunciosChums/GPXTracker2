@@ -27,7 +27,7 @@ class TCXParser {
       let location = CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue)
       
       let type: String = point.css("PointType").text!
-      var color: UIColor = UIColor.purpleColor()
+      var color: UIColor = MKPinAnnotationView.purplePinColor()
       
       switch(type.lowercaseString){
       case "right":

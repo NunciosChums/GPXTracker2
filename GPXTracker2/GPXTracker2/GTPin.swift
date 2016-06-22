@@ -16,7 +16,7 @@ class GTPin: NSObject, MKAnnotation {
   let color: UIColor
   let iconUrl: String?
   
-  init(title: String, coordinate: CLLocationCoordinate2D, color: UIColor = UIColor.purpleColor()){
+  init(title: String, coordinate: CLLocationCoordinate2D, color: UIColor = MKPinAnnotationView.purplePinColor()){
     self.identifier = String(random())
     self.title = title
     self.coordinate = coordinate
@@ -28,7 +28,7 @@ class GTPin: NSObject, MKAnnotation {
     self.identifier = String(random())
     self.title = title
     self.coordinate = coordinate
-    self.color = UIColor.purpleColor()
+    self.color = MKPinAnnotationView.purplePinColor()
     self.iconUrl = iconUrl.characters.count == 0 ? nil : iconUrl
   }
 }

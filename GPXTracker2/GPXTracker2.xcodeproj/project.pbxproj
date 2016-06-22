@@ -159,12 +159,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7D1651901BA3FF0D00A6E73D /* Build configuration list for PBXNativeTarget "GPXTracker2" */;
 			buildPhases = (
-				543E76C23AB1698C4C20CEEA /* 📦 Check Pods Manifest.lock */,
+				543E76C23AB1698C4C20CEEA /* [CP] Check Pods Manifest.lock */,
 				7D16517A1BA3FF0D00A6E73D /* Sources */,
 				7D16517B1BA3FF0D00A6E73D /* Frameworks */,
 				7D16517C1BA3FF0D00A6E73D /* Resources */,
-				7EFB85271812377244FADAAA /* 📦 Embed Pods Frameworks */,
-				E0B7591643D1214BEDB81377 /* 📦 Copy Pods Resources */,
+				7EFB85271812377244FADAAA /* [CP] Embed Pods Frameworks */,
+				E0B7591643D1214BEDB81377 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -223,14 +223,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		543E76C23AB1698C4C20CEEA /* 📦 Check Pods Manifest.lock */ = {
+		543E76C23AB1698C4C20CEEA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -238,14 +238,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		7EFB85271812377244FADAAA /* 📦 Embed Pods Frameworks */ = {
+		7EFB85271812377244FADAAA /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -253,14 +253,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GPXTracker2/Pods-GPXTracker2-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E0B7591643D1214BEDB81377 /* 📦 Copy Pods Resources */ = {
+		E0B7591643D1214BEDB81377 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;

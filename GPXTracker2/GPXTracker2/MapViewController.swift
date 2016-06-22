@@ -18,12 +18,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
   @IBOutlet var endPinButton: UIButton!
   @IBOutlet var zoomToFitButton: UIButton!
   @IBOutlet weak var shareButton: UIBarButtonItem!
+  @IBOutlet weak var toggleMapTypeButton: UIButton!
   var allPoints: [CLLocationCoordinate2D] = []
   var startPinIndex = 0
   var endPinIndex = 0
   var startPins: [GTPin] = []
   var endPins: [GTPin] = []
   var selectedFilePath: String = ""
+  
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -42,6 +44,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
       selector: #selector(MapViewController.didSelectFile(_:)),
       name: SelectFile,
       object: nil)
+    
+    if let mapType = MKMapType(rawValue: UInt(NSUserDefaults.standardUserDefaults().integerForKey(MAP_TYPE))) {
+      mapView.mapType = mapType
+      updateMapTypeButtonImage()
+    }
   }
   
   override func didReceiveMemoryWarning() {
@@ -136,6 +143,17 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     }
   }
   
+  @IBAction func toggleMapType(sender: UIButton) {
+    let mapType = mapView.mapType == MKMapType.Hybrid ? MKMapType.Standard : MKMapType.Hybrid
+    mapView.mapType = mapType
+    NSUserDefaults.standardUserDefaults().setInteger(Int(mapType.rawValue), forKey: MAP_TYPE)
+    updateMapTypeButtonImage()
+  }
+  
+  func updateMapTypeButtonImage(){
+    toggleMapTypeButton.selected = mapView.mapType == MKMapType.Hybrid
+  }
+
   func moveTo(location: CLLocationCoordinate2D) {
     if !CLLocationCoordinate2DIsValid(location) {
       return;
@@ -147,6 +165,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
   }
   
   // MARK: - MKMapView
+  func mapViewWillStartLoadingMap(mapView: MKMapView) {
+    UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+  }
+  
+  func mapViewDidFinishLoadingMap(mapView: MKMapView) {
+    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+  }
+  
   func mapView(mapView: MKMapView!, rendererForOverlay overlay: GTPolyLine!) -> MKOverlayRenderer! {
     let polylineRenderer = MKPolylineRenderer(overlay: overlay)
     polylineRenderer.strokeColor = overlay.strokeColor

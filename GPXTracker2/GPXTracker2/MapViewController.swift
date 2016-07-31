@@ -104,7 +104,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     zoomToFit()
     
-    PKHUD.sharedHUD.hide(afterDelay: 0.5)
+    PKHUD.sharedHUD.hide()
   }
   
   func zoomToFit() {

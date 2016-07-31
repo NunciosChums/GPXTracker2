@@ -23,26 +23,29 @@ class KMLParser {
     var iconStyles: [IconStyle] = []
     
     for style in xml.css("Style") {
-      let id:String = style["id"]!
-      let href = style.css("href").text!
+      guard let id:String = style["id"],
+            let href = style.css("href").first?.text
+        else {continue}
+      
       iconStyles.append(IconStyle(id: id.stringByReplacingOccurrencesOfString("-normal", withString: ""), href: href))
     }
     
     for placemark in xml.css("Placemark") {
-      let name:String = placemark.css("name").text!
+      guard let name:String = placemark.css("name").first?.text else {continue}
       
       for _ in placemark.css("Point") {
-        if let coordinates = placemark.css("coordinates").text {
-          let split = coordinates.characters.split{$0 == ","}.map(String.init)
-          let lon:NSString = split[0]
-          let lat:NSString = split[1]
-          let location = CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue)
-          let styleUrl = placemark.css("styleUrl").text!.stringByReplacingOccurrencesOfString("#", withString: "")
-          
-          for icon in iconStyles {
-            if icon.id == styleUrl {
-              result.append(GTPin(title: name, coordinate: location, iconUrl: icon.href))
-            }
+        guard let coordinates = placemark.css("coordinates").first?.text else {continue}
+        
+        let split = coordinates.characters.split{$0 == ","}.map(String.init)
+        let lon:NSString = split[0]
+        let lat:NSString = split[1]
+        let location = CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue)
+        guard let styleUrlString = placemark.css("styleUrl").first?.text else {continue}
+        let styleUrl = styleUrlString.stringByReplacingOccurrencesOfString("#", withString: "")
+        
+        for icon in iconStyles {
+          if icon.id == styleUrl {
+            result.append(GTPin(title: name, coordinate: location, iconUrl: icon.href))
           }
         }
       }
@@ -58,20 +61,24 @@ class KMLParser {
       let id = style["id"]!
       
       for lineStyle in style.css("LineStyle") {
-        if let width = lineStyle.css("width").text, color = lineStyle.css("color").text {
-          lineStyles.append(LineStyle(id: id.stringByReplacingOccurrencesOfString("-normal", withString: ""), color:KMLParser.stringToColor("#"+color), width:width))
-        }
+        guard let width = lineStyle.css("width").first?.text,
+          let color = lineStyle.css("color").first?.text else {continue}
+        
+        lineStyles.append(LineStyle(id: id.stringByReplacingOccurrencesOfString("-normal", withString: ""),
+          color:KMLParser.stringToColor("#"+color), width:width))
       }
     }
     
     var result: [Line] = []
     
     for placemark in xml.css("Placemark") {
-      let styleUrl = placemark.css("styleUrl").text!.stringByReplacingOccurrencesOfString("#", withString: "")
+      guard let styleUrlString = placemark.css("styleUrl").first?.text else {continue}
+      let styleUrl = styleUrlString.stringByReplacingOccurrencesOfString("#", withString: "")
       
       for lineString in placemark.css("LineString"){
-        let coordinates = lineString.css("coordinates").text?.stringByReplacingOccurrencesOfString("\n", withString: "")
-        let splitLine = coordinates!.characters.split{$0 == " "}.map(String.init)
+        guard let coordinatesString = lineString.css("coordinates").first?.text else {continue}
+        let coordinates = coordinatesString.stringByReplacingOccurrencesOfString("\n", withString: "")
+        let splitLine = coordinates.characters.split{$0 == " "}.map(String.init)
         
         var locations: [CLLocationCoordinate2D] = []
         

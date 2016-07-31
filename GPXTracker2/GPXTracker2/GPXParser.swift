@@ -13,20 +13,20 @@ import Kanna
 class GPXParser {
   
   class func title(xml: XMLDocument) -> String {
-    let result = xml.css("trk name").text
-    return result ?? ""
+    guard let result = xml.css("trk name").first?.text else { return  "" }
+    return result
   }
   
   class func places(xml: XMLDocument) -> [GTPin] {
     var result: [GTPin] = []
     
     for wpt in xml.css("wpt") {
-      let lon: NSString = wpt["lon"]!
-      let lat: NSString = wpt["lat"]!
-      let name: String = wpt.css("name").text!
+      guard let lon: NSString = wpt["lon"],
+        let lat: NSString = wpt["lat"],
+        let name: String = wpt.css("name").first?.text
+        else { continue }
       
       let location = CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue)
-      
       result.append(GTPin(title: name, coordinate: location, color: MKPinAnnotationView.purplePinColor()))
     }
     

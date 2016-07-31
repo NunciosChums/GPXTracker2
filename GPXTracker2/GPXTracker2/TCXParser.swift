@@ -21,46 +21,48 @@ class TCXParser {
     var result: [GTPin] = []
     
     for point in xml.css("CoursePoint") {
-      let name: String = point.css("Name").text!
-      let lat: NSString = point.css("LatitudeDegrees").text!
-      let lon: NSString = point.css("LongitudeDegrees").text!
-      let location = CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue)
+      guard let name: String = point.css("Name").first?.text,
+        let lat: NSString = point.css("LatitudeDegrees").first?.text,
+        let lon: NSString = point.css("LongitudeDegrees").first?.text
+        else {continue}
       
-      let type: String = point.css("PointType").text!
+      let location = CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue)
       var color: UIColor = MKPinAnnotationView.purplePinColor()
       
-      switch(type.lowercaseString){
-      case "right":
-        color = UIColor.yellowColor()
-        break;
-        
-      case "left":
-        color = UIColor.orangeColor()
-        break;
-        
-      case "danger":
-        color = UIColor.magentaColor()
-        break;
-        
-      case "water":
-        color = UIColor.cyanColor()
-        break;
-        
-      case "submmit":
-        color = UIColor.grayColor()
-        break;
-        
-      case "food":
-        color = UIColor.brownColor()
-        break;
-        
-      case "straight":
-        color = UIColor.blackColor()
-        break;
-        
-      default:
-        color = UIColor.purpleColor()
-        break;
+      if let type: String = point.css("PointType").first?.text {
+        switch(type.lowercaseString){
+        case "right":
+          color = UIColor.yellowColor()
+          break;
+          
+        case "left":
+          color = UIColor.orangeColor()
+          break;
+          
+        case "danger":
+          color = UIColor.magentaColor()
+          break;
+          
+        case "water":
+          color = UIColor.cyanColor()
+          break;
+          
+        case "submmit":
+          color = UIColor.grayColor()
+          break;
+          
+        case "food":
+          color = UIColor.brownColor()
+          break;
+          
+        case "straight":
+          color = UIColor.blackColor()
+          break;
+          
+        default:
+          color = UIColor.purpleColor()
+          break;
+        }
       }
       
       result.append(GTPin(title: name, coordinate: location, color: color))
@@ -74,11 +76,11 @@ class TCXParser {
     
     for point in xml.css("Trackpoint") {
       for position in point.css("Position") {
-        let lat: NSString = position.css("LatitudeDegrees").text!
-        let lon: NSString = position.css("LongitudeDegrees").text!
+        guard let lat: NSString = position.css("LatitudeDegrees").first?.text,
+              let lon: NSString = position.css("LongitudeDegrees").first?.text
+          else {continue}
         
-        let location = CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue)
-        locations.append(location)
+        locations.append(CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue))
       }
     }
     

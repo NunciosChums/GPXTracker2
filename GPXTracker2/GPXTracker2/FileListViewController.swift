@@ -22,7 +22,7 @@ class FileListViewController: UITableViewController {
       copySampleLogFromBundle()
       NSUserDefaults .standardUserDefaults().setBool(true, forKey: IS_FIRST_RUN)
     }
-    
+  
     if UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad{
       navigationItem.leftBarButtonItems = []
     }
@@ -35,13 +35,13 @@ class FileListViewController: UITableViewController {
   }
   
   func copySampleLogFromBundle() {
-    let path = NSBundle.mainBundle().resourcePath! + "/samples"
-    let files = try! fileManager.contentsOfDirectoryAtPath(path)
-    
-    let destPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true).first!
-    
+    guard let path = NSBundle.mainBundle().resourcePath else { return }
+    let fullPath = path + "/samples"
+    let files = try! fileManager.contentsOfDirectoryAtPath(fullPath)
+    let destPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory,
+                                                       NSSearchPathDomainMask.UserDomainMask, true).first!
     for file in files {
-      try! fileManager.copyItemAtPath(path + "/" + file, toPath: destPath + "/" + file)
+      try! fileManager.copyItemAtPath(fullPath + "/" + file, toPath: destPath + "/" + file)
     }
   }
   

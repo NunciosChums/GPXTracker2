@@ -15,10 +15,10 @@ class Line {
   let startPin: GTPin
   let endPin: GTPin
 
-  init(inout coordinates: [CLLocationCoordinate2D], color: UIColor, lineWidth: Float = 3){
+  init(coordinates: inout [CLLocationCoordinate2D], color: UIColor, lineWidth: Float = 3){
     self.coordinates = coordinates;
     self.polyLine = GTPolyLine(coordinates: &coordinates, count: coordinates.count)
-    self.polyLine.strokeColor = color ?? UIColor.blueColor()
+    self.polyLine.strokeColor = color 
     self.polyLine.lineWidth = lineWidth
     
     self.startPin = GTPin(title: START, coordinate: coordinates.first!, color: MKPinAnnotationView.greenPinColor())

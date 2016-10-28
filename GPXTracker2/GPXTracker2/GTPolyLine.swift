@@ -14,11 +14,11 @@ class GTPolyLine: MKPolyline {
   var lineWidth: Float
   
   override init() {
-    self.strokeColor = UIColor.blueColor()
+    self.strokeColor = UIColor.blue
     self.lineWidth = 3;
   }
   
-  func set(color: UIColor, width: Float = 3) {
+  func set(_ color: UIColor, width: Float = 3) {
     self.strokeColor = color
     self.lineWidth = width
   }

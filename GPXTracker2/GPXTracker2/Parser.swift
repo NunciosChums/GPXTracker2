@@ -10,49 +10,49 @@ import Foundation
 import Kanna
 
 class Parser {
-  let path: NSURL
+  let path: URL
   let xml: XMLDocument?
   
-  init(path: NSURL) {
+  init(path: URL) {
     self.path = path
-    let data = NSData(contentsOfURL: path)
-    let datastring = NSString(data: data!, encoding: NSUTF8StringEncoding)
-    let str = datastring!.stringByReplacingOccurrencesOfString("xmlns", withString: "no_xmlns")
-    self.xml = Kanna.XML(xml: str, encoding: NSUTF8StringEncoding)
+    let data = try? Data(contentsOf: path)
+    let datastring = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+    let str = datastring!.replacingOccurrences(of: "xmlns", with: "no_xmlns")
+    self.xml = Kanna.XML(xml: str, encoding: String.Encoding.utf8)
   }
   
   func title() -> String {
     if self.xml == nil {
-      return (self.path.URLByDeletingPathExtension?.lastPathComponent)!
+      return (self.path.deletingPathExtension().lastPathComponent)
     }
     
     var title: String
     
     if isKML() {
-      title = KMLParser.title(self.xml!)
+      title = KMLParser.title(xml: self.xml!)
     }
     else if isGPX() {
-      title = GPXParser.title(self.xml!)
+      title = GPXParser.title(xml: self.xml!)
     }
     else if isTCX() {
-      title = TCXParser.title(self.xml!)
+      title = TCXParser.title(xml: self.xml!)
     }
     else {
-      title = (self.path.URLByDeletingPathExtension?.lastPathComponent)!
+      title = (self.path.deletingPathExtension().lastPathComponent)
     }
     
-    return title.isEmpty ? (self.path.URLByDeletingPathExtension?.lastPathComponent)! : title
+    return title.isEmpty ? (self.path.deletingPathExtension().lastPathComponent) : title
   }
   
   func places() -> [GTPin]? {
     if isGPX() {
-      return GPXParser.places(self.xml!)
+      return GPXParser.places(xml: self.xml!)
     }
     else if isKML() {
-      return KMLParser.places(self.xml!)
+      return KMLParser.places(xml: self.xml!)
     }
     else if isTCX() {
-      return TCXParser.places(self.xml!)
+      return TCXParser.places(xml: self.xml!)
     }
     
     let result: [GTPin] = []
@@ -61,13 +61,13 @@ class Parser {
   
   func lines() -> [Line]? {
     if isGPX() {
-      return GPXParser.lines(self.xml!)
+      return GPXParser.lines(xml: self.xml!)
     }
     else if isKML() {
-      return KMLParser.lines(self.xml!)
+      return KMLParser.lines(xml: self.xml!)
     }
     else if isTCX() {
-      return TCXParser.lines(self.xml!)
+      return TCXParser.lines(xml: self.xml!)
     }
     
     let result: [Line] = []
@@ -75,14 +75,14 @@ class Parser {
   }
   
   func isGPX() -> Bool {
-    return self.path.pathExtension?.lowercaseString == "gpx"
+    return self.path.pathExtension.lowercased() == "gpx"
   }
   
   func isTCX() -> Bool {
-    return self.path.pathExtension?.lowercaseString == "tcx"
+    return self.path.pathExtension.lowercased() == "tcx"
   }
   
   func isKML() -> Bool {
-    return self.path.pathExtension?.lowercaseString == "kml"
+    return self.path.pathExtension.lowercased() == "kml"
   }
 }

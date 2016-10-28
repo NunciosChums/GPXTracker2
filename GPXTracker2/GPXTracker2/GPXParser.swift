@@ -21,12 +21,12 @@ class GPXParser {
     var result: [GTPin] = []
     
     for wpt in xml.css("wpt") {
-      guard let lon: NSString = wpt["lon"],
-        let lat: NSString = wpt["lat"],
+      guard let lon = wpt["lon"],
+        let lat = wpt["lat"],
         let name: String = wpt.css("name").first?.text
         else { continue }
       
-      let location = CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue)
+      let location = CLLocationCoordinate2D(latitude: (lat as NSString).doubleValue, longitude: (lon as NSString).doubleValue)
       result.append(GTPin(title: name, coordinate: location, color: MKPinAnnotationView.purplePinColor()))
     }
     
@@ -37,14 +37,14 @@ class GPXParser {
     var locations: [CLLocationCoordinate2D] = []
     
     for trkpt in xml.css("trkpt") {
-      let lon: NSString = trkpt["lon"]!
-      let lat: NSString = trkpt["lat"]!
+      let lon: NSString = trkpt["lon"]! as NSString
+      let lat: NSString = trkpt["lat"]! as NSString
       let location = CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue)
       locations.append(location)
     }
     
     var result: [Line] = []
-    result.append(Line(coordinates: &locations, color: UIColor.blueColor(), lineWidth: 3))
+    result.append(Line(coordinates: &locations, color: UIColor.blue, lineWidth: 3))
     return result
   }
 }

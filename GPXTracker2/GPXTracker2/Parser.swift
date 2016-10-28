@@ -10,20 +10,20 @@ import Foundation
 import Kanna
 
 class Parser {
-  let path: NSURL
+  let path: URL
   let xml: XMLDocument?
   
-  init(path: NSURL) {
+  init(path: URL) {
     self.path = path
-    let data = NSData(contentsOfURL: path)
-    let datastring = NSString(data: data!, encoding: NSUTF8StringEncoding)
-    let str = datastring!.stringByReplacingOccurrencesOfString("xmlns", withString: "no_xmlns")
-    self.xml = Kanna.XML(xml: str, encoding: NSUTF8StringEncoding)
+    let data = try? Data(contentsOf: path)
+    let datastring = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+    let str = datastring!.replacingOccurrences(of: "xmlns", with: "no_xmlns")
+    self.xml = Kanna.XML(xml: str, encoding: String.Encoding.utf8)
   }
   
   func title() -> String {
     if self.xml == nil {
-      return (self.path.URLByDeletingPathExtension?.lastPathComponent)!
+      return (self.path.deletingPathExtension().lastPathComponent)
     }
     
     var title: String
@@ -38,10 +38,10 @@ class Parser {
       title = TCXParser.title(self.xml!)
     }
     else {
-      title = (self.path.URLByDeletingPathExtension?.lastPathComponent)!
+      title = (self.path.deletingPathExtension().lastPathComponent)
     }
     
-    return title.isEmpty ? (self.path.URLByDeletingPathExtension?.lastPathComponent)! : title
+    return title.isEmpty ? (self.path.deletingPathExtension().lastPathComponent) : title
   }
   
   func places() -> [GTPin]? {
@@ -75,14 +75,14 @@ class Parser {
   }
   
   func isGPX() -> Bool {
-    return self.path.pathExtension?.lowercaseString == "gpx"
+    return self.path.pathExtension.lowercased() == "gpx"
   }
   
   func isTCX() -> Bool {
-    return self.path.pathExtension?.lowercaseString == "tcx"
+    return self.path.pathExtension.lowercased() == "tcx"
   }
   
   func isKML() -> Bool {
-    return self.path.pathExtension?.lowercaseString == "kml"
+    return self.path.pathExtension.lowercased() == "kml"
   }
 }

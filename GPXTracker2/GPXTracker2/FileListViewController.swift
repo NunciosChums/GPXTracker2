@@ -10,20 +10,20 @@ import UIKit
 import PKHUD
 
 class FileListViewController: UITableViewController {
-  var items: [NSURL] = []
-  let fileManager = NSFileManager.defaultManager()
+  var items: [URL] = []
+  let fileManager = FileManager.default
   
   @IBOutlet var cancelButton: UIBarButtonItem!
   
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    if !NSUserDefaults .standardUserDefaults().boolForKey(IS_FIRST_RUN) {
+    if !UserDefaults.standard.bool(forKey: IS_FIRST_RUN) {
       copySampleLogFromBundle()
-      NSUserDefaults .standardUserDefaults().setBool(true, forKey: IS_FIRST_RUN)
+      UserDefaults.standard.set(true, forKey: IS_FIRST_RUN)
     }
   
-    if UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad{
+    if UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad{
       navigationItem.leftBarButtonItems = []
     }
     
@@ -35,13 +35,13 @@ class FileListViewController: UITableViewController {
   }
   
   func copySampleLogFromBundle() {
-    guard let path = NSBundle.mainBundle().resourcePath else { return }
+    guard let path = Bundle.main.resourcePath else { return }
     let fullPath = path + "/samples"
-    let files = try! fileManager.contentsOfDirectoryAtPath(fullPath)
-    let destPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory,
-                                                       NSSearchPathDomainMask.UserDomainMask, true).first!
+    let files = try! fileManager.contentsOfDirectory(atPath: fullPath)
+    let destPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory,
+                                                       FileManager.SearchPathDomainMask.userDomainMask, true).first!
     for file in files {
-      try! fileManager.copyItemAtPath(fullPath + "/" + file, toPath: destPath + "/" + file)
+      try! fileManager.copyItem(atPath: fullPath + "/" + file, toPath: destPath + "/" + file)
     }
   }
   
@@ -49,8 +49,8 @@ class FileListViewController: UITableViewController {
     PKHUD.sharedHUD.contentView = PKHUDProgressView()
     PKHUD.sharedHUD.show()
     
-    let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC)))
-    dispatch_after(delayTime, dispatch_get_main_queue()) {
+    let delayTime = DispatchTime.now() + Double(Int64(0.1 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+    DispatchQueue.main.asyncAfter(deadline: delayTime) {
       self.reloadWithDelay()
     }
   }
@@ -58,20 +58,20 @@ class FileListViewController: UITableViewController {
   func reloadWithDelay() {
     items.removeAll()
     
-    let documentsUrl =  fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
+    let documentsUrl =  fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
     addFilesInDirectory(documentsUrl)
     tableView.reloadData()
     PKHUD.sharedHUD.hide(animated: true, completion: nil)
   }
   
-  func addFilesInDirectory(path: NSURL) {
+  func addFilesInDirectory(_ path: URL) {
     do {
-      let directoryContents = try fileManager.contentsOfDirectoryAtURL(path, includingPropertiesForKeys: nil, options: NSDirectoryEnumerationOptions())
+      let directoryContents = try fileManager.contentsOfDirectory(at: path, includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions())
       
       var isDirectory: ObjCBool = false
       for content in directoryContents {
-        if fileManager.fileExistsAtPath(content.path!, isDirectory:&isDirectory) {
-          if isDirectory {
+        if fileManager.fileExists(atPath: content.path, isDirectory:&isDirectory) {
+          if isDirectory.boolValue {
             addFilesInDirectory(content)
           }
           else {
@@ -85,31 +85,31 @@ class FileListViewController: UITableViewController {
   }
   
   // MARK: - User Action
-  @IBAction func reloadButtonClicked(sender: AnyObject) {
+  @IBAction func reloadButtonClicked(_ sender: AnyObject) {
     reload()
   }
   
-  @IBAction func cancelButtonClicked(sender: AnyObject) {
+  @IBAction func cancelButtonClicked(_ sender: AnyObject) {
     close()
   }
   
   func close(){
-    dismissViewControllerAnimated(true, completion: nil)
+    dismiss(animated: true, completion: nil)
   }
   
   // MARK: - UITableView
-  override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+  override func numberOfSections(in tableView: UITableView) -> Int {
     return 1
   }
   
-  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return items.count
   }
   
-  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
     
-    let path = items[indexPath.row]
+    let path = items[(indexPath as NSIndexPath).row]
     let parser: Parser = Parser.init(path: path)
     cell.textLabel?.text = parser.title()
     cell.detailTextLabel?.text = path.lastPathComponent
@@ -117,18 +117,18 @@ class FileListViewController: UITableViewController {
     return cell
   }
   
-  override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-    if editingStyle == .Delete {
-      try! fileManager.removeItemAtURL(items[indexPath.row])
-      items.removeAtIndex(indexPath.row)
-      tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+  override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+      try! fileManager.removeItem(at: items[(indexPath as NSIndexPath).row])
+      items.remove(at: (indexPath as NSIndexPath).row)
+      tableView.deleteRows(at: [indexPath], with: .fade)
     }
   }
   
-  override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    let row = items[indexPath.row]
-    NSNotificationCenter.defaultCenter().postNotificationName(
-      SelectFile,
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let row = items[(indexPath as NSIndexPath).row]
+    NotificationCenter.default.post(
+      name: Notification.Name(rawValue: SelectFile),
       object: nil,
       userInfo: [SelectedFilePath: row])
     close()

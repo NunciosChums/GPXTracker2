@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		53187E56530A0E0D8CDF1C5D /* Pods_GPXTracker2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ACB390FF2F37D00394EFC80 /* Pods_GPXTracker2.framework */; };
 		7D09CC3A1BBFF78C003B8BF6 /* GTPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D09CC391BBFF78C003B8BF6 /* GTPin.swift */; };
 		7D09CC3E1BC0EA65003B8BF6 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D09CC3D1BC0EA65003B8BF6 /* Line.swift */; };
 		7D1651821BA3FF0D00A6E73D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1651811BA3FF0D00A6E73D /* AppDelegate.swift */; };
@@ -25,13 +24,12 @@
 		7D71A81F1C00ACE600BFF62A /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D71A81E1C00ACE600BFF62A /* Parser.swift */; };
 		7DD5CCF61BD2946300BCAB69 /* GTPolyLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD5CCF51BD2946300BCAB69 /* GTPolyLine.swift */; };
 		7DD5CCFA1BD3486800BCAB69 /* samples in Resources */ = {isa = PBXBuildFile; fileRef = 7DD5CCF91BD3486800BCAB69 /* samples */; };
+		F18F392800EAEF063A6F5FCD /* Pods_GPXTracker2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A65C3D881443BBA45EAC34FA /* Pods_GPXTracker2.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		09C6F4772E26EC3D34AE9834 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		25976B3B0D5D63EBB5F6F6DD /* Pods-GPXTracker2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPXTracker2.release.xcconfig"; path = "Pods/Target Support Files/Pods-GPXTracker2/Pods-GPXTracker2.release.xcconfig"; sourceTree = "<group>"; };
-		3ACB390FF2F37D00394EFC80 /* Pods_GPXTracker2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GPXTracker2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5608CAD147771817670C0FFD /* Pods-GPXTracker2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPXTracker2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GPXTracker2/Pods-GPXTracker2.debug.xcconfig"; sourceTree = "<group>"; };
+		17DBFA0F9565D349935C5913 /* Pods-GPXTracker2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPXTracker2.release.xcconfig"; path = "Pods/Target Support Files/Pods-GPXTracker2/Pods-GPXTracker2.release.xcconfig"; sourceTree = "<group>"; };
 		7D09CC391BBFF78C003B8BF6 /* GTPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTPin.swift; sourceTree = "<group>"; };
 		7D09CC3D1BC0EA65003B8BF6 /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		7D16517E1BA3FF0D00A6E73D /* GPXTracker2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GPXTracker2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,6 +49,8 @@
 		7D71A81E1C00ACE600BFF62A /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		7DD5CCF51BD2946300BCAB69 /* GTPolyLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GTPolyLine.swift; sourceTree = "<group>"; };
 		7DD5CCF91BD3486800BCAB69 /* samples */ = {isa = PBXFileReference; lastKnownFileType = folder; name = samples; path = ../../samples; sourceTree = "<group>"; };
+		A65C3D881443BBA45EAC34FA /* Pods_GPXTracker2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GPXTracker2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0767966E32D469CA8B635CF /* Pods-GPXTracker2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPXTracker2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GPXTracker2/Pods-GPXTracker2.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +60,7 @@
 			files = (
 				7D1651971BA4060B00A6E73D /* CoreLocation.framework in Frameworks */,
 				7D1651941BA4016100A6E73D /* MapKit.framework in Frameworks */,
-				53187E56530A0E0D8CDF1C5D /* Pods_GPXTracker2.framework in Frameworks */,
+				F18F392800EAEF063A6F5FCD /* Pods_GPXTracker2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,7 +81,7 @@
 				7D1651801BA3FF0D00A6E73D /* GPXTracker2 */,
 				7D1651951BA4016800A6E73D /* Frameworks */,
 				7D16517F1BA3FF0D00A6E73D /* Products */,
-				8E1F5FD5B3FBA54FD508FB83 /* Pods */,
+				B7F82331E3B2DD8EC49E605B /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -118,7 +118,7 @@
 				7D1651961BA4060B00A6E73D /* CoreLocation.framework */,
 				7D1651931BA4016100A6E73D /* MapKit.framework */,
 				09C6F4772E26EC3D34AE9834 /* Pods.framework */,
-				3ACB390FF2F37D00394EFC80 /* Pods_GPXTracker2.framework */,
+				A65C3D881443BBA45EAC34FA /* Pods_GPXTracker2.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -143,11 +143,11 @@
 			name = map_view_items;
 			sourceTree = "<group>";
 		};
-		8E1F5FD5B3FBA54FD508FB83 /* Pods */ = {
+		B7F82331E3B2DD8EC49E605B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				5608CAD147771817670C0FFD /* Pods-GPXTracker2.debug.xcconfig */,
-				25976B3B0D5D63EBB5F6F6DD /* Pods-GPXTracker2.release.xcconfig */,
+				E0767966E32D469CA8B635CF /* Pods-GPXTracker2.debug.xcconfig */,
+				17DBFA0F9565D349935C5913 /* Pods-GPXTracker2.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -159,12 +159,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7D1651901BA3FF0D00A6E73D /* Build configuration list for PBXNativeTarget "GPXTracker2" */;
 			buildPhases = (
-				543E76C23AB1698C4C20CEEA /* [CP] Check Pods Manifest.lock */,
+				3277B1A6E8AD3276D8F57872 /* [CP] Check Pods Manifest.lock */,
 				7D16517A1BA3FF0D00A6E73D /* Sources */,
 				7D16517B1BA3FF0D00A6E73D /* Frameworks */,
 				7D16517C1BA3FF0D00A6E73D /* Resources */,
-				7EFB85271812377244FADAAA /* [CP] Embed Pods Frameworks */,
-				E0B7591643D1214BEDB81377 /* [CP] Copy Pods Resources */,
+				810080F4A384646790B83A46 /* [CP] Embed Pods Frameworks */,
+				FC150CB196D6024D17963C77 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -181,12 +181,13 @@
 		7D1651761BA3FF0D00A6E73D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = susemi99;
 				TargetAttributes = {
 					7D16517D1BA3FF0D00A6E73D = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = 37DX6YRT9T;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -223,7 +224,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		543E76C23AB1698C4C20CEEA /* [CP] Check Pods Manifest.lock */ = {
+		3277B1A6E8AD3276D8F57872 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -235,10 +236,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		7EFB85271812377244FADAAA /* [CP] Embed Pods Frameworks */ = {
+		810080F4A384646790B83A46 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -253,7 +254,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GPXTracker2/Pods-GPXTracker2-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E0B7591643D1214BEDB81377 /* [CP] Copy Pods Resources */ = {
+		FC150CB196D6024D17963C77 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -324,8 +325,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -368,8 +371,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -388,34 +393,39 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		7D1651911BA3FF0D00A6E73D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5608CAD147771817670C0FFD /* Pods-GPXTracker2.debug.xcconfig */;
+			baseConfigurationReference = E0767966E32D469CA8B635CF /* Pods-GPXTracker2.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = GPXTracker2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.chocobi.GPXiPhone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		7D1651921BA3FF0D00A6E73D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 25976B3B0D5D63EBB5F6F6DD /* Pods-GPXTracker2.release.xcconfig */;
+			baseConfigurationReference = 17DBFA0F9565D349935C5913 /* Pods-GPXTracker2.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = GPXTracker2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.chocobi.GPXiPhone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

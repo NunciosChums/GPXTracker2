@@ -12,55 +12,55 @@ import Kanna
 
 class TCXParser {
   
-  class func title(xml:XMLDocument) -> String {
+  class func title(_ xml:XMLDocument) -> String {
     let result = xml.css("Course Name").first?.text
     return result ?? ""
   }
   
-  class func places(xml: XMLDocument) -> [GTPin] {
+  class func places(_ xml: XMLDocument) -> [GTPin] {
     var result: [GTPin] = []
     
     for point in xml.css("CoursePoint") {
       guard let name: String = point.css("Name").first?.text,
-        let lat: NSString = point.css("LatitudeDegrees").first?.text,
-        let lon: NSString = point.css("LongitudeDegrees").first?.text
+        let lat: NSString = point.css("LatitudeDegrees").first?.text as NSString?,
+        let lon: NSString = point.css("LongitudeDegrees").first?.text as NSString?
         else {continue}
       
       let location = CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue)
       var color: UIColor = MKPinAnnotationView.purplePinColor()
       
       if let type: String = point.css("PointType").first?.text {
-        switch(type.lowercaseString){
+        switch(type.lowercased()){
         case "right":
-          color = UIColor.yellowColor()
+          color = UIColor.yellow
           break;
           
         case "left":
-          color = UIColor.orangeColor()
+          color = UIColor.orange
           break;
           
         case "danger":
-          color = UIColor.magentaColor()
+          color = UIColor.magenta
           break;
           
         case "water":
-          color = UIColor.cyanColor()
+          color = UIColor.cyan
           break;
           
         case "submmit":
-          color = UIColor.grayColor()
+          color = UIColor.gray
           break;
           
         case "food":
-          color = UIColor.brownColor()
+          color = UIColor.brown
           break;
           
         case "straight":
-          color = UIColor.blackColor()
+          color = UIColor.black
           break;
           
         default:
-          color = UIColor.purpleColor()
+          color = UIColor.purple
           break;
         }
       }
@@ -71,13 +71,13 @@ class TCXParser {
     return result
   }
   
-  class func lines(xml: XMLDocument) -> [Line] {
+  class func lines(_ xml: XMLDocument) -> [Line] {
     var locations: [CLLocationCoordinate2D] = []
     
     for point in xml.css("Trackpoint") {
       for position in point.css("Position") {
-        guard let lat: NSString = position.css("LatitudeDegrees").first?.text,
-              let lon: NSString = position.css("LongitudeDegrees").first?.text
+        guard let lat: NSString = position.css("LatitudeDegrees").first?.text as NSString?,
+              let lon: NSString = position.css("LongitudeDegrees").first?.text as NSString?
           else {continue}
         
         locations.append(CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue))
@@ -86,7 +86,7 @@ class TCXParser {
     
     var result: [Line] = []
     if locations.count > 0 {
-      result.append(Line(coordinates: &locations, color: UIColor.blueColor(), lineWidth: 3))
+      result.append(Line(coordinates: &locations, color: UIColor.blue, lineWidth: 3))
     }
     return result
   }

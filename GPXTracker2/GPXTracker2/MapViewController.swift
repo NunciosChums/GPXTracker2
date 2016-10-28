@@ -36,16 +36,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     locationManager.startUpdatingLocation()
     
     let currentLocationItem = MKUserTrackingBarButtonItem.init(mapView: mapView)
-    navigationItem.setRightBarButtonItem(currentLocationItem, animated: true)
-    currentLocationItem.performSelector(currentLocationItem.action)
+    navigationItem.setRightBarButton(currentLocationItem, animated: true)
+    currentLocationItem.perform(currentLocationItem.action)
     
-    NSNotificationCenter.defaultCenter().addObserver(
+    NotificationCenter.default.addObserver(
       self,
       selector: #selector(MapViewController.didSelectFile(_:)),
-      name: SelectFile,
+      name: NSNotification.Name(rawValue: SelectFile),
       object: nil)
     
-    if let mapType = MKMapType(rawValue: UInt(NSUserDefaults.standardUserDefaults().integerForKey(MAP_TYPE))) {
+    if let mapType = MKMapType(rawValue: UInt(UserDefaults.standard.integer(forKey: MAP_TYPE))) {
       mapView.mapType = mapType
       updateMapTypeButtonImage()
     }
@@ -55,19 +55,19 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     super.didReceiveMemoryWarning()
   }
   
-  func didSelectFile(notification: NSNotification)
+  func didSelectFile(_ notification: Notification)
   {
     PKHUD.sharedHUD.contentView = PKHUDProgressView()
     PKHUD.sharedHUD.show()
     
-    let userInfo: Dictionary<String, NSURL> = notification.userInfo as! Dictionary<String, NSURL>
-    let file: NSURL = userInfo[SelectedFilePath]!
-    selectedFilePath = file.path!
+    let userInfo: Dictionary<String, URL> = (notification as NSNotification).userInfo as! Dictionary<String, URL>
+    let file: URL = userInfo[SelectedFilePath]!
+    selectedFilePath = file.path
     
-    startPinButton.hidden = false
-    endPinButton.hidden = false
-    zoomToFitButton.hidden = false
-    shareButton.enabled = true
+    startPinButton.isHidden = false
+    endPinButton.isHidden = false
+    zoomToFitButton.isHidden = false
+    shareButton.isEnabled = true
     
     allPoints.removeAll()
     mapView.removeOverlays(mapView.overlays)
@@ -77,13 +77,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     startPinIndex = 0
     endPinIndex = 0
     
-    let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC)))
-    dispatch_after(delayTime, dispatch_get_main_queue()) {
+    let delayTime = DispatchTime.now() + Double(Int64(0.1 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+    DispatchQueue.main.asyncAfter(deadline: delayTime) {
       self.drawWithDelay(file)
     }
   }
   
-  func drawWithDelay(url: NSURL) {
+  func drawWithDelay(_ url: URL) {
     let parser: Parser = Parser(path: url)
     title = parser.title()
 
@@ -93,10 +93,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     for line in parser.lines()! {
-      mapView.addOverlay(line.polyLine)
+      mapView.add(line.polyLine)
       mapView.addAnnotation(line.startPin)
       mapView.addAnnotation(line.endPin)
-      allPoints.appendContentsOf(line.coordinates)
+      allPoints.append(contentsOf: line.coordinates)
       
       startPins.append(line.startPin)
       endPins.append(line.endPin)
@@ -113,19 +113,19 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
   }
   
   // MARK: - User Action
-  @IBAction func zoomToFitButtonClicked(sender: AnyObject) {
+  @IBAction func zoomToFitButtonClicked(_ sender: AnyObject) {
     zoomToFit()
   }
   
-  @IBAction func shareButtonClicked(sender: UIBarButtonItem) {
-    let url: NSURL = NSURL(fileURLWithPath: selectedFilePath)
+  @IBAction func shareButtonClicked(_ sender: UIBarButtonItem) {
+    let url: URL = URL(fileURLWithPath: selectedFilePath)
     let activityVC: UIActivityViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
-    presentViewController(activityVC, animated: true, completion: nil)
+    present(activityVC, animated: true, completion: nil)
     let presentationController = activityVC.popoverPresentationController
     presentationController?.sourceView = view
   }
   
-  @IBAction func showStartPins(sender: UIButton) {
+  @IBAction func showStartPins(_ sender: UIButton) {
     moveTo(startPins[startPinIndex].coordinate)
     
     startPinIndex += 1
@@ -134,7 +134,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     }
   }
   
-  @IBAction func showEndPins(sender: UIButton) {
+  @IBAction func showEndPins(_ sender: UIButton) {
     moveTo(endPins[endPinIndex].coordinate)
     
     endPinIndex += 1
@@ -143,18 +143,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     }
   }
   
-  @IBAction func toggleMapType(sender: UIButton) {
-    let mapType = mapView.mapType == MKMapType.Hybrid ? MKMapType.Standard : MKMapType.Hybrid
+  @IBAction func toggleMapType(_ sender: UIButton) {
+    let mapType = mapView.mapType == MKMapType.hybrid ? MKMapType.standard : MKMapType.hybrid
     mapView.mapType = mapType
-    NSUserDefaults.standardUserDefaults().setInteger(Int(mapType.rawValue), forKey: MAP_TYPE)
+    UserDefaults.standard.set(Int(mapType.rawValue), forKey: MAP_TYPE)
     updateMapTypeButtonImage()
   }
   
   func updateMapTypeButtonImage(){
-    toggleMapTypeButton.selected = mapView.mapType == MKMapType.Hybrid
+    toggleMapTypeButton.isSelected = mapView.mapType == MKMapType.hybrid
   }
 
-  func moveTo(location: CLLocationCoordinate2D) {
+  func moveTo(_ location: CLLocationCoordinate2D) {
     if !CLLocationCoordinate2DIsValid(location) {
       return;
     }
@@ -165,22 +165,22 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
   }
   
   // MARK: - MKMapView
-  func mapViewWillStartLoadingMap(mapView: MKMapView) {
-    UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+  func mapViewWillStartLoadingMap(_ mapView: MKMapView) {
+    UIApplication.shared.isNetworkActivityIndicatorVisible = true
   }
   
-  func mapViewDidFinishLoadingMap(mapView: MKMapView) {
-    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+  func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
+    UIApplication.shared.isNetworkActivityIndicatorVisible = false
   }
   
-  func mapView(mapView: MKMapView!, rendererForOverlay overlay: GTPolyLine!) -> MKOverlayRenderer! {
+  func mapView(_ mapView: MKMapView!, rendererForOverlay overlay: GTPolyLine!) -> MKOverlayRenderer! {
     let polylineRenderer = MKPolylineRenderer(overlay: overlay)
     polylineRenderer.strokeColor = overlay.strokeColor
     polylineRenderer.lineWidth = CGFloat(overlay.lineWidth)
     return polylineRenderer
   }
   
-  func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+  func mapView(_ mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
     if (annotation is MKUserLocation) {
       return nil
     }
@@ -197,8 +197,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     pinView.animatesDrop = true
     pinView.pinTintColor = pin!.color
     
-    let navigationButton = UIButton(type: .Custom)
-    navigationButton.setImage(UIImage(named: "car"), forState: UIControlState.Normal)
+    let navigationButton = UIButton(type: .custom)
+    navigationButton.setImage(UIImage(named: "car"), for: UIControlState())
     navigationButton.imageEdgeInsets = UIEdgeInsetsMake(16, 12, 29, 12)
     navigationButton.frame = CGRect(x: 0, y: 0, width: 50, height: 64)
     navigationButton.backgroundColor = UIColor(red: 0, green: (122/255.0), blue: (255/255.0), alpha: 1.0)
@@ -210,17 +210,17 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
       imagePinView.canShowCallout = true
       imagePinView.leftCalloutAccessoryView = pinView.leftCalloutAccessoryView
       
-      let imgURL: NSURL = NSURL(string: pin!.iconUrl!)!
-      let request: NSURLRequest = NSURLRequest(URL: imgURL)
+      let imgURL: URL = URL(string: pin!.iconUrl!)!
+      let request: URLRequest = URLRequest(url: imgURL)
       
-      let session = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) -> Void in
+      let session = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
         if error == nil {
-          dispatch_async(dispatch_get_main_queue()) {
+          DispatchQueue.main.async {
             let image = UIImage(data: data!)
             imagePinView.image = image
           }
         }
-      }
+      }) 
       session.resume()
       
       return imagePinView;
@@ -229,7 +229,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     return pinView;
   }
   
-  func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
+  func mapView(_ mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
     if control == view.leftCalloutAccessoryView {
       let annotation = view.annotation
       let placeMark = MKPlacemark(coordinate: annotation!.coordinate, addressDictionary: nil)
@@ -237,12 +237,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
       mapItem.name = annotation!.title!
       
       let launchOptions = [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving]
-      mapItem.openInMapsWithLaunchOptions(launchOptions)
+      mapItem.openInMaps(launchOptions: launchOptions)
     }
   }
   
-  func mapView(mapView: MKMapView, didChangeUserTrackingMode mode: MKUserTrackingMode, animated: Bool) {
-    UIApplication.sharedApplication().idleTimerDisabled = mode == MKUserTrackingMode.Follow || mode == MKUserTrackingMode.FollowWithHeading
+  func mapView(_ mapView: MKMapView, didChangeUserTrackingMode mode: MKUserTrackingMode, animated: Bool) {
+    UIApplication.shared.isIdleTimerDisabled = mode == MKUserTrackingMode.follow || mode == MKUserTrackingMode.followWithHeading
   }
 }
 

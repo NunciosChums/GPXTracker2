@@ -27,7 +27,7 @@ class KMLParser {
             let href = style.css("href").first?.text
         else {continue}
       
-      iconStyles.append(IconStyle(id: id.stringByReplacingOccurrencesOfString("-normal", withString: ""), href: href))
+      iconStyles.append(IconStyle(id: id.replacingOccurrences(of: "-normal", with: ""), href: href))
     }
     
     for placemark in xml.css("Placemark") {
@@ -37,11 +37,11 @@ class KMLParser {
         guard let coordinates = placemark.css("coordinates").first?.text else {continue}
         
         let split = coordinates.characters.split{$0 == ","}.map(String.init)
-        let lon:NSString = split[0]
-        let lat:NSString = split[1]
+        let lon:NSString = split[0] as NSString
+        let lat:NSString = split[1] as NSString
         let location = CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue)
         guard let styleUrlString = placemark.css("styleUrl").first?.text else {continue}
-        let styleUrl = styleUrlString.stringByReplacingOccurrencesOfString("#", withString: "")
+        let styleUrl = styleUrlString.replacingOccurrences(of: "#", with: "")
         
         for icon in iconStyles {
           if icon.id == styleUrl {
@@ -64,8 +64,8 @@ class KMLParser {
         guard let width = lineStyle.css("width").first?.text,
           let color = lineStyle.css("color").first?.text else {continue}
         
-        lineStyles.append(LineStyle(id: id.stringByReplacingOccurrencesOfString("-normal", withString: ""),
-          color:KMLParser.stringToColor("#"+color), width:width))
+        lineStyles.append(LineStyle(id: id.replacingOccurrences(of: "-normal", with: ""),
+          color:KMLParser.stringToColor(hexString: "#"+color), width:width))
       }
     }
     
@@ -73,19 +73,19 @@ class KMLParser {
     
     for placemark in xml.css("Placemark") {
       guard let styleUrlString = placemark.css("styleUrl").first?.text else {continue}
-      let styleUrl = styleUrlString.stringByReplacingOccurrencesOfString("#", withString: "")
+      let styleUrl = styleUrlString.replacingOccurrences(of: "#", with: "")
       
       for lineString in placemark.css("LineString"){
         guard let coordinatesString = lineString.css("coordinates").first?.text else {continue}
-        let coordinates = coordinatesString.stringByReplacingOccurrencesOfString("\n", withString: "")
+        let coordinates = coordinatesString.replacingOccurrences(of: "\n", with: "")
         let splitLine = coordinates.characters.split{$0 == " "}.map(String.init)
         
         var locations: [CLLocationCoordinate2D] = []
         
         for line in splitLine {
           let split = line.characters.split{$0 == ","}.map(String.init)
-          let lon:NSString = split[0]
-          let lat:NSString = split[1]
+          let lon:NSString = split[0] as NSString
+          let lat:NSString = split[1] as NSString
           let location = CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue)
           locations.append(location)
         }
@@ -106,14 +106,14 @@ class KMLParser {
     let r, g, b, a: CGFloat
     
     if hexString.hasPrefix("#") {
-      let start = hexString.startIndex.advancedBy(1)
-      let hexColor = hexString.substringFromIndex(start)
+      let start = hexString.characters.index(hexString.startIndex, offsetBy: 1)
+      let hexColor = hexString.substring(from: start)
       
       if hexColor.characters.count == 8 {
-        let scanner = NSScanner(string: hexColor)
+        let scanner = Scanner(string: hexColor)
         var hexNumber: UInt64 = 0
         
-        if scanner.scanHexLongLong(&hexNumber) {
+        if scanner.scanHexInt64(&hexNumber) {
           a = CGFloat((hexNumber & 0xff000000) >> 24) / 255
           b = CGFloat((hexNumber & 0x00ff0000) >> 16) / 255
           g = CGFloat((hexNumber & 0x0000ff00) >> 8) / 255
@@ -124,7 +124,7 @@ class KMLParser {
       }
     }
     
-    return UIColor.blueColor()
+    return UIColor.blue
   }
   
   struct IconStyle {

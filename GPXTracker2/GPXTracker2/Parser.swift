@@ -29,13 +29,13 @@ class Parser {
     var title: String
     
     if isKML() {
-      title = KMLParser.title(self.xml!)
+      title = KMLParser.title(xml: self.xml!)
     }
     else if isGPX() {
-      title = GPXParser.title(self.xml!)
+      title = GPXParser.title(xml: self.xml!)
     }
     else if isTCX() {
-      title = TCXParser.title(self.xml!)
+      title = TCXParser.title(xml: self.xml!)
     }
     else {
       title = (self.path.deletingPathExtension().lastPathComponent)
@@ -46,13 +46,13 @@ class Parser {
   
   func places() -> [GTPin]? {
     if isGPX() {
-      return GPXParser.places(self.xml!)
+      return GPXParser.places(xml: self.xml!)
     }
     else if isKML() {
-      return KMLParser.places(self.xml!)
+      return KMLParser.places(xml: self.xml!)
     }
     else if isTCX() {
-      return TCXParser.places(self.xml!)
+      return TCXParser.places(xml: self.xml!)
     }
     
     let result: [GTPin] = []
@@ -61,13 +61,13 @@ class Parser {
   
   func lines() -> [Line]? {
     if isGPX() {
-      return GPXParser.lines(self.xml!)
+      return GPXParser.lines(xml: self.xml!)
     }
     else if isKML() {
-      return KMLParser.lines(self.xml!)
+      return KMLParser.lines(xml: self.xml!)
     }
     else if isTCX() {
-      return TCXParser.lines(self.xml!)
+      return TCXParser.lines(xml: self.xml!)
     }
     
     let result: [Line] = []

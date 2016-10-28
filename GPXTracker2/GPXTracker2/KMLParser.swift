@@ -12,12 +12,12 @@ import Kanna
 
 class KMLParser {
   
-  class func title(_ xml: XMLDocument) -> String {
+  class func title(xml: XMLDocument) -> String {
     let result = xml.css("Document name").first?.text
     return result ?? ""
   }
   
-  class func places(_ xml: XMLDocument) -> [GTPin] {
+  class func places(xml: XMLDocument) -> [GTPin] {
     var result: [GTPin] = []
     
     var iconStyles: [IconStyle] = []
@@ -54,7 +54,7 @@ class KMLParser {
     return result
   }
   
-  class func lines(_ xml: XMLDocument) -> [Line] {
+  class func lines(xml: XMLDocument) -> [Line] {
     var lineStyles: [LineStyle] = []
     
     for style in xml.css("Style") {
@@ -65,7 +65,7 @@ class KMLParser {
           let color = lineStyle.css("color").first?.text else {continue}
         
         lineStyles.append(LineStyle(id: id.replacingOccurrences(of: "-normal", with: ""),
-          color:KMLParser.stringToColor("#"+color), width:width))
+          color:KMLParser.stringToColor(hexString: "#"+color), width:width))
       }
     }
     
@@ -102,7 +102,7 @@ class KMLParser {
   }
   
   // hexString #ffF08641, ff: a, f0: b, 86: b, 41: r
-  class func stringToColor(_ hexString:String) -> UIColor {
+  class func stringToColor(hexString:String) -> UIColor {
     let r, g, b, a: CGFloat
     
     if hexString.hasPrefix("#") {

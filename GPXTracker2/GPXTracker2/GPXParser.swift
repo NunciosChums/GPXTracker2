@@ -12,12 +12,12 @@ import Kanna
 
 class GPXParser {
   
-  class func title(_ xml: XMLDocument) -> String {
+  class func title(xml: XMLDocument) -> String {
     guard let result = xml.css("trk name").first?.text else { return  "" }
     return result
   }
   
-  class func places(_ xml: XMLDocument) -> [GTPin] {
+  class func places(xml: XMLDocument) -> [GTPin] {
     var result: [GTPin] = []
     
     for wpt in xml.css("wpt") {
@@ -33,7 +33,7 @@ class GPXParser {
     return result
   }
   
-  class func lines(_ xml: XMLDocument) -> [Line] {
+  class func lines(xml: XMLDocument) -> [Line] {
     var locations: [CLLocationCoordinate2D] = []
     
     for trkpt in xml.css("trkpt") {

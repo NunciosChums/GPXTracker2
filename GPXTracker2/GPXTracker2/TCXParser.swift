@@ -12,12 +12,12 @@ import Kanna
 
 class TCXParser {
   
-  class func title(_ xml:XMLDocument) -> String {
+  class func title(xml:XMLDocument) -> String {
     let result = xml.css("Course Name").first?.text
     return result ?? ""
   }
   
-  class func places(_ xml: XMLDocument) -> [GTPin] {
+  class func places(xml: XMLDocument) -> [GTPin] {
     var result: [GTPin] = []
     
     for point in xml.css("CoursePoint") {
@@ -71,7 +71,7 @@ class TCXParser {
     return result
   }
   
-  class func lines(_ xml: XMLDocument) -> [Line] {
+  class func lines(xml: XMLDocument) -> [Line] {
     var locations: [CLLocationCoordinate2D] = []
     
     for point in xml.css("Trackpoint") {

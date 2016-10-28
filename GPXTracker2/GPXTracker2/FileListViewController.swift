@@ -46,8 +46,7 @@ class FileListViewController: UITableViewController {
   }
   
   func reload() {
-    PKHUD.sharedHUD.contentView = PKHUDProgressView()
-    PKHUD.sharedHUD.show()
+    HUD.show(.progress)
     
     let delayTime = DispatchTime.now() + Double(Int64(0.1 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
     DispatchQueue.main.asyncAfter(deadline: delayTime) {
@@ -61,7 +60,7 @@ class FileListViewController: UITableViewController {
     let documentsUrl =  fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
     addFilesInDirectory(documentsUrl)
     tableView.reloadData()
-    PKHUD.sharedHUD.hide(animated: true, completion: nil)
+    HUD.hide()
   }
   
   func addFilesInDirectory(_ path: URL) {

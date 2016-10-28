@@ -57,8 +57,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
   
   func didSelectFile(_ notification: Notification)
   {
-    PKHUD.sharedHUD.contentView = PKHUDProgressView()
-    PKHUD.sharedHUD.show()
+    HUD.show(.progress)
     
     let userInfo: Dictionary<String, URL> = (notification as NSNotification).userInfo as! Dictionary<String, URL>
     let file: URL = userInfo[SelectedFilePath]!
@@ -104,7 +103,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     zoomToFit()
     
-    PKHUD.sharedHUD.hide()
+    HUD.hide()
   }
   
   func zoomToFit() {

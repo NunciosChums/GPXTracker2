@@ -59,6 +59,11 @@ class FileListViewController: UITableViewController {
     
     let documentsUrl =  fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
     addFilesInDirectory(documentsUrl)
+    
+    // received from iCloud Drive
+    let tempDirectoryURL = NSURL.fileURL(withPath: NSTemporaryDirectory(), isDirectory: true)
+    addFilesInDirectory(tempDirectoryURL)
+    
     tableView.reloadData()
     HUD.hide()
   }

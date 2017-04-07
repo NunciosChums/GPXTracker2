@@ -36,9 +36,9 @@ class KMLParser {
       for _ in placemark.css("Point") {
         guard let coordinates = placemark.css("coordinates").first?.text else {continue}
         
-        let split = coordinates.characters.split{$0 == ","}.map(String.init)
-        let lon:NSString = split[0] as NSString
-        let lat:NSString = split[1] as NSString
+        let split = coordinates.components(separatedBy: ",")
+        let lon:NSString = split[0].trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) as NSString
+        let lat:NSString = split[1].trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) as NSString
         let location = CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue)
         guard let styleUrlString = placemark.css("styleUrl").first?.text else {continue}
         let styleUrl = styleUrlString.replacingOccurrences(of: "#", with: "")

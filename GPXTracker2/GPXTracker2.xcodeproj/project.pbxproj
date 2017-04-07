@@ -402,7 +402,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E0767966E32D469CA8B635CF /* Pods-GPXTracker2.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = GPXTracker2/Info.plist;
@@ -418,7 +417,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 17DBFA0F9565D349935C5913 /* Pods-GPXTracker2.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = GPXTracker2/Info.plist;

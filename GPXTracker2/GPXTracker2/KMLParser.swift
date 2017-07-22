@@ -30,15 +30,28 @@ class KMLParser {
       iconStyles.append(IconStyle(id: id.replacingOccurrences(of: "-normal", with: ""), href: href))
     }
     
+    for styleMap in xml.css("StyleMap"){
+      guard let id:String = styleMap["id"],
+            let normal = styleMap.css("Pair styleUrl").first?.text?.replacingOccurrences(of: "#", with: "")
+      else {continue}
+      
+      for iconStyle in iconStyles {
+        if iconStyle.id == normal {
+          iconStyles.append(IconStyle(id: id, href: iconStyle.href))
+          break
+        }
+      }
+    }
+    
     for placemark in xml.css("Placemark") {
       guard let name:String = placemark.css("name").first?.text else {continue}
       
       for _ in placemark.css("Point") {
         guard let coordinates = placemark.css("coordinates").first?.text else {continue}
         
-        let split = coordinates.characters.split{$0 == ","}.map(String.init)
-        let lon:NSString = split[0] as NSString
-        let lat:NSString = split[1] as NSString
+        let split = coordinates.components(separatedBy: ",")
+        let lon:NSString = split[0].trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) as NSString
+        let lat:NSString = split[1].trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) as NSString
         let location = CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue)
         guard let styleUrlString = placemark.css("styleUrl").first?.text else {continue}
         let styleUrl = styleUrlString.replacingOccurrences(of: "#", with: "")
@@ -66,6 +79,19 @@ class KMLParser {
         
         lineStyles.append(LineStyle(id: id.replacingOccurrences(of: "-normal", with: ""),
           color:KMLParser.stringToColor(hexString: "#"+color), width:width))
+      }
+    }
+    
+    for styleMap in xml.css("StyleMap"){
+      guard let id:String = styleMap["id"],
+        let normal = styleMap.css("Pair styleUrl").first?.text?.replacingOccurrences(of: "#", with: "")
+        else {continue}
+      
+      for lineStyle in lineStyles {
+        if lineStyle.id == normal {
+          lineStyles.append(LineStyle(id: id, color:lineStyle.color, width:lineStyle.width))
+          break
+        }
       }
     }
     

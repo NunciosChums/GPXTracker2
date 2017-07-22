@@ -55,8 +55,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     super.didReceiveMemoryWarning()
   }
   
-  func didSelectFile(_ notification: Notification)
-  {
+  func didSelectFile(_ notification: Notification){
     HUD.show(.progress)
     
     let userInfo: Dictionary<String, URL> = (notification as NSNotification).userInfo as! Dictionary<String, URL>
@@ -92,6 +91,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     for line in parser.lines()! {
+      print(line.coordinates)
       mapView.add(line.polyLine)
       mapView.addAnnotation(line.startPin)
       mapView.addAnnotation(line.endPin)

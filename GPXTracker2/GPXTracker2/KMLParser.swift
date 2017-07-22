@@ -30,6 +30,19 @@ class KMLParser {
       iconStyles.append(IconStyle(id: id.replacingOccurrences(of: "-normal", with: ""), href: href))
     }
     
+    for styleMap in xml.css("StyleMap"){
+      guard let id:String = styleMap["id"],
+            let normal = styleMap.css("Pair styleUrl").first?.text?.replacingOccurrences(of: "#", with: "")
+      else {continue}
+      
+      for iconStyle in iconStyles {
+        if iconStyle.id == normal {
+          iconStyles.append(IconStyle(id: id, href: iconStyle.href))
+          break
+        }
+      }
+    }
+    
     for placemark in xml.css("Placemark") {
       guard let name:String = placemark.css("name").first?.text else {continue}
       
@@ -66,6 +79,19 @@ class KMLParser {
         
         lineStyles.append(LineStyle(id: id.replacingOccurrences(of: "-normal", with: ""),
           color:KMLParser.stringToColor(hexString: "#"+color), width:width))
+      }
+    }
+    
+    for styleMap in xml.css("StyleMap"){
+      guard let id:String = styleMap["id"],
+        let normal = styleMap.css("Pair styleUrl").first?.text?.replacingOccurrences(of: "#", with: "")
+        else {continue}
+      
+      for lineStyle in lineStyles {
+        if lineStyle.id == normal {
+          lineStyles.append(LineStyle(id: id, color:lineStyle.color, width:lineStyle.width))
+          break
+        }
       }
     }
     

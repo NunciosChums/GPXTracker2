@@ -1,7 +1,0 @@
-platform :ios, '10.0'
-use_frameworks!
-
-target "GPXTracker2" do
-	pod 'Kanna'
-	pod 'PKHUD', '~> 4.0'
-end

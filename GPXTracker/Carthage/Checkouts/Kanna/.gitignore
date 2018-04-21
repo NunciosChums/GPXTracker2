@@ -1,3 +1,5 @@
+.DS_Store
+
 # Xcode
 #
 build/
@@ -11,14 +13,11 @@ build/
 !default.perspectivev3
 xcuserdata
 *.xccheckout
-*.xcscmblueprint
 *.moved-aside
 DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
-*.dSYM.zip
-*.dSYM
 
 # CocoaPods
 #
@@ -26,11 +25,8 @@ DerivedData
 # you should judge for yourself, the pros and cons are mentioned at:
 # http://guides.cocoapods.org/using/using-cocoapods.html#should-i-ignore-the-pods-directory-in-source-control
 #
-Pods/
+# Pods/
 
-# Carthage
-#
-# Add this line if you want to avoid checking in source code from Carthage dependencies.
-# Carthage/Checkouts
+.build
+Packages
 
-Carthage/Build

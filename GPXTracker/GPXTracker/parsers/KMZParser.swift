@@ -24,7 +24,9 @@ class KMZParser: BaseParser {
       let newPin = pin
       
       if let iconUrl = pin.iconUrl {
-        newPin.iconUrl = imageFolderPath + iconUrl
+        if !iconUrl.hasPrefix("http") {
+          newPin.iconUrl = imageFolderPath + iconUrl
+        }
       }
       
       places.append(newPin)

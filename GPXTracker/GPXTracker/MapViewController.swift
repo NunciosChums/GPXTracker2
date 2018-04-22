@@ -209,27 +209,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
       imagePinView.leftCalloutAccessoryView = pinView.leftCalloutAccessoryView
       
       let imageUrl = URL(string: url)
+      let request = URLRequest(url: imageUrl!)
       
-      if url.hasPrefix("/") {
-        do {
-          let imageData = try Data(contentsOf: imageUrl!)
-          imagePinView.image = UIImage(data: imageData)
-        } catch {
-          print(error.localizedDescription)
-        }
-      }
-      else {
-        let request = URLRequest(url: imageUrl!)
-        
-        let session = URLSession.shared.dataTask(with: request) { (data, response, error) in
-          if error == nil {
-            DispatchQueue.main.async {
-              imagePinView.image = UIImage(data: data!)
-            }
+      let session = URLSession.shared.dataTask(with: request) { (data, response, error) in
+        if error == nil {
+          DispatchQueue.main.async {
+            imagePinView.image = UIImage(data: data!)
           }
         }
-        session.resume()
       }
+      session.resume()
       
       return imagePinView
     }

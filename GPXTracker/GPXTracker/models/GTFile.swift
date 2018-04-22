@@ -26,7 +26,7 @@ class GTFile {
     }
     
     if file.pathExtension.lowercased() == "kmz" {
-      unzippedFolderPath = "\(documentFolderPath)/\(UNZIP_FOLER_NAME)/\(name)"
+      unzippedFolderPath = "\(documentFolderPath)/\(UNZIP_FOLER_NAME)/\(name.hashValue)"
       xmlFileFullPath = "\(unzippedFolderPath)/\(KMZ_DOC_KML)"
       
       if(!isUnzipped()) {
@@ -44,7 +44,7 @@ class GTFile {
   }
   
   func unzip() {
-    let tempFile = "\(documentFolderPath)/\(name)"
+    let tempFile = "\(documentFolderPath)/\(name.hashValue)"
     let tempFileFullPath = "\(tempFile).zip"
     let tempFileUrl = URL(fileURLWithPath: tempFileFullPath)
     do {

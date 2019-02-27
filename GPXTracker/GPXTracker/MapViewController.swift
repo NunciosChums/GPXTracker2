@@ -88,7 +88,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
 
     let all = MKPolyline(coordinates: &allPoints, count: allPoints.count)
-    mapView.setVisibleMapRect(all.boundingMapRect, edgePadding: UIEdgeInsetsMake(50, 50, 50, 50), animated: true)
+    mapView.setVisibleMapRect(all.boundingMapRect, edgePadding: UIEdgeInsets.init(top: 50, left: 50, bottom: 50, right: 50), animated: true)
   }
   
   @objc func fileSelected(notification: Notification) {
@@ -123,8 +123,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
   
   func moveTo(location: CLLocationCoordinate2D){
     if CLLocationCoordinate2DIsValid(location) {
-      let span = MKCoordinateSpanMake(0.05, 0.05)
-      let region = MKCoordinateRegionMake(location, span)
+      let span = MKCoordinateSpan.init(latitudeDelta: 0.05, longitudeDelta: 0.05)
+      let region = MKCoordinateRegion.init(center: location, span: span)
       mapView.setRegion(region, animated: true)
     }
   }
@@ -159,7 +159,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     })
     
     parser.lines()?.forEach({ line in
-      mapView.add(line.polyline)
+      mapView.addOverlay(line.polyline)
       mapView.addAnnotation(line.startPin)
       mapView.addAnnotation(line.endPin)
       allPoints.append(contentsOf: line.coordinates)
@@ -197,8 +197,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     pinView.pinTintColor = pin.color
     
     let navigationButton = UIButton(type: .custom)
-    navigationButton.setImage(UIImage(named: "car"), for: UIControlState())
-    navigationButton.imageEdgeInsets = UIEdgeInsetsMake(16, 12, 29, 12)
+    navigationButton.setImage(UIImage(named: "car"), for: UIControl.State())
+    navigationButton.imageEdgeInsets = UIEdgeInsets.init(top: 16, left: 12, bottom: 29, right: 12)
     navigationButton.frame = CGRect(x: 0, y: 0, width: 50, height: 64)
     navigationButton.backgroundColor = UIColor(red: 0, green: (122/255), blue: (255/255), alpha: 1)
     pinView.leftCalloutAccessoryView = navigationButton

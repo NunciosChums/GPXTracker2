@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RfK-FD-74p">
-    <device id="retina5_9" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RfK-FD-74p">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,7 +14,7 @@
             <objects>
                 <navigationController id="RfK-FD-74p" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="RPn-Pa-IWC">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -32,17 +30,17 @@
             <objects>
                 <viewController title="MapViewController" id="BYZ-38-t0r" customClass="MapViewController" customModule="GPXTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9dx-7B-UF8">
-                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="fCe-Dd-MWK"/>
                                 </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vND-Aa-IoX" userLabel="Toggle MapType">
-                                <rect key="frame" x="323" y="712" width="36" height="36"/>
+                                <rect key="frame" x="323" y="595" width="36" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="36" id="EFa-HQ-DGw"/>
                                     <constraint firstAttribute="height" constant="36" id="VxU-Q7-dXj"/>
@@ -54,7 +52,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O1Q-Ht-7en" userLabel="Zoom to fit">
-                                <rect key="frame" x="279" y="712" width="36" height="36"/>
+                                <rect key="frame" x="279" y="595" width="36" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="Mdf-8m-1K8"/>
                                     <constraint firstAttribute="width" constant="36" id="vRn-MG-H44"/>
@@ -65,7 +63,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZGh-TF-EHj" userLabel="End Pin">
-                                <rect key="frame" x="235" y="712" width="36" height="36"/>
+                                <rect key="frame" x="235" y="595" width="36" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="36" id="GMc-4k-kQd"/>
                                     <constraint firstAttribute="height" constant="36" id="s5g-Cb-UIX"/>
@@ -76,7 +74,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xyR-CU-Iqv" userLabel="Start Pin">
-                                <rect key="frame" x="191" y="712" width="36" height="36"/>
+                                <rect key="frame" x="191" y="595" width="36" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="36" id="85f-bZ-XRk"/>
                                     <constraint firstAttribute="height" constant="36" id="GI6-LO-FyF"/>
@@ -92,7 +90,7 @@
                             <constraint firstItem="vND-Aa-IoX" firstAttribute="leading" secondItem="O1Q-Ht-7en" secondAttribute="trailing" constant="8" id="04b-sT-ZzF"/>
                             <constraint firstItem="ZGh-TF-EHj" firstAttribute="bottom" secondItem="vND-Aa-IoX" secondAttribute="bottom" id="0PG-i5-5D0"/>
                             <constraint firstItem="9dx-7B-UF8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="19E-JU-gFx"/>
-                            <constraint firstItem="vND-Aa-IoX" firstAttribute="bottom" secondItem="9dx-7B-UF8" secondAttribute="bottom" constant="-30" id="5Qe-d9-9zg"/>
+                            <constraint firstItem="vND-Aa-IoX" firstAttribute="bottom" secondItem="9dx-7B-UF8" secondAttribute="bottom" constant="-36" id="5Qe-d9-9zg"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9dx-7B-UF8" secondAttribute="trailing" id="Am8-U7-Y0E"/>
                             <constraint firstItem="xyR-CU-Iqv" firstAttribute="bottom" secondItem="vND-Aa-IoX" secondAttribute="bottom" id="F0q-VD-c0L"/>
                             <constraint firstItem="O1Q-Ht-7en" firstAttribute="bottom" secondItem="vND-Aa-IoX" secondAttribute="bottom" id="HIa-uH-jep"/>
@@ -140,7 +138,7 @@
             <objects>
                 <tableViewController id="M2I-4I-QZC" customClass="FileListViewController" customModule="GPXTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hC8-RE-Bch">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -148,11 +146,11 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hy1-Bt-n4g" id="mRv-bF-AnQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IPf-mT-6Iy">
-                                            <rect key="frame" x="16" y="0.0" width="343" height="43.666666666666664"/>
+                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -189,7 +187,7 @@
             <objects>
                 <navigationController id="V0e-X3-Ie0" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Kn0-0n-Pgq">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -205,7 +203,7 @@
         <image name="green_pin" width="40" height="40"/>
         <image name="red_pin" width="40" height="40"/>
         <image name="route" width="40" height="40"/>
-        <image name="satellite_black" width="36" height="36"/>
-        <image name="satellite_white" width="36" height="36"/>
+        <image name="satellite_black" width="72" height="72"/>
+        <image name="satellite_white" width="72" height="72"/>
     </resources>
 </document>

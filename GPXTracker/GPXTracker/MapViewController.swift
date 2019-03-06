@@ -51,9 +51,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
   
   func calcBottomMargin() {
     if #available(iOS 11.0, *) {
-      let window = UIWindow(frame: UIScreen.main.bounds)
-      let isiPhoneX = (window.safeAreaInsets.top) > CGFloat(0.0) || window.safeAreaInsets != .zero
-      bottomMarginConstraint.constant = isiPhoneX ? -34 : 0
+      let hasTopNotch =  UIApplication.shared.delegate?.window??.safeAreaInsets.top ?? 0 > 20
+      bottomMarginConstraint.constant = hasTopNotch ? -34 : 0
     }
   }
   

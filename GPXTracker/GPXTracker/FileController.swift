@@ -26,7 +26,7 @@ class FileController {
     let temporaryDirectory = NSURL.fileURL(withPath: NSTemporaryDirectory(), isDirectory: true)
     result.append(contentsOf: addFilesInDirectory(path: temporaryDirectory))
     
-    return result
+    return result.sorted {$0.name.lowercased() < $1.name.lowercased()}
   }
   
   static func addFilesInDirectory(path: URL) -> [GTFile] {

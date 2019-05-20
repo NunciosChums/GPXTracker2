@@ -4,12 +4,12 @@ class FileController {
   static func copyBundleToFolder() {
     guard let path = Bundle.main.resourcePath else { return }
     let sourceFolder = path + "/samples"
-    let files = try! FileManager().contentsOfDirectory(atPath: sourceFolder)
-    let destinationFolder = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+    let files = try! FileManager.default.contentsOfDirectory(atPath: sourceFolder)
+    let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     
     do {
       for file in files {
-        try FileManager().copyItem(atPath: "\(sourceFolder)/\(file)", toPath: "\(destinationFolder)/\(file)")
+        try FileManager.default.copyItem(atPath: "\(sourceFolder)/\(file)", toPath: "\(documentDirectory.path)/\(file)")
       }
     } catch let error{
       print(error.localizedDescription)
@@ -19,7 +19,7 @@ class FileController {
   static func files() -> [GTFile] {
     var result: [GTFile] = []
     
-    let documentDirectory =  FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+    let documentDirectory =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     result.append(contentsOf: addFilesInDirectory(path: documentDirectory))
     
     // received from iCloud Drive
@@ -37,13 +37,13 @@ class FileController {
     }
     
     do {
-      let contentsOfDirectory = try FileManager().contentsOfDirectory(at: path,
-                                                                      includingPropertiesForKeys: nil,
-                                                                      options: FileManager.DirectoryEnumerationOptions())
+      let contentsOfDirectory = try FileManager.default.contentsOfDirectory(at: path,
+                                                                            includingPropertiesForKeys: nil,
+                                                                            options: FileManager.DirectoryEnumerationOptions())
       
       var isDirectory: ObjCBool = false
       for content in contentsOfDirectory {
-        if FileManager().fileExists(atPath: content.path, isDirectory:&isDirectory) {
+        if FileManager.default.fileExists(atPath: content.path, isDirectory:&isDirectory) {
           if isDirectory.boolValue {
             result += addFilesInDirectory(path: content)
           }
@@ -61,10 +61,10 @@ class FileController {
   
   static func delete(file: GTFile) {
     do {
-      try FileManager().removeItem(at: file.path)
+      try FileManager.default.removeItem(at: file.path)
       
       if !file.unzippedFolderPath.isEmpty {
-        try FileManager().removeItem(atPath: file.unzippedFolderPath)
+        try FileManager.default.removeItem(atPath: file.unzippedFolderPath)
       }
     } catch let error {
       print(error.localizedDescription)

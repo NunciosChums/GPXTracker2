@@ -18,8 +18,33 @@ class GTFile {
     fileExtension = path.pathExtension
     fullName = path.lastPathComponent
     
+    let documentsFolder = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+    let downloadedFileFullPath = "\(documentsFolder.path)/\(fullName)"
+    
     if path.deletingLastPathComponent().path.hasSuffix("/Inbox") {
       documentFolderPath = path.deletingLastPathComponent().deletingLastPathComponent().path
+    }
+    else if FileManager.default.isUbiquitousItem(at: path) || !FileManager.default.fileExists(atPath: downloadedFileFullPath) {
+      // file in iCloud Document and not downloaded
+      _ = path.startAccessingSecurityScopedResource()
+      
+      do {
+        try FileManager.default.startDownloadingUbiquitousItem(at: path)
+
+        var isDownloaded = false
+        while !isDownloaded {
+          if FileManager.default.fileExists(atPath: path.path) {
+            isDownloaded = true
+          }
+        }
+      
+        try FileManager.default.copyItem(atPath: path.path, toPath: downloadedFileFullPath)
+      } catch {}
+
+      documentFolderPath = documentsFolder.path
+    }
+    else if FileManager.default.fileExists(atPath: downloadedFileFullPath) { // file in iCloud Document but downloaded
+      documentFolderPath = documentsFolder.path
     }
     else {
       documentFolderPath = path.deletingLastPathComponent().path
@@ -35,12 +60,22 @@ class GTFile {
     }
     else {
       unzippedFolderPath = "" // not use
-      xmlFileFullPath = path.path
+      
+      if FileManager.default.isUbiquitousItem(at: path) {
+        xmlFileFullPath = "\(documentFolderPath)/\(fullName)"
+        path.stopAccessingSecurityScopedResource()
+      }
+      else if FileManager.default.fileExists(atPath: downloadedFileFullPath) {
+        xmlFileFullPath = "\(documentFolderPath)/\(fullName)"
+      }
+      else {
+        xmlFileFullPath = path.path
+      }
     }
   }
   
   func isUnzipped() -> Bool {
-    return FileManager().fileExists(atPath: xmlFileFullPath)
+    return FileManager.default.fileExists(atPath: xmlFileFullPath)
   }
   
   func unzip() {
@@ -48,12 +83,12 @@ class GTFile {
     let tempFileFullPath = "\(tempFile).zip"
     let tempFileUrl = URL(fileURLWithPath: tempFileFullPath)
     do {
-      try FileManager().copyItem(atPath: path.path, toPath: tempFileFullPath)
+      try FileManager.default.copyItem(atPath: path.path, toPath: tempFileFullPath)
       try Zip.unzipFile(tempFileUrl,
                         destination: URL(fileURLWithPath: unzippedFolderPath),
                         overwrite: true, password: nil)
       
-      try FileManager().removeItem(at: tempFileUrl)
+      try FileManager.default.removeItem(at: tempFileUrl)
     } catch let error {
       print(error.localizedDescription)
     }

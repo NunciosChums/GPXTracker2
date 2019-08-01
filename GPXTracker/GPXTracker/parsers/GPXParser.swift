@@ -34,16 +34,24 @@ class GPXParser: BaseParser {
     var locations: [CLLocationCoordinate2D] = []
     
     for trkpt in xml.css("trkpt") {
-      let lon: NSString = trkpt["lon"]! as NSString
-      let lat: NSString = trkpt["lat"]! as NSString
-      let location = CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue)
-      locations.append(location)
+      locations.append(makeLocation(point: trkpt))
+    }
+    
+    for rtept in xml.css("rtept") {
+      locations.append(makeLocation(point: rtept))
     }
     
     var result: [GTLine] = []
-    result.append(GTLine(coordinates: &locations, color: UIColor.blue, lineWidth: 3))
+    if !locations.isEmpty {
+      result.append(GTLine(coordinates: &locations, color: UIColor.blue, lineWidth: 3))
+    }
+    
     return result
   }
+  
+  private func makeLocation(point: XMLElement) -> CLLocationCoordinate2D {
+    let lon: NSString = point["lon"]! as NSString
+    let lat: NSString = point["lat"]! as NSString
+    return CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue)
+  }
 }
-
-

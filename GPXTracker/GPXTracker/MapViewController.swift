@@ -103,6 +103,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
   }
   
   @IBAction func goToStartPin(_ sender: Any) {
+    if startPins.count == 0 {
+      return
+    }
+    
     moveTo(location: startPins[startPinIndex].coordinate)
     
     startPinIndex += 1
@@ -112,6 +116,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
   }
   
   @IBAction func goToEndPin(_ sender: Any) {
+    if endPins.count == 0 {
+      return
+    }
+    
     moveTo(location: endPins[endPinIndex].coordinate)
     
     endPinIndex += 1

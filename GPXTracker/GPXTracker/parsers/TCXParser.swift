@@ -82,7 +82,7 @@ class TCXParser: BaseParser {
     }
     
     var result: [GTLine] = []
-    if locations.count > 0 {
+    if !locations.isEmpty {
       result.append(GTLine(coordinates: &locations, color: UIColor.blue, lineWidth: 3))
     }
     return result

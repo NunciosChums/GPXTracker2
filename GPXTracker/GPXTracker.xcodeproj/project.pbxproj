@@ -14,7 +14,6 @@
 		7D3E0769207A08B500EF3F00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D3E0767207A08B500EF3F00 /* Main.storyboard */; };
 		7D3E076B207A08B600EF3F00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D3E076A207A08B600EF3F00 /* Assets.xcassets */; };
 		7D3E076E207A08B600EF3F00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D3E076C207A08B600EF3F00 /* LaunchScreen.storyboard */; };
-		7D3E0779207A096A00EF3F00 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D3E0778207A096A00EF3F00 /* CoreLocation.framework */; };
 		7D51CAD02081F5B4007465BE /* FileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D51CACF2081F5B4007465BE /* FileController.swift */; };
 		7D51CAD32081F73D007465BE /* GTFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D51CAD22081F73D007465BE /* GTFile.swift */; };
 		7DA532F9208B4AA4000CF90A /* TCXParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA532F8208B4AA4000CF90A /* TCXParser.swift */; };
@@ -65,7 +64,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D3E0779207A096A00EF3F00 /* CoreLocation.framework in Frameworks */,
 				7DC69015207A16D800447E9B /* PKHUD.framework in Frameworks */,
 				7DC69016207A16D800447E9B /* Kanna.framework in Frameworks */,
 				7D14ADB62082328D007C17DA /* Zip.framework in Frameworks */,
@@ -235,7 +233,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -405,7 +403,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3.6;
+				CURRENT_PROJECT_VERSION = 3.7;
 				DEVELOPMENT_TEAM = 37DX6YRT9T;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -417,7 +415,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.6;
+				MARKETING_VERSION = 3.7;
 				PRODUCT_BUNDLE_IDENTIFIER = net.chocobi.GPXiPhone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -430,7 +428,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3.6;
+				CURRENT_PROJECT_VERSION = 3.7;
 				DEVELOPMENT_TEAM = 37DX6YRT9T;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -442,7 +440,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.6;
+				MARKETING_VERSION = 3.7;
 				PRODUCT_BUNDLE_IDENTIFIER = net.chocobi.GPXiPhone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

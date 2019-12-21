@@ -4,13 +4,26 @@ import Zip
 class GTFile {
   private let KMZ_DOC_KML = "doc.kml"
   
-  let path: URL // file:///xxx/yyy/Document/aaa.kmz
-  let name: String // aaa
-  let fileExtension: String // kmz
-  let fullName: String // aaa.kmz
-  let documentFolderPath: String // /xxx/yyy/Document/
-  let unzippedFolderPath: String // /xxx/yyy/Document/unzip/
-  let xmlFileFullPath: String // /xxx/yyy/Document/unzip/aaa/doc.kml
+  /// file:///xxx/yyy/Document/aaa.kmz
+  let path: URL
+  
+  /// aaa
+  let name: String
+  
+  /// kmz
+  let fileExtension: String
+  
+  /// aaa.kmz
+  let fullName: String
+  
+  /// /xxx/yyy/Document/
+  let documentFolderPath: String
+  
+  /// /xxx/yyy/Document/unzip/
+  let unzippedFolderPath: String
+  
+  /// /xxx/yyy/Document/unzip/aaa/doc.kml
+  let xmlFileFullPath: String
   
   init(file: URL) {
     path = file

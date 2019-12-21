@@ -29,6 +29,8 @@ class FileController {
     return result.sorted {$0.name.lowercased() < $1.name.lowercased()}
   }
   
+  /// 폴더 안의 파일 목록 가져오기
+  /// - Parameter path: folder path
   static func addFilesInDirectory(path: URL) -> [GTFile] {
     var result: [GTFile] = []
     
@@ -37,21 +39,19 @@ class FileController {
     }
     
     do {
-      let contentsOfDirectory = try FileManager.default.contentsOfDirectory(at: path,
-                                                                            includingPropertiesForKeys: nil,
-                                                                            options: FileManager.DirectoryEnumerationOptions())
+      let contentsOfDirectory = try FileManager.default.contentsOfDirectory(at: path, includingPropertiesForKeys: nil)
       
-      var isDirectory: ObjCBool = false
-      for content in contentsOfDirectory {
-        if FileManager.default.fileExists(atPath: content.path, isDirectory:&isDirectory) {
-          if isDirectory.boolValue {
-            result += addFilesInDirectory(path: content)
-          }
-          else {
-            result.append(GTFile(file: content))
-          }
-        }
-      }
+      // 폴더 안의 파일 가져오기
+      _ = contentsOfDirectory
+        .filter{ $0.hasDirectoryPath }
+        .map{ result += addFilesInDirectory(path: $0) }
+      
+      // 파싱 가능한 파일이면 목록에 표시하기
+      _ = contentsOfDirectory
+        .filter{ !$0.hasDirectoryPath }
+        .filter{ ["kml", "kmz", "gpx", "tcx"].contains($0.pathExtension) }
+        .map{ GTFile(file: $0) }
+        .map{ result.append($0) }
     } catch let error {
       print(error.localizedDescription)
     }
@@ -59,6 +59,8 @@ class FileController {
     return result
   }
   
+  /// 파일 삭제
+  /// - Parameter file: GTFile
   static func delete(file: GTFile) {
     do {
       try FileManager.default.removeItem(at: file.path)

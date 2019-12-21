@@ -7,20 +7,20 @@ class GTPin: NSObject, MKAnnotation {
   let coordinate: CLLocationCoordinate2D
   let color: UIColor
   var iconUrl: String?
-  
-  init(title: String, coordinate: CLLocationCoordinate2D, color: UIColor = MKPinAnnotationView.purplePinColor()){
-    self.identifier = String(arc4random())
+
+  init(title: String, coordinate: CLLocationCoordinate2D, color: UIColor = MKPinAnnotationView.purplePinColor()) {
+    identifier = String(arc4random())
     self.title = title
     self.coordinate = coordinate
     self.color = color
-    self.iconUrl = nil
+    iconUrl = nil
   }
-  
-  init(title: String, coordinate: CLLocationCoordinate2D, iconUrl: String = ""){
-    self.identifier = String(arc4random())
+
+  init(title: String, coordinate: CLLocationCoordinate2D, iconUrl: String = "") {
+    identifier = String(arc4random())
     self.title = title
     self.coordinate = coordinate
-    self.color = MKPinAnnotationView.purplePinColor()
+    color = MKPinAnnotationView.purplePinColor()
     self.iconUrl = iconUrl.count == 0 ? nil : iconUrl
   }
 }

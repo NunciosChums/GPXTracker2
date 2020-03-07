@@ -3,278 +3,228 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7D14ADB62082328D007C17DA /* Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D14ADB52082328D007C17DA /* Zip.framework */; };
-		7D14ADB82082337B007C17DA /* samples in Resources */ = {isa = PBXBuildFile; fileRef = 7D14ADB72082337B007C17DA /* samples */; };
-		7D3E0764207A08B500EF3F00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3E0763207A08B500EF3F00 /* AppDelegate.swift */; };
-		7D3E0766207A08B500EF3F00 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3E0765207A08B500EF3F00 /* MapViewController.swift */; };
-		7D3E0769207A08B500EF3F00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D3E0767207A08B500EF3F00 /* Main.storyboard */; };
-		7D3E076B207A08B600EF3F00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D3E076A207A08B600EF3F00 /* Assets.xcassets */; };
-		7D3E076E207A08B600EF3F00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D3E076C207A08B600EF3F00 /* LaunchScreen.storyboard */; };
-		7D51CAD02081F5B4007465BE /* FileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D51CACF2081F5B4007465BE /* FileController.swift */; };
-		7D51CAD32081F73D007465BE /* GTFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D51CAD22081F73D007465BE /* GTFile.swift */; };
-		7DA532F9208B4AA4000CF90A /* TCXParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA532F8208B4AA4000CF90A /* TCXParser.swift */; };
-		7DA532FB208B4F30000CF90A /* KMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA532FA208B4F30000CF90A /* KMLParser.swift */; };
-		7DA532FD208B5784000CF90A /* KMZParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA532FC208B5784000CF90A /* KMZParser.swift */; };
-		7DC69015207A16D800447E9B /* PKHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DC69013207A16D800447E9B /* PKHUD.framework */; };
-		7DC69016207A16D800447E9B /* Kanna.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DC69014207A16D800447E9B /* Kanna.framework */; };
-		7DC69019207A245F00447E9B /* FileListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC69018207A245F00447E9B /* FileListViewController.swift */; };
-		7DC6901B207A2FCC00447E9B /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC6901A207A2FCC00447E9B /* Const.swift */; };
-		7DD0243120833294000A465F /* ParserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD0243020833294000A465F /* ParserController.swift */; };
-		7DD0243320833DF1000A465F /* GTPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD0243220833DF1000A465F /* GTPin.swift */; };
-		7DD0243520833F00000A465F /* GTPolyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD0243420833F00000A465F /* GTPolyline.swift */; };
-		7DD024392083436C000A465F /* GPXParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD024382083436C000A465F /* GPXParser.swift */; };
-		7DD0243B20834391000A465F /* GTLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD0243A20834391000A465F /* GTLine.swift */; };
-		7DD0243D20834456000A465F /* BaseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD0243C20834456000A465F /* BaseParser.swift */; };
+		7DCAFA7A2413805C00A9CCDE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCAFA792413805C00A9CCDE /* AppDelegate.swift */; };
+		7DCAFA7C2413805C00A9CCDE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCAFA7B2413805C00A9CCDE /* SceneDelegate.swift */; };
+		7DCAFA7E2413805C00A9CCDE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCAFA7D2413805C00A9CCDE /* ContentView.swift */; };
+		7DCAFA802413805C00A9CCDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DCAFA7F2413805C00A9CCDE /* Assets.xcassets */; };
+		7DCAFA832413805C00A9CCDE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DCAFA822413805C00A9CCDE /* Preview Assets.xcassets */; };
+		7DCAFA862413805C00A9CCDE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DCAFA842413805C00A9CCDE /* LaunchScreen.storyboard */; };
+		7DCAFA92241383D100A9CCDE /* PKHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DCAFA8F241383D100A9CCDE /* PKHUD.framework */; };
+		7DCAFA93241383D100A9CCDE /* PKHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7DCAFA8F241383D100A9CCDE /* PKHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7DCAFA94241383D100A9CCDE /* Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DCAFA90241383D100A9CCDE /* Zip.framework */; };
+		7DCAFA95241383D100A9CCDE /* Zip.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7DCAFA90241383D100A9CCDE /* Zip.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7DCAFA96241383D100A9CCDE /* Kanna.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DCAFA91241383D100A9CCDE /* Kanna.framework */; };
+		7DCAFA97241383D100A9CCDE /* Kanna.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7DCAFA91241383D100A9CCDE /* Kanna.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		7DCAFA98241383D100A9CCDE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7DCAFA95241383D100A9CCDE /* Zip.framework in Embed Frameworks */,
+				7DCAFA93241383D100A9CCDE /* PKHUD.framework in Embed Frameworks */,
+				7DCAFA97241383D100A9CCDE /* Kanna.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		7D14ADB52082328D007C17DA /* Zip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Zip.framework; path = Carthage/Build/iOS/Zip.framework; sourceTree = "<group>"; };
-		7D14ADB72082337B007C17DA /* samples */ = {isa = PBXFileReference; lastKnownFileType = folder; name = samples; path = ../../samples; sourceTree = "<group>"; };
-		7D3E0760207A08B500EF3F00 /* GPXTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GPXTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		7D3E0763207A08B500EF3F00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7D3E0765207A08B500EF3F00 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		7D3E0768207A08B500EF3F00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		7D3E076A207A08B600EF3F00 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		7D3E076D207A08B600EF3F00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		7D3E076F207A08B600EF3F00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7D3E0778207A096A00EF3F00 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		7D51CACF2081F5B4007465BE /* FileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileController.swift; sourceTree = "<group>"; };
-		7D51CAD22081F73D007465BE /* GTFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTFile.swift; sourceTree = "<group>"; };
-		7DA532F8208B4AA4000CF90A /* TCXParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCXParser.swift; sourceTree = "<group>"; };
-		7DA532FA208B4F30000CF90A /* KMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMLParser.swift; sourceTree = "<group>"; };
-		7DA532FC208B5784000CF90A /* KMZParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMZParser.swift; sourceTree = "<group>"; };
-		7DC69013207A16D800447E9B /* PKHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PKHUD.framework; path = Carthage/Build/iOS/PKHUD.framework; sourceTree = "<group>"; };
-		7DC69014207A16D800447E9B /* Kanna.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kanna.framework; path = Carthage/Build/iOS/Kanna.framework; sourceTree = "<group>"; };
-		7DC69018207A245F00447E9B /* FileListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileListViewController.swift; sourceTree = "<group>"; };
-		7DC6901A207A2FCC00447E9B /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
-		7DD0243020833294000A465F /* ParserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserController.swift; sourceTree = "<group>"; };
-		7DD0243220833DF1000A465F /* GTPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTPin.swift; sourceTree = "<group>"; };
-		7DD0243420833F00000A465F /* GTPolyline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTPolyline.swift; sourceTree = "<group>"; };
-		7DD024382083436C000A465F /* GPXParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXParser.swift; sourceTree = "<group>"; };
-		7DD0243A20834391000A465F /* GTLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTLine.swift; sourceTree = "<group>"; };
-		7DD0243C20834456000A465F /* BaseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseParser.swift; sourceTree = "<group>"; };
+		7DCAFA762413805C00A9CCDE /* GPXTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GPXTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DCAFA792413805C00A9CCDE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7DCAFA7B2413805C00A9CCDE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		7DCAFA7D2413805C00A9CCDE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		7DCAFA7F2413805C00A9CCDE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7DCAFA822413805C00A9CCDE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7DCAFA852413805C00A9CCDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7DCAFA872413805C00A9CCDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7DCAFA8E241383BD00A9CCDE /* Kanna */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Kanna; path = Carthage/Checkouts/Kanna; sourceTree = "<group>"; };
+		7DCAFA8F241383D100A9CCDE /* PKHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PKHUD.framework; path = Carthage/Build/iOS/PKHUD.framework; sourceTree = "<group>"; };
+		7DCAFA90241383D100A9CCDE /* Zip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Zip.framework; path = Carthage/Build/iOS/Zip.framework; sourceTree = "<group>"; };
+		7DCAFA91241383D100A9CCDE /* Kanna.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kanna.framework; path = Carthage/Build/iOS/Kanna.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		7D3E075D207A08B500EF3F00 /* Frameworks */ = {
+		7DCAFA732413805C00A9CCDE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7DC69015207A16D800447E9B /* PKHUD.framework in Frameworks */,
-				7DC69016207A16D800447E9B /* Kanna.framework in Frameworks */,
-				7D14ADB62082328D007C17DA /* Zip.framework in Frameworks */,
+				7DCAFA94241383D100A9CCDE /* Zip.framework in Frameworks */,
+				7DCAFA92241383D100A9CCDE /* PKHUD.framework in Frameworks */,
+				7DCAFA96241383D100A9CCDE /* Kanna.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7D3E0757207A08B500EF3F00 = {
+		7DCAFA6D2413805C00A9CCDE = {
 			isa = PBXGroup;
 			children = (
-				7D3E0762207A08B500EF3F00 /* GPXTracker */,
-				7D3E0761207A08B500EF3F00 /* Products */,
-				7D3E0775207A096300EF3F00 /* Frameworks */,
+				7DCAFA782413805C00A9CCDE /* GPXTracker */,
+				7DCAFA772413805C00A9CCDE /* Products */,
+				7DCAFA8D241383BD00A9CCDE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		7D3E0761207A08B500EF3F00 /* Products */ = {
+		7DCAFA772413805C00A9CCDE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7D3E0760207A08B500EF3F00 /* GPXTracker.app */,
+				7DCAFA762413805C00A9CCDE /* GPXTracker.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7D3E0762207A08B500EF3F00 /* GPXTracker */ = {
+		7DCAFA782413805C00A9CCDE /* GPXTracker */ = {
 			isa = PBXGroup;
 			children = (
-				7D14ADB72082337B007C17DA /* samples */,
-				7D51CAD12081F72F007465BE /* models */,
-				7DD0242F20833253000A465F /* parsers */,
-				7D3E0763207A08B500EF3F00 /* AppDelegate.swift */,
-				7D3E0765207A08B500EF3F00 /* MapViewController.swift */,
-				7DC69018207A245F00447E9B /* FileListViewController.swift */,
-				7D51CACF2081F5B4007465BE /* FileController.swift */,
-				7DC6901A207A2FCC00447E9B /* Const.swift */,
-				7D3E0767207A08B500EF3F00 /* Main.storyboard */,
-				7D3E076A207A08B600EF3F00 /* Assets.xcassets */,
-				7D3E076C207A08B600EF3F00 /* LaunchScreen.storyboard */,
-				7D3E076F207A08B600EF3F00 /* Info.plist */,
+				7DCAFA792413805C00A9CCDE /* AppDelegate.swift */,
+				7DCAFA7B2413805C00A9CCDE /* SceneDelegate.swift */,
+				7DCAFA7D2413805C00A9CCDE /* ContentView.swift */,
+				7DCAFA7F2413805C00A9CCDE /* Assets.xcassets */,
+				7DCAFA842413805C00A9CCDE /* LaunchScreen.storyboard */,
+				7DCAFA872413805C00A9CCDE /* Info.plist */,
+				7DCAFA812413805C00A9CCDE /* Preview Content */,
 			);
 			path = GPXTracker;
 			sourceTree = "<group>";
 		};
-		7D3E0775207A096300EF3F00 /* Frameworks */ = {
+		7DCAFA812413805C00A9CCDE /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				7D14ADB52082328D007C17DA /* Zip.framework */,
-				7DC69014207A16D800447E9B /* Kanna.framework */,
-				7DC69013207A16D800447E9B /* PKHUD.framework */,
-				7D3E0778207A096A00EF3F00 /* CoreLocation.framework */,
+				7DCAFA822413805C00A9CCDE /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		7DCAFA8D241383BD00A9CCDE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7DCAFA91241383D100A9CCDE /* Kanna.framework */,
+				7DCAFA8F241383D100A9CCDE /* PKHUD.framework */,
+				7DCAFA90241383D100A9CCDE /* Zip.framework */,
+				7DCAFA8E241383BD00A9CCDE /* Kanna */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		7D51CAD12081F72F007465BE /* models */ = {
-			isa = PBXGroup;
-			children = (
-				7D51CAD22081F73D007465BE /* GTFile.swift */,
-				7DD0243A20834391000A465F /* GTLine.swift */,
-				7DD0243220833DF1000A465F /* GTPin.swift */,
-				7DD0243420833F00000A465F /* GTPolyline.swift */,
-			);
-			path = models;
-			sourceTree = "<group>";
-		};
-		7DD0242F20833253000A465F /* parsers */ = {
-			isa = PBXGroup;
-			children = (
-				7DD0243020833294000A465F /* ParserController.swift */,
-				7DD0243C20834456000A465F /* BaseParser.swift */,
-				7DD024382083436C000A465F /* GPXParser.swift */,
-				7DA532F8208B4AA4000CF90A /* TCXParser.swift */,
-				7DA532FA208B4F30000CF90A /* KMLParser.swift */,
-				7DA532FC208B5784000CF90A /* KMZParser.swift */,
-			);
-			path = parsers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7D3E075F207A08B500EF3F00 /* GPXTracker */ = {
+		7DCAFA752413805C00A9CCDE /* GPXTracker */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7D3E0772207A08B600EF3F00 /* Build configuration list for PBXNativeTarget "GPXTracker" */;
+			buildConfigurationList = 7DCAFA8A2413805C00A9CCDE /* Build configuration list for PBXNativeTarget "GPXTracker" */;
 			buildPhases = (
-				7D3E075C207A08B500EF3F00 /* Sources */,
-				7D3E075D207A08B500EF3F00 /* Frameworks */,
-				7D3E075E207A08B500EF3F00 /* Resources */,
-				7DC69017207A178F00447E9B /* ShellScript */,
+				7DCAFA722413805C00A9CCDE /* Sources */,
+				7DCAFA732413805C00A9CCDE /* Frameworks */,
+				7DCAFA742413805C00A9CCDE /* Resources */,
+				7DCAFA98241383D100A9CCDE /* Embed Frameworks */,
+				7DCAFA99241383F600A9CCDE /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = GPXTracker;
-			productName = GPXTracker3;
-			productReference = 7D3E0760207A08B500EF3F00 /* GPXTracker.app */;
+			productName = GPXTracker;
+			productReference = 7DCAFA762413805C00A9CCDE /* GPXTracker.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		7D3E0758207A08B500EF3F00 /* Project object */ = {
+		7DCAFA6E2413805C00A9CCDE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = susemi99;
 				TargetAttributes = {
-					7D3E075F207A08B500EF3F00 = {
-						CreatedOnToolsVersion = 9.3;
-						LastSwiftMigration = 1020;
-						SystemCapabilities = {
-							com.apple.Maps.iOS = {
-								enabled = 0;
-							};
-						};
+					7DCAFA752413805C00A9CCDE = {
+						CreatedOnToolsVersion = 11.3.1;
 					};
 				};
 			};
-			buildConfigurationList = 7D3E075B207A08B500EF3F00 /* Build configuration list for PBXProject "GPXTracker" */;
-			compatibilityVersion = "Xcode 10.0";
+			buildConfigurationList = 7DCAFA712413805C00A9CCDE /* Build configuration list for PBXProject "GPXTracker" */;
+			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 7D3E0757207A08B500EF3F00;
-			productRefGroup = 7D3E0761207A08B500EF3F00 /* Products */;
+			mainGroup = 7DCAFA6D2413805C00A9CCDE;
+			productRefGroup = 7DCAFA772413805C00A9CCDE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7D3E075F207A08B500EF3F00 /* GPXTracker */,
+				7DCAFA752413805C00A9CCDE /* GPXTracker */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		7D3E075E207A08B500EF3F00 /* Resources */ = {
+		7DCAFA742413805C00A9CCDE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D14ADB82082337B007C17DA /* samples in Resources */,
-				7D3E076E207A08B600EF3F00 /* LaunchScreen.storyboard in Resources */,
-				7D3E076B207A08B600EF3F00 /* Assets.xcassets in Resources */,
-				7D3E0769207A08B500EF3F00 /* Main.storyboard in Resources */,
+				7DCAFA862413805C00A9CCDE /* LaunchScreen.storyboard in Resources */,
+				7DCAFA832413805C00A9CCDE /* Preview Assets.xcassets in Resources */,
+				7DCAFA802413805C00A9CCDE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		7DC69017207A178F00447E9B /* ShellScript */ = {
+		7DCAFA99241383F600A9CCDE /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Kanna.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/PKHUD.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Zip.framework",
 			);
+			outputFileListPaths = (
+			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		7D3E075C207A08B500EF3F00 /* Sources */ = {
+		7DCAFA722413805C00A9CCDE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7DD0243320833DF1000A465F /* GTPin.swift in Sources */,
-				7D3E0766207A08B500EF3F00 /* MapViewController.swift in Sources */,
-				7DD024392083436C000A465F /* GPXParser.swift in Sources */,
-				7DA532FB208B4F30000CF90A /* KMLParser.swift in Sources */,
-				7D51CAD32081F73D007465BE /* GTFile.swift in Sources */,
-				7DC6901B207A2FCC00447E9B /* Const.swift in Sources */,
-				7D3E0764207A08B500EF3F00 /* AppDelegate.swift in Sources */,
-				7D51CAD02081F5B4007465BE /* FileController.swift in Sources */,
-				7DA532F9208B4AA4000CF90A /* TCXParser.swift in Sources */,
-				7DD0243D20834456000A465F /* BaseParser.swift in Sources */,
-				7DD0243B20834391000A465F /* GTLine.swift in Sources */,
-				7DD0243520833F00000A465F /* GTPolyline.swift in Sources */,
-				7DC69019207A245F00447E9B /* FileListViewController.swift in Sources */,
-				7DD0243120833294000A465F /* ParserController.swift in Sources */,
-				7DA532FD208B5784000CF90A /* KMZParser.swift in Sources */,
+				7DCAFA7A2413805C00A9CCDE /* AppDelegate.swift in Sources */,
+				7DCAFA7C2413805C00A9CCDE /* SceneDelegate.swift in Sources */,
+				7DCAFA7E2413805C00A9CCDE /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		7D3E0767207A08B500EF3F00 /* Main.storyboard */ = {
+		7DCAFA842413805C00A9CCDE /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				7D3E0768207A08B500EF3F00 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		7D3E076C207A08B600EF3F00 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7D3E076D207A08B600EF3F00 /* Base */,
+				7DCAFA852413805C00A9CCDE /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -282,7 +232,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		7D3E0770207A08B600EF3F00 /* Debug */ = {
+		7DCAFA882413805C00A9CCDE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -314,7 +264,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -333,9 +282,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -343,7 +292,7 @@
 			};
 			name = Debug;
 		};
-		7D3E0771207A08B600EF3F00 /* Release */ = {
+		7DCAFA892413805C00A9CCDE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -375,7 +324,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -388,9 +336,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -398,24 +346,25 @@
 			};
 			name = Release;
 		};
-		7D3E0773207A08B600EF3F00 /* Debug */ = {
+		7DCAFA8B2413805C00A9CCDE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3.7;
+				CURRENT_PROJECT_VERSION = 3.8;
+				DEVELOPMENT_ASSET_PATHS = "\"GPXTracker/Preview Content\"";
 				DEVELOPMENT_TEAM = 37DX6YRT9T;
+				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/GPXTracker/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				INFOPLIST_FILE = GPXTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.7;
+				MARKETING_VERSION = 3.8;
 				PRODUCT_BUNDLE_IDENTIFIER = net.chocobi.GPXiPhone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -423,24 +372,25 @@
 			};
 			name = Debug;
 		};
-		7D3E0774207A08B600EF3F00 /* Release */ = {
+		7DCAFA8C2413805C00A9CCDE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3.7;
+				CURRENT_PROJECT_VERSION = 3.8;
+				DEVELOPMENT_ASSET_PATHS = "\"GPXTracker/Preview Content\"";
 				DEVELOPMENT_TEAM = 37DX6YRT9T;
+				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/GPXTracker/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				INFOPLIST_FILE = GPXTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.7;
+				MARKETING_VERSION = 3.8;
 				PRODUCT_BUNDLE_IDENTIFIER = net.chocobi.GPXiPhone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -451,25 +401,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7D3E075B207A08B500EF3F00 /* Build configuration list for PBXProject "GPXTracker" */ = {
+		7DCAFA712413805C00A9CCDE /* Build configuration list for PBXProject "GPXTracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7D3E0770207A08B600EF3F00 /* Debug */,
-				7D3E0771207A08B600EF3F00 /* Release */,
+				7DCAFA882413805C00A9CCDE /* Debug */,
+				7DCAFA892413805C00A9CCDE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7D3E0772207A08B600EF3F00 /* Build configuration list for PBXNativeTarget "GPXTracker" */ = {
+		7DCAFA8A2413805C00A9CCDE /* Build configuration list for PBXNativeTarget "GPXTracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7D3E0773207A08B600EF3F00 /* Debug */,
-				7D3E0774207A08B600EF3F00 /* Release */,
+				7DCAFA8B2413805C00A9CCDE /* Debug */,
+				7DCAFA8C2413805C00A9CCDE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 7D3E0758207A08B500EF3F00 /* Project object */;
+	rootObject = 7DCAFA6E2413805C00A9CCDE /* Project object */;
 }

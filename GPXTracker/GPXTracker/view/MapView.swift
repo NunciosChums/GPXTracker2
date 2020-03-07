@@ -13,6 +13,9 @@ struct MapView: UIViewRepresentable {
   func makeUIView(context _: Context) -> MKMapView {
     let view = MKMapView(frame: .zero)
     view.showsUserLocation = true
+    view.showsScale = true
+    view.showsCompass = true
+    view.showsBuildings = true
     return view
   }
 

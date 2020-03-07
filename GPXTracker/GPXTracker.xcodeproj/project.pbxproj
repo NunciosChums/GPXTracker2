@@ -19,6 +19,7 @@
 		7DCAFA95241383D100A9CCDE /* Zip.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7DCAFA90241383D100A9CCDE /* Zip.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7DCAFA96241383D100A9CCDE /* Kanna.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DCAFA91241383D100A9CCDE /* Kanna.framework */; };
 		7DCAFA97241383D100A9CCDE /* Kanna.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7DCAFA91241383D100A9CCDE /* Kanna.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7DCAFA9C241385D100A9CCDE /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCAFA9B241385D100A9CCDE /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -50,6 +51,7 @@
 		7DCAFA8F241383D100A9CCDE /* PKHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PKHUD.framework; path = Carthage/Build/iOS/PKHUD.framework; sourceTree = "<group>"; };
 		7DCAFA90241383D100A9CCDE /* Zip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Zip.framework; path = Carthage/Build/iOS/Zip.framework; sourceTree = "<group>"; };
 		7DCAFA91241383D100A9CCDE /* Kanna.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kanna.framework; path = Carthage/Build/iOS/Kanna.framework; sourceTree = "<group>"; };
+		7DCAFA9B241385D100A9CCDE /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 		7DCAFA782413805C00A9CCDE /* GPXTracker */ = {
 			isa = PBXGroup;
 			children = (
+				7DCAFA9A241385C300A9CCDE /* view */,
 				7DCAFA792413805C00A9CCDE /* AppDelegate.swift */,
 				7DCAFA7B2413805C00A9CCDE /* SceneDelegate.swift */,
 				7DCAFA7D2413805C00A9CCDE /* ContentView.swift */,
@@ -114,6 +117,14 @@
 				7DCAFA8E241383BD00A9CCDE /* Kanna */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7DCAFA9A241385C300A9CCDE /* view */ = {
+			isa = PBXGroup;
+			children = (
+				7DCAFA9B241385D100A9CCDE /* MapView.swift */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,6 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7DCAFA7A2413805C00A9CCDE /* AppDelegate.swift in Sources */,
+				7DCAFA9C241385D100A9CCDE /* MapView.swift in Sources */,
 				7DCAFA7C2413805C00A9CCDE /* SceneDelegate.swift in Sources */,
 				7DCAFA7E2413805C00A9CCDE /* ContentView.swift in Sources */,
 			);

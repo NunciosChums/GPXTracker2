@@ -1,3 +1,5 @@
+.DS_Store
+
 # Xcode
 #
 build/
@@ -31,7 +33,4 @@ Pods/
 # Carthage
 #
 # Add this line if you want to avoid checking in source code from Carthage dependencies.
-# Carthage/Checkouts
-
-Carthage/Build
-GPXTracker/.DS_Store
+Carthage/

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,13 +16,17 @@
 		7DCAFA802413805C00A9CCDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DCAFA7F2413805C00A9CCDE /* Assets.xcassets */; };
 		7DCAFA832413805C00A9CCDE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DCAFA822413805C00A9CCDE /* Preview Assets.xcassets */; };
 		7DCAFA862413805C00A9CCDE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DCAFA842413805C00A9CCDE /* LaunchScreen.storyboard */; };
-		7DCAFA92241383D100A9CCDE /* PKHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DCAFA8F241383D100A9CCDE /* PKHUD.framework */; };
-		7DCAFA93241383D100A9CCDE /* PKHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7DCAFA8F241383D100A9CCDE /* PKHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7DCAFA94241383D100A9CCDE /* Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DCAFA90241383D100A9CCDE /* Zip.framework */; };
-		7DCAFA95241383D100A9CCDE /* Zip.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7DCAFA90241383D100A9CCDE /* Zip.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7DCAFA96241383D100A9CCDE /* Kanna.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DCAFA91241383D100A9CCDE /* Kanna.framework */; };
-		7DCAFA97241383D100A9CCDE /* Kanna.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7DCAFA91241383D100A9CCDE /* Kanna.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7DCAFA9C241385D100A9CCDE /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCAFA9B241385D100A9CCDE /* MapView.swift */; };
+		7DD19CCD24614CB300B3AF1D /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD19CCC24614CB300B3AF1D /* FileManager.swift */; };
+		7DD19CD02461624200B3AF1D /* GTFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD19CCF2461624200B3AF1D /* GTFile.swift */; };
+		7DD19CD3246162DE00B3AF1D /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 7DD19CD2246162DE00B3AF1D /* Zip */; };
+		7DD19CD6246162FC00B3AF1D /* Kanna in Frameworks */ = {isa = PBXBuildFile; productRef = 7DD19CD5246162FC00B3AF1D /* Kanna */; };
+		7DD19CDC2461641700B3AF1D /* AppConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD19CDB2461641700B3AF1D /* AppConstant.swift */; };
+		7DD19CDE2461698900B3AF1D /* GTLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD19CDD2461698900B3AF1D /* GTLine.swift */; };
+		7DD19CE0246169A600B3AF1D /* GTPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD19CDF246169A600B3AF1D /* GTPin.swift */; };
+		7DD19CE2246169BB00B3AF1D /* GTPolyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD19CE1246169BB00B3AF1D /* GTPolyline.swift */; };
+		7DD19CE4246171D300B3AF1D /* samples in Resources */ = {isa = PBXBuildFile; fileRef = 7DD19CE3246171D300B3AF1D /* samples */; };
+		7DD19CEF24617A2B00B3AF1D /* KRProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 7DD19CEE24617A2B00B3AF1D /* KRProgressHUD */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,9 +36,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				7DCAFA95241383D100A9CCDE /* Zip.framework in Embed Frameworks */,
-				7DCAFA93241383D100A9CCDE /* PKHUD.framework in Embed Frameworks */,
-				7DCAFA97241383D100A9CCDE /* Kanna.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -53,11 +54,14 @@
 		7DCAFA822413805C00A9CCDE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7DCAFA852413805C00A9CCDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7DCAFA872413805C00A9CCDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7DCAFA8E241383BD00A9CCDE /* Kanna */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Kanna; path = Carthage/Checkouts/Kanna; sourceTree = "<group>"; };
-		7DCAFA8F241383D100A9CCDE /* PKHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PKHUD.framework; path = Carthage/Build/iOS/PKHUD.framework; sourceTree = "<group>"; };
-		7DCAFA90241383D100A9CCDE /* Zip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Zip.framework; path = Carthage/Build/iOS/Zip.framework; sourceTree = "<group>"; };
-		7DCAFA91241383D100A9CCDE /* Kanna.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kanna.framework; path = Carthage/Build/iOS/Kanna.framework; sourceTree = "<group>"; };
 		7DCAFA9B241385D100A9CCDE /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		7DD19CCC24614CB300B3AF1D /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
+		7DD19CCF2461624200B3AF1D /* GTFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTFile.swift; sourceTree = "<group>"; };
+		7DD19CDB2461641700B3AF1D /* AppConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstant.swift; sourceTree = "<group>"; };
+		7DD19CDD2461698900B3AF1D /* GTLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTLine.swift; sourceTree = "<group>"; };
+		7DD19CDF246169A600B3AF1D /* GTPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTPin.swift; sourceTree = "<group>"; };
+		7DD19CE1246169BB00B3AF1D /* GTPolyline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTPolyline.swift; sourceTree = "<group>"; };
+		7DD19CE3246171D300B3AF1D /* samples */ = {isa = PBXFileReference; lastKnownFileType = folder; name = samples; path = ../../samples; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,25 +69,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7DCAFA94241383D100A9CCDE /* Zip.framework in Frameworks */,
-				7DCAFA92241383D100A9CCDE /* PKHUD.framework in Frameworks */,
-				7DCAFA96241383D100A9CCDE /* Kanna.framework in Frameworks */,
+				7DD19CEF24617A2B00B3AF1D /* KRProgressHUD in Frameworks */,
+				7DD19CD3246162DE00B3AF1D /* Zip in Frameworks */,
+				7DD19CD6246162FC00B3AF1D /* Kanna in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7D6870D22414D5070033C827 /* enum */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = enum;
-			sourceTree = "<group>";
-		};
 		7D6870D72414EBD90033C827 /* extension */ = {
 			isa = PBXGroup;
 			children = (
+				7DD19CCC24614CB300B3AF1D /* FileManager.swift */,
 				7D6870D82414EBE80033C827 /* UserDefaults.swift */,
 			);
 			path = extension;
@@ -109,8 +107,10 @@
 		7DCAFA782413805C00A9CCDE /* GPXTracker */ = {
 			isa = PBXGroup;
 			children = (
+				7DD19CE3246171D300B3AF1D /* samples */,
+				7DD19CDA2461640500B3AF1D /* constant */,
 				7D6870D72414EBD90033C827 /* extension */,
-				7D6870D22414D5070033C827 /* enum */,
+				7DD19CCE2461622C00B3AF1D /* model */,
 				7DCAFA9A241385C300A9CCDE /* view */,
 				7DCAFA792413805C00A9CCDE /* AppDelegate.swift */,
 				7DCAFA7B2413805C00A9CCDE /* SceneDelegate.swift */,
@@ -136,10 +136,6 @@
 		7DCAFA8D241383BD00A9CCDE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7DCAFA91241383D100A9CCDE /* Kanna.framework */,
-				7DCAFA8F241383D100A9CCDE /* PKHUD.framework */,
-				7DCAFA90241383D100A9CCDE /* Zip.framework */,
-				7DCAFA8E241383BD00A9CCDE /* Kanna */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -150,6 +146,25 @@
 				7DCAFA9B241385D100A9CCDE /* MapView.swift */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		7DD19CCE2461622C00B3AF1D /* model */ = {
+			isa = PBXGroup;
+			children = (
+				7DD19CCF2461624200B3AF1D /* GTFile.swift */,
+				7DD19CDD2461698900B3AF1D /* GTLine.swift */,
+				7DD19CDF246169A600B3AF1D /* GTPin.swift */,
+				7DD19CE1246169BB00B3AF1D /* GTPolyline.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		7DD19CDA2461640500B3AF1D /* constant */ = {
+			isa = PBXGroup;
+			children = (
+				7DD19CDB2461641700B3AF1D /* AppConstant.swift */,
+			);
+			path = constant;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,13 +178,17 @@
 				7DCAFA732413805C00A9CCDE /* Frameworks */,
 				7DCAFA742413805C00A9CCDE /* Resources */,
 				7DCAFA98241383D100A9CCDE /* Embed Frameworks */,
-				7DCAFA99241383F600A9CCDE /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = GPXTracker;
+			packageProductDependencies = (
+				7DD19CD2246162DE00B3AF1D /* Zip */,
+				7DD19CD5246162FC00B3AF1D /* Kanna */,
+				7DD19CEE24617A2B00B3AF1D /* KRProgressHUD */,
+			);
 			productName = GPXTracker;
 			productReference = 7DCAFA762413805C00A9CCDE /* GPXTracker.app */;
 			productType = "com.apple.product-type.application";
@@ -190,7 +209,7 @@
 				};
 			};
 			buildConfigurationList = 7DCAFA712413805C00A9CCDE /* Build configuration list for PBXProject "GPXTracker" */;
-			compatibilityVersion = "Xcode 11.0";
+			compatibilityVersion = "Xcode 11.4";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -198,6 +217,11 @@
 				Base,
 			);
 			mainGroup = 7DCAFA6D2413805C00A9CCDE;
+			packageReferences = (
+				7DD19CD1246162DE00B3AF1D /* XCRemoteSwiftPackageReference "Zip" */,
+				7DD19CD4246162FC00B3AF1D /* XCRemoteSwiftPackageReference "Kanna" */,
+				7DD19CED24617A2B00B3AF1D /* XCRemoteSwiftPackageReference "KRProgressHUD" */,
+			);
 			productRefGroup = 7DCAFA772413805C00A9CCDE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -212,6 +236,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DD19CE4246171D300B3AF1D /* samples in Resources */,
 				7DCAFA862413805C00A9CCDE /* LaunchScreen.storyboard in Resources */,
 				7DCAFA832413805C00A9CCDE /* Preview Assets.xcassets in Resources */,
 				7DCAFA802413805C00A9CCDE /* Assets.xcassets in Resources */,
@@ -220,41 +245,24 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		7DCAFA99241383F600A9CCDE /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Kanna.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/PKHUD.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Zip.framework",
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		7DCAFA722413805C00A9CCDE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DD19CE0246169A600B3AF1D /* GTPin.swift in Sources */,
+				7DD19CD02461624200B3AF1D /* GTFile.swift in Sources */,
+				7DD19CDC2461641700B3AF1D /* AppConstant.swift in Sources */,
 				7DCAFA7A2413805C00A9CCDE /* AppDelegate.swift in Sources */,
 				7D6870D12414D4CB0033C827 /* MapViewModel.swift in Sources */,
+				7DD19CE2246169BB00B3AF1D /* GTPolyline.swift in Sources */,
 				7DCAFA9C241385D100A9CCDE /* MapView.swift in Sources */,
 				7D6870D62414D9490033C827 /* LocationProvider.swift in Sources */,
 				7DCAFA7C2413805C00A9CCDE /* SceneDelegate.swift in Sources */,
+				7DD19CDE2461698900B3AF1D /* GTLine.swift in Sources */,
 				7D6870D92414EBE80033C827 /* UserDefaults.swift in Sources */,
 				7DCAFA7E2413805C00A9CCDE /* ContentView.swift in Sources */,
+				7DD19CCD24614CB300B3AF1D /* FileManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,7 +330,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -376,7 +384,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -395,10 +403,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"GPXTracker/Preview Content\"";
 				DEVELOPMENT_TEAM = 37DX6YRT9T;
 				ENABLE_PREVIEWS = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = GPXTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -421,10 +426,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"GPXTracker/Preview Content\"";
 				DEVELOPMENT_TEAM = 37DX6YRT9T;
 				ENABLE_PREVIEWS = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = GPXTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -460,6 +462,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7DD19CD1246162DE00B3AF1D /* XCRemoteSwiftPackageReference "Zip" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/marmelroy/Zip";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		7DD19CD4246162FC00B3AF1D /* XCRemoteSwiftPackageReference "Kanna" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tid-kijyun/Kanna";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.2.2;
+			};
+		};
+		7DD19CED24617A2B00B3AF1D /* XCRemoteSwiftPackageReference "KRProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/krimpedance/KRProgressHUD";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.4.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7DD19CD2246162DE00B3AF1D /* Zip */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7DD19CD1246162DE00B3AF1D /* XCRemoteSwiftPackageReference "Zip" */;
+			productName = Zip;
+		};
+		7DD19CD5246162FC00B3AF1D /* Kanna */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7DD19CD4246162FC00B3AF1D /* XCRemoteSwiftPackageReference "Kanna" */;
+			productName = Kanna;
+		};
+		7DD19CEE24617A2B00B3AF1D /* KRProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7DD19CED24617A2B00B3AF1D /* XCRemoteSwiftPackageReference "KRProgressHUD" */;
+			productName = KRProgressHUD;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7DCAFA6E2413805C00A9CCDE /* Project object */;
 }

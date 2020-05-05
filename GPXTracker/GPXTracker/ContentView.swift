@@ -7,13 +7,12 @@
 //
 
 import Combine
+import KRProgressHUD
 import MapKit
-import PKHUD
 import SwiftUI
 
 struct ContentView: View {
   @EnvironmentObject var mapViewModel: MapViewModel
-
   @State var cancellable = Set<AnyCancellable>()
 
   var body: some View {
@@ -80,6 +79,15 @@ struct ContentView: View {
   func didAppear() {
     LocationProvider.shared.request()
     changeTapMapType(mapViewModel.mapType)
+
+    if !UserDefaults.isFirstRun {
+      FileManager.default.copyBundleToDocumentDirectory()
+      UserDefaults.isFirstRun = true
+    }
+
+    FileManager.default.files().forEach {
+      print("===\($0.documentFolderPath)/\($0.fullName)")
+    }
   }
 
   func didTapUserTrackingButton() {

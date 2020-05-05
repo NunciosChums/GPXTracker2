@@ -1,0 +1,43 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Kanna",
+        "repositoryURL": "https://github.com/tid-kijyun/Kanna",
+        "state": {
+          "branch": null,
+          "revision": "609367a2cd84827a33383cf7923cb4fe8f69ee0a",
+          "version": "5.2.2"
+        }
+      },
+      {
+        "package": "KRActivityIndicatorView",
+        "repositoryURL": "https://github.com/krimpedance/KRActivityIndicatorView.git",
+        "state": {
+          "branch": null,
+          "revision": "0a0ae6bc05647f414a7bfc53ffeaf6248aad29dd",
+          "version": "3.0.5"
+        }
+      },
+      {
+        "package": "KRProgressHUD",
+        "repositoryURL": "https://github.com/krimpedance/KRProgressHUD",
+        "state": {
+          "branch": null,
+          "revision": "05be7ebafca7e4068e14e9381ec56ab6201ee857",
+          "version": "3.4.5"
+        }
+      },
+      {
+        "package": "Zip",
+        "repositoryURL": "https://github.com/marmelroy/Zip",
+        "state": {
+          "branch": null,
+          "revision": "80b1c3005ee25b4c7ce46c4029ac3347e8d5e37e",
+          "version": "2.0.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

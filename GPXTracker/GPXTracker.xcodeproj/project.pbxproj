@@ -10,6 +10,9 @@
 		7D6870D12414D4CB0033C827 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6870D02414D4CB0033C827 /* MapViewModel.swift */; };
 		7D6870D62414D9490033C827 /* LocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6870D52414D9490033C827 /* LocationProvider.swift */; };
 		7D6870D92414EBE80033C827 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6870D82414EBE80033C827 /* UserDefaults.swift */; };
+		7D790145254EB9B2002CC197 /* ObjcExceptionBridging in Frameworks */ = {isa = PBXBuildFile; productRef = 7D790144254EB9B2002CC197 /* ObjcExceptionBridging */; };
+		7D790147254EB9B2002CC197 /* XCGLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 7D790146254EB9B2002CC197 /* XCGLogger */; };
+		7D79014D254EBA3A002CC197 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D79014C254EBA3A002CC197 /* Logger.swift */; };
 		7DCAFA7A2413805C00A9CCDE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCAFA792413805C00A9CCDE /* AppDelegate.swift */; };
 		7DCAFA7C2413805C00A9CCDE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCAFA7B2413805C00A9CCDE /* SceneDelegate.swift */; };
 		7DCAFA7E2413805C00A9CCDE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCAFA7D2413805C00A9CCDE /* ContentView.swift */; };
@@ -27,6 +30,7 @@
 		7DD19CE2246169BB00B3AF1D /* GTPolyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD19CE1246169BB00B3AF1D /* GTPolyline.swift */; };
 		7DD19CE4246171D300B3AF1D /* samples in Resources */ = {isa = PBXBuildFile; fileRef = 7DD19CE3246171D300B3AF1D /* samples */; };
 		7DD19CEF24617A2B00B3AF1D /* KRProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 7DD19CEE24617A2B00B3AF1D /* KRProgressHUD */; };
+		7DDF5FD82467E8BE00B2DDD0 /* FileListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDF5FD72467E8BE00B2DDD0 /* FileListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -46,6 +50,7 @@
 		7D6870D02414D4CB0033C827 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		7D6870D52414D9490033C827 /* LocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProvider.swift; sourceTree = "<group>"; };
 		7D6870D82414EBE80033C827 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		7D79014C254EBA3A002CC197 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		7DCAFA762413805C00A9CCDE /* GPXTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GPXTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DCAFA792413805C00A9CCDE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7DCAFA7B2413805C00A9CCDE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +67,7 @@
 		7DD19CDF246169A600B3AF1D /* GTPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTPin.swift; sourceTree = "<group>"; };
 		7DD19CE1246169BB00B3AF1D /* GTPolyline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTPolyline.swift; sourceTree = "<group>"; };
 		7DD19CE3246171D300B3AF1D /* samples */ = {isa = PBXFileReference; lastKnownFileType = folder; name = samples; path = ../../samples; sourceTree = "<group>"; };
+		7DDF5FD72467E8BE00B2DDD0 /* FileListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,9 +75,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D790145254EB9B2002CC197 /* ObjcExceptionBridging in Frameworks */,
 				7DD19CEF24617A2B00B3AF1D /* KRProgressHUD in Frameworks */,
 				7DD19CD3246162DE00B3AF1D /* Zip in Frameworks */,
 				7DD19CD6246162FC00B3AF1D /* Kanna in Frameworks */,
+				7D790147254EB9B2002CC197 /* XCGLogger in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +93,14 @@
 				7D6870D82414EBE80033C827 /* UserDefaults.swift */,
 			);
 			path = extension;
+			sourceTree = "<group>";
+		};
+		7D79014B254EBA03002CC197 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				7D79014C254EBA3A002CC197 /* Logger.swift */,
+			);
+			path = util;
 			sourceTree = "<group>";
 		};
 		7DCAFA6D2413805C00A9CCDE = {
@@ -107,20 +123,21 @@
 		7DCAFA782413805C00A9CCDE /* GPXTracker */ = {
 			isa = PBXGroup;
 			children = (
-				7DD19CE3246171D300B3AF1D /* samples */,
 				7DD19CDA2461640500B3AF1D /* constant */,
 				7D6870D72414EBD90033C827 /* extension */,
 				7DD19CCE2461622C00B3AF1D /* model */,
+				7D79014B254EBA03002CC197 /* util */,
 				7DCAFA9A241385C300A9CCDE /* view */,
 				7DCAFA792413805C00A9CCDE /* AppDelegate.swift */,
 				7DCAFA7B2413805C00A9CCDE /* SceneDelegate.swift */,
 				7DCAFA7D2413805C00A9CCDE /* ContentView.swift */,
-				7D6870D02414D4CB0033C827 /* MapViewModel.swift */,
-				7D6870D52414D9490033C827 /* LocationProvider.swift */,
-				7DCAFA7F2413805C00A9CCDE /* Assets.xcassets */,
 				7DCAFA842413805C00A9CCDE /* LaunchScreen.storyboard */,
-				7DCAFA872413805C00A9CCDE /* Info.plist */,
+				7D6870D52414D9490033C827 /* LocationProvider.swift */,
+				7D6870D02414D4CB0033C827 /* MapViewModel.swift */,
+				7DCAFA7F2413805C00A9CCDE /* Assets.xcassets */,
 				7DCAFA812413805C00A9CCDE /* Preview Content */,
+				7DD19CE3246171D300B3AF1D /* samples */,
+				7DCAFA872413805C00A9CCDE /* Info.plist */,
 			);
 			path = GPXTracker;
 			sourceTree = "<group>";
@@ -144,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				7DCAFA9B241385D100A9CCDE /* MapView.swift */,
+				7DDF5FD72467E8BE00B2DDD0 /* FileListView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -188,6 +206,8 @@
 				7DD19CD2246162DE00B3AF1D /* Zip */,
 				7DD19CD5246162FC00B3AF1D /* Kanna */,
 				7DD19CEE24617A2B00B3AF1D /* KRProgressHUD */,
+				7D790144254EB9B2002CC197 /* ObjcExceptionBridging */,
+				7D790146254EB9B2002CC197 /* XCGLogger */,
 			);
 			productName = GPXTracker;
 			productReference = 7DCAFA762413805C00A9CCDE /* GPXTracker.app */;
@@ -200,7 +220,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = susemi99;
 				TargetAttributes = {
 					7DCAFA752413805C00A9CCDE = {
@@ -221,6 +241,7 @@
 				7DD19CD1246162DE00B3AF1D /* XCRemoteSwiftPackageReference "Zip" */,
 				7DD19CD4246162FC00B3AF1D /* XCRemoteSwiftPackageReference "Kanna" */,
 				7DD19CED24617A2B00B3AF1D /* XCRemoteSwiftPackageReference "KRProgressHUD" */,
+				7D790143254EB9B2002CC197 /* XCRemoteSwiftPackageReference "XCGLogger" */,
 			);
 			productRefGroup = 7DCAFA772413805C00A9CCDE /* Products */;
 			projectDirPath = "";
@@ -260,6 +281,8 @@
 				7D6870D62414D9490033C827 /* LocationProvider.swift in Sources */,
 				7DCAFA7C2413805C00A9CCDE /* SceneDelegate.swift in Sources */,
 				7DD19CDE2461698900B3AF1D /* GTLine.swift in Sources */,
+				7D79014D254EBA3A002CC197 /* Logger.swift in Sources */,
+				7DDF5FD82467E8BE00B2DDD0 /* FileListView.swift in Sources */,
 				7D6870D92414EBE80033C827 /* UserDefaults.swift in Sources */,
 				7DCAFA7E2413805C00A9CCDE /* ContentView.swift in Sources */,
 				7DD19CCD24614CB300B3AF1D /* FileManager.swift in Sources */,
@@ -306,6 +329,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -330,7 +354,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -366,6 +390,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -384,7 +409,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -464,6 +489,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		7D790143254EB9B2002CC197 /* XCRemoteSwiftPackageReference "XCGLogger" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/DaveWoodCom/XCGLogger";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.1;
+			};
+		};
 		7DD19CD1246162DE00B3AF1D /* XCRemoteSwiftPackageReference "Zip" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/marmelroy/Zip";
@@ -491,6 +524,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7D790144254EB9B2002CC197 /* ObjcExceptionBridging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7D790143254EB9B2002CC197 /* XCRemoteSwiftPackageReference "XCGLogger" */;
+			productName = ObjcExceptionBridging;
+		};
+		7D790146254EB9B2002CC197 /* XCGLogger */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7D790143254EB9B2002CC197 /* XCRemoteSwiftPackageReference "XCGLogger" */;
+			productName = XCGLogger;
+		};
 		7DD19CD2246162DE00B3AF1D /* Zip */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7DD19CD1246162DE00B3AF1D /* XCRemoteSwiftPackageReference "Zip" */;

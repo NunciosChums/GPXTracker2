@@ -13,7 +13,8 @@ import SwiftUI
 
 struct ContentView: View {
   @EnvironmentObject var mapViewModel: MapViewModel
-  @State var cancellable = Set<AnyCancellable>()
+  @State private var cancellable = Set<AnyCancellable>()
+  @State private var showFileListView = false
 
   var body: some View {
     NavigationView {
@@ -48,16 +49,17 @@ struct ContentView: View {
           }
         }.padding(.bottom, 30).padding(.trailing, 10)
       }
-      .navigationBarTitle("Map", displayMode: .inline)
-      .navigationBarItems(
-        leading:
-        HStack {
-          Button(action: {}) { Image(systemName: "folder") }
-          Button(action: {}) { Image(systemName: "square.and.arrow.up") }.padding()
-        },
+      .navigationBarTitle("Map")
+      .navigationBarTitleDisplayMode(.inline)
+      .toolbar(content: {
+        ToolbarItemGroup(placement: .navigationBarLeading) {
+          Button(action: { self.showFileListView.toggle() }, label: { Image(systemName: "folder") })
+            .sheet(isPresented: self.$showFileListView, content: { FileListView().environmentObject(self.mapViewModel) })
 
-        trailing:
-        HStack {
+          Button(action: {}, label: { Image(systemName: "square.and.arrow.up") })
+        }
+
+        ToolbarItemGroup(placement: .navigationBarTrailing) {
           Button(action: { self.didTapUserTrackingButton() }) {
             if mapViewModel.userTrackingMode == .none {
               Image(systemName: "location")
@@ -71,7 +73,7 @@ struct ContentView: View {
           .background(mapViewModel.userTrackingMode == .none ? Color.white.opacity(0) : Color.blue)
           .cornerRadius(5)
         }
-      )
+      })
     }.navigationViewStyle(StackNavigationViewStyle())
       .onAppear { self.didAppear() }
   }
@@ -86,8 +88,14 @@ struct ContentView: View {
     }
 
     FileManager.default.files().forEach {
-      print("===\($0.documentFolderPath)/\($0.fullName)")
+      log.info("===\($0.documentFolderPath)/\($0.fullName)")
     }
+
+    mapViewModel.$selectedFile
+      .sink {
+        log.info($0?.path ?? "")
+      }
+      .store(in: &cancellable)
   }
 
   func didTapUserTrackingButton() {

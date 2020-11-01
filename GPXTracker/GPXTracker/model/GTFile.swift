@@ -8,9 +8,12 @@
 
 import Foundation
 import Zip
+import CoreLocation
 
-class GTFile {
+class GTFile: Identifiable {
   private let KMZ_DOC_KML = "doc.kml"
+
+  let id = UUID().uuidString
 
   /// file:///xxx/yyy/Document/aaa.kmz
   let path: URL
@@ -99,7 +102,7 @@ class GTFile {
 
       try FileManager.default.removeItem(at: tempFileUrl)
     } catch {
-      print(error.localizedDescription)
+      log.warning(error)
     }
   }
 

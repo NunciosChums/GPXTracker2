@@ -20,5 +20,11 @@ class MapViewModel: ObservableObject {
     }
   }
 
+  /// 선택된 경로가 있는가?
   @Published var hasLocations = false
+
+  /// 선택된 파일
+  @Published var selectedFile: GTFile?
+  
+  @Published var locations: [CLLocation]?
 }

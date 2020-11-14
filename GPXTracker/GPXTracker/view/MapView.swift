@@ -23,7 +23,7 @@ struct MapView: UIViewRepresentable {
     return view
   }
 
-  func updateUIView(_ uiView: MKMapView, context: UIViewRepresentableContext<MapView>) {
+  func updateUIView(_ uiView: MKMapView, context _: UIViewRepresentableContext<MapView>) {
     if coordinator.cancellable.isEmpty {
       didAppear(uiView)
     }

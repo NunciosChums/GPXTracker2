@@ -10,7 +10,7 @@ import MapKit
 import SwiftUI
 
 extension UserDefaults {
-  private struct Keys {
+  private enum Keys {
     static let isFirstRun = "isFirstRun"
     static let MapType = "MapType"
   }

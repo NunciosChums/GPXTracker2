@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/tid-kijyun/Kanna",
         "state": {
           "branch": null,
-          "revision": "609367a2cd84827a33383cf7923cb4fe8f69ee0a",
-          "version": "5.2.2"
+          "revision": "4a80ebe93b6966d5083394fcaaaff57a2fcec935",
+          "version": "5.2.3"
         }
       },
       {
@@ -15,8 +15,8 @@
         "repositoryURL": "https://github.com/krimpedance/KRActivityIndicatorView.git",
         "state": {
           "branch": null,
-          "revision": "0a0ae6bc05647f414a7bfc53ffeaf6248aad29dd",
-          "version": "3.0.5"
+          "revision": "bcb0e841d6de0cd343a32bd5056580a56d06c0bc",
+          "version": "3.0.7"
         }
       },
       {
@@ -24,8 +24,8 @@
         "repositoryURL": "https://github.com/krimpedance/KRProgressHUD",
         "state": {
           "branch": null,
-          "revision": "05be7ebafca7e4068e14e9381ec56ab6201ee857",
-          "version": "3.4.5"
+          "revision": "265142816d8f8ea93840accaf4ac7c49998e77c2",
+          "version": "3.4.7"
         }
       },
       {
@@ -42,8 +42,8 @@
         "repositoryURL": "https://github.com/marmelroy/Zip",
         "state": {
           "branch": null,
-          "revision": "80b1c3005ee25b4c7ce46c4029ac3347e8d5e37e",
-          "version": "2.0.0"
+          "revision": "bd19d974e8a38cc8d3a88c90c8a107386c3b8ccf",
+          "version": "2.1.1"
         }
       }
     ]

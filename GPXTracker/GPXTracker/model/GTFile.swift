@@ -6,9 +6,9 @@
 //  Copyright © 2020 susemi99. All rights reserved.
 //
 
+import CoreLocation
 import Foundation
 import Zip
-import CoreLocation
 
 class GTFile: Identifiable {
   private let KMZ_DOC_KML = "doc.kml"

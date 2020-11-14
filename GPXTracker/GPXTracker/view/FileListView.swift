@@ -26,7 +26,6 @@ struct FileListView: View {
         } label: {
           Text(item.name)
         }
-
       }
       .toolbar(content: {
         ToolbarItem(placement: .navigationBarLeading) {

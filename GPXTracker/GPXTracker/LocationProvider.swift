@@ -17,7 +17,7 @@ class LocationProvider: NSObject, CLLocationManagerDelegate {
     manager.requestWhenInUseAuthorization()
   }
 
-  func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+  func locationManager(_: CLLocationManager, didChangeAuthorization _: CLAuthorizationStatus) {
 //    if status == .authorizedWhenInUse {
 //      manager.startUpdatingLocation()
 //    }

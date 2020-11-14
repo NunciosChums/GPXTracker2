@@ -25,6 +25,6 @@ class MapViewModel: ObservableObject {
 
   /// 선택된 파일
   @Published var selectedFile: GTFile?
-  
+
   @Published var locations: [CLLocation]?
 }

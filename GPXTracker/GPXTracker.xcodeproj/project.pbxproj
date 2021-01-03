@@ -31,6 +31,7 @@
 		7DD19CE4246171D300B3AF1D /* samples in Resources */ = {isa = PBXBuildFile; fileRef = 7DD19CE3246171D300B3AF1D /* samples */; };
 		7DD19CEF24617A2B00B3AF1D /* KRProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 7DD19CEE24617A2B00B3AF1D /* KRProgressHUD */; };
 		7DDF5FD82467E8BE00B2DDD0 /* FileListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDF5FD72467E8BE00B2DDD0 /* FileListView.swift */; };
+		7DFD106D25A18400006BAE1B /* CancelBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DFD106C25A18400006BAE1B /* CancelBag.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -68,6 +69,7 @@
 		7DD19CE1246169BB00B3AF1D /* GTPolyline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTPolyline.swift; sourceTree = "<group>"; };
 		7DD19CE3246171D300B3AF1D /* samples */ = {isa = PBXFileReference; lastKnownFileType = folder; name = samples; path = ../../samples; sourceTree = "<group>"; };
 		7DDF5FD72467E8BE00B2DDD0 /* FileListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileListView.swift; sourceTree = "<group>"; };
+		7DFD106C25A18400006BAE1B /* CancelBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelBag.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 			children = (
 				7DD19CCC24614CB300B3AF1D /* FileManager.swift */,
 				7D6870D82414EBE80033C827 /* UserDefaults.swift */,
+				7DFD106C25A18400006BAE1B /* CancelBag.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				7D6870D62414D9490033C827 /* LocationProvider.swift in Sources */,
 				7DCAFA7C2413805C00A9CCDE /* SceneDelegate.swift in Sources */,
 				7DD19CDE2461698900B3AF1D /* GTLine.swift in Sources */,
+				7DFD106D25A18400006BAE1B /* CancelBag.swift in Sources */,
 				7D79014D254EBA3A002CC197 /* Logger.swift in Sources */,
 				7DDF5FD82467E8BE00B2DDD0 /* FileListView.swift in Sources */,
 				7D6870D92414EBE80033C827 /* UserDefaults.swift in Sources */,

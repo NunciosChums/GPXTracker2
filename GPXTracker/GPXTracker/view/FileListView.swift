@@ -16,10 +16,6 @@ struct FileListView: View {
   var body: some View {
     NavigationView {
       List(items) { item in
-        Text(item.fullName).onTapGesture {
-          self.mapViewModel.selectedFile = item
-          self.dismiss()
-        }
         Button {
           self.mapViewModel.selectedFile = item
           self.dismiss()

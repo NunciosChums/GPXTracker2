@@ -51,29 +51,29 @@ struct ContentView: View {
       }
       .navigationBarTitle("Map")
       .navigationBarTitleDisplayMode(.inline)
-      .toolbar(content: {
-        ToolbarItemGroup(placement: .navigationBarLeading) {
-          Button(action: { self.showFileListView.toggle() }, label: { Image(systemName: "folder") })
-            .sheet(isPresented: self.$showFileListView, content: { FileListView().environmentObject(self.mapViewModel) })
+      .navigationBarItems(leading:
+        HStack(spacing: 20) {
+          Button(action: { self.showFileListView.toggle() },
+                 label: { Image(systemName: "folder").resizable().scaledToFit().padding(7) })
+            .frame(width: 40, height: 40, alignment: .center)
+            .popover(isPresented: self.$showFileListView, content: { FileListView().environmentObject(self.mapViewModel) })
 
-          Button(action: {}, label: { Image(systemName: "square.and.arrow.up") })
-        }
-
-        ToolbarItemGroup(placement: .navigationBarTrailing) {
-          Button(action: { self.didTapUserTrackingButton() }) {
-            if mapViewModel.userTrackingMode == .none {
-              Image(systemName: "location")
-            } else if mapViewModel.userTrackingMode == .followWithHeading {
-              Image(systemName: "location.north.line.fill").foregroundColor(.white)
-            } else {
-              Image(systemName: "location.fill").foregroundColor(.white)
-            }
+          Button(action: {},
+                 label: { Image(systemName: "square.and.arrow.up").resizable().scaledToFit().padding(7) })
+            .frame(width: 40, height: 40, alignment: .center)
+        }, trailing:
+        Button(action: { self.didTapUserTrackingButton() }) {
+          if mapViewModel.userTrackingMode == .none {
+            Image(systemName: "location")
+          } else if mapViewModel.userTrackingMode == .followWithHeading {
+            Image(systemName: "location.north.line.fill").foregroundColor(.white)
+          } else {
+            Image(systemName: "location.fill").foregroundColor(.white)
           }
-          .frame(width: 40, height: 40, alignment: .center)
-          .background(mapViewModel.userTrackingMode == .none ? Color.white.opacity(0) : Color.blue)
-          .cornerRadius(5)
         }
-      })
+        .frame(width: 40, height: 40, alignment: .center)
+        .background(mapViewModel.userTrackingMode == .none ? Color.white.opacity(0) : Color.blue)
+        .cornerRadius(5))
     }.navigationViewStyle(StackNavigationViewStyle())
       .onAppear { self.didAppear() }
   }
@@ -85,10 +85,6 @@ struct ContentView: View {
     if !UserDefaults.isFirstRun {
       FileManager.default.copyBundleToDocumentDirectory()
       UserDefaults.isFirstRun = true
-    }
-
-    FileManager.default.files().forEach {
-      log.info("===\($0.documentFolderPath)/\($0.fullName)")
     }
 
     mapViewModel.$selectedFile

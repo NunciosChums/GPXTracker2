@@ -20,26 +20,22 @@ struct FileListView: View {
           self.mapViewModel.selectedFile = item
           self.dismiss()
         } label: {
-          Text(item.name)
+          VStack(alignment: .leading) {
+            Text(item.name).font(.title2)
+            Text(item.fullName).font(.subheadline)
+          }
         }
       }
-      .toolbar(content: {
-        ToolbarItem(placement: .navigationBarLeading) {
-          Button(action: { self.dismiss() }, label: {
-            Text("Close")
-          })
-        }
-
-        ToolbarItem(placement: .navigationBarTrailing) {
-          Button(action: { self.refresh() }, label: {
-            Image(systemName: "arrow.triangle.2.circlepath")
-          })
-        }
-      })
+      .listStyle(PlainListStyle())
+      .navigationBarItems(leading: Button(action: { self.dismiss() }, label: {
+        Text("Close")
+      }), trailing: Button(action: { self.refresh() }, label: {
+        Image(systemName: "arrow.triangle.2.circlepath")
+      }))
       .navigationTitle("Select")
       .navigationBarTitleDisplayMode(.inline)
       .onAppear { self.didAppear() }
-    }
+    }.frame(idealWidth: 50, idealHeight: 500)
   }
 
   func didAppear() {
@@ -52,11 +48,5 @@ struct FileListView: View {
 
   func dismiss() {
     presentationMode.wrappedValue.dismiss()
-  }
-}
-
-struct FileListView_Previews: PreviewProvider {
-  static var previews: some View {
-    FileListView()
   }
 }

@@ -1,5 +1,5 @@
-# GPXTracker2
-Display GPX, TCX, KML route on Apple map for bicycle
+# GPX Tracker2
+Display GPX, TCX, KML, KMZ route on Apple map for bicycle
 
 [![Platform](http://img.shields.io/badge/platform-ios-lightgrey.svg?style=flat)](https://developer.apple.com/resources/)
 [![Language](http://img.shields.io/badge/language-swift-orange.svg?style=flat)](https://developer.apple.com/swift)
@@ -12,10 +12,4 @@ Display GPX, TCX, KML route on Apple map for bicycle
 
 * AppStore https://itunes.apple.com/app/gpx-tracker/id434117340?mt=8
 
-* Report issue http://susemi99.github.io/GPX-Tracker-2/ or send email to me contain your kml/gpx/tcx files.
-
-## carthage install
-
-```shell
-$ carthage update --platform iOS
-```
+* Report issue http://susemi99.github.io/GPX-Tracker-2/ or send email to me contain your kml/gpx/tcx/kmz files.

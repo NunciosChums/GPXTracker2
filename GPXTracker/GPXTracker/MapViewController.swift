@@ -3,7 +3,7 @@ import MapKit
 import PKHUD
 import UIKit
 
-class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate {
   @IBOutlet var mapView: MKMapView!
   @IBOutlet var shareButton: UIBarButtonItem!
   @IBOutlet var toggleMapTypeButton: UIButton!
@@ -12,7 +12,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
   @IBOutlet var startPinButton: UIButton!
   @IBOutlet var bottomMarginConstraint: NSLayoutConstraint!
 
-  let locationManager = CLLocationManager()
   var allPoints: [CLLocationCoordinate2D] = []
   var startPinIndex = 0
   var endPinIndex = 0
@@ -27,10 +26,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     registerObserver()
     addGoToCurrentLocationBarButtonItem()
 
-    if let mapType = MKMapType(rawValue: UInt(UserDefaults.standard.integer(forKey: MAP_TYPE))) {
-      mapView.mapType = mapType
-      updateMapTypeButtonImage()
-    }
+    mapView.mapType = UserDefaults.mapType
+    updateMapTypeButtonImage()
   }
 
   override func didReceiveMemoryWarning() {
@@ -40,11 +37,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
   // MARK: - Initial
 
   func addGoToCurrentLocationBarButtonItem() {
-    locationManager.delegate = self
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest
-    locationManager.requestWhenInUseAuthorization()
-    locationManager.startUpdatingLocation()
-
+    LocationProvider.shared.request()
     let currentLocationItem = MKUserTrackingBarButtonItem(mapView: mapView)
     navigationItem.setRightBarButton(currentLocationItem, animated: true)
     currentLocationItem.perform(currentLocationItem.action)
@@ -69,7 +62,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
   @IBAction func toggleMapTypeButtonClicked(_ sender: Any) {
     let mapType = mapView.mapType == MKMapType.hybrid ? MKMapType.standard : MKMapType.hybrid
     mapView.mapType = mapType
-    UserDefaults.standard.set(Int(mapType.rawValue), forKey: MAP_TYPE)
+    UserDefaults.mapType = mapType
     updateMapTypeButtonImage()
   }
 
@@ -105,9 +98,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
   }
 
   @IBAction func goToStartPin(_ sender: Any) {
-    if startPins.count == 0 {
-      return
-    }
+    guard !startPins.isEmpty else { return }
 
     moveTo(location: startPins[startPinIndex].coordinate)
 
@@ -118,9 +109,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
   }
 
   @IBAction func goToEndPin(_ sender: Any) {
-    if endPins.count == 0 {
-      return
-    }
+    guard !endPins.isEmpty else { return }
 
     moveTo(location: endPins[endPinIndex].coordinate)
 
@@ -207,7 +196,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     pinView.pinTintColor = pin.color
 
     let navigationButton = UIButton(type: .custom)
-    navigationButton.setImage(UIImage(named: "car"), for: UIControl.State())
+    navigationButton.setImage(UIImage(systemName: "car.fill")?.withTintColor(UIColor.white, renderingMode: .alwaysOriginal), for: .normal)
     navigationButton.imageEdgeInsets = UIEdgeInsets(top: 16, left: 12, bottom: 29, right: 12)
     navigationButton.frame = CGRect(x: 0, y: 0, width: 50, height: 64)
     navigationButton.backgroundColor = UIColor(red: 0, green: 122 / 255, blue: 255 / 255, alpha: 1)

@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RfK-FD-74p">
-    <device id="retina5_9" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RfK-FD-74p">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -42,67 +39,82 @@
                                 </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vND-Aa-IoX" userLabel="Toggle MapType">
-                                <rect key="frame" x="323" y="712" width="36" height="36"/>
+                                <rect key="frame" x="319" y="708" width="40" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="36" id="EFa-HQ-DGw"/>
-                                    <constraint firstAttribute="height" constant="36" id="VxU-Q7-dXj"/>
+                                    <constraint firstAttribute="width" constant="40" id="EFa-HQ-DGw"/>
+                                    <constraint firstAttribute="height" constant="40" id="VxU-Q7-dXj"/>
                                 </constraints>
-                                <state key="normal" image="satellite_black"/>
-                                <state key="selected" image="satellite_white"/>
+                                <color key="tintColor" systemColor="systemPurpleColor"/>
+                                <state key="normal" image="photo" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="40"/>
+                                </state>
+                                <state key="selected" image="photo.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="40"/>
+                                </state>
                                 <connections>
                                     <action selector="toggleMapTypeButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pTo-1A-RQO"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O1Q-Ht-7en" userLabel="Zoom to fit">
-                                <rect key="frame" x="279" y="712" width="36" height="36"/>
+                                <rect key="frame" x="269" y="708" width="40" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="Mdf-8m-1K8"/>
-                                    <constraint firstAttribute="width" constant="36" id="vRn-MG-H44"/>
+                                    <constraint firstAttribute="height" constant="40" id="Mdf-8m-1K8"/>
+                                    <constraint firstAttribute="width" constant="40" id="vRn-MG-H44"/>
                                 </constraints>
-                                <state key="normal" image="route"/>
+                                <color key="tintColor" systemColor="systemBlueColor"/>
+                                <state key="normal" image="scribble" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="40"/>
+                                </state>
                                 <connections>
                                     <action selector="zoomToFitButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="w0a-Ny-nvQ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZGh-TF-EHj" userLabel="End Pin">
-                                <rect key="frame" x="235" y="712" width="36" height="36"/>
+                            <button opaque="NO" contentMode="scaleAspectFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZGh-TF-EHj" userLabel="End Pin">
+                                <rect key="frame" x="219" y="708" width="40" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="36" id="GMc-4k-kQd"/>
-                                    <constraint firstAttribute="height" constant="36" id="s5g-Cb-UIX"/>
+                                    <constraint firstAttribute="width" constant="40" id="GMc-4k-kQd"/>
+                                    <constraint firstAttribute="height" constant="40" id="s5g-Cb-UIX"/>
                                 </constraints>
-                                <state key="normal" image="red_pin"/>
+                                <color key="tintColor" systemColor="systemRedColor"/>
+                                <state key="normal" image="mappin.circle.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="40"/>
+                                </state>
                                 <connections>
                                     <action selector="goToEndPin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SCc-nT-lHD"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xyR-CU-Iqv" userLabel="Start Pin">
-                                <rect key="frame" x="191" y="712" width="36" height="36"/>
+                            <button opaque="NO" contentMode="scaleAspectFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xyR-CU-Iqv" userLabel="Start Pin">
+                                <rect key="frame" x="169" y="708" width="40" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="36" id="85f-bZ-XRk"/>
-                                    <constraint firstAttribute="height" constant="36" id="GI6-LO-FyF"/>
+                                    <constraint firstAttribute="width" constant="40" id="85f-bZ-XRk"/>
+                                    <constraint firstAttribute="height" constant="40" id="GI6-LO-FyF"/>
                                 </constraints>
-                                <state key="normal" image="green_pin"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="tintColor" systemColor="systemGreenColor"/>
+                                <state key="normal" image="mappin.circle.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="40"/>
+                                </state>
                                 <connections>
                                     <action selector="goToStartPin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Mta-l3-pRg"/>
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="vND-Aa-IoX" firstAttribute="leading" secondItem="O1Q-Ht-7en" secondAttribute="trailing" constant="8" id="04b-sT-ZzF"/>
+                            <constraint firstItem="vND-Aa-IoX" firstAttribute="leading" secondItem="O1Q-Ht-7en" secondAttribute="trailing" constant="10" id="04b-sT-ZzF"/>
                             <constraint firstItem="ZGh-TF-EHj" firstAttribute="bottom" secondItem="vND-Aa-IoX" secondAttribute="bottom" id="0PG-i5-5D0"/>
                             <constraint firstItem="9dx-7B-UF8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="19E-JU-gFx"/>
                             <constraint firstItem="vND-Aa-IoX" firstAttribute="bottom" secondItem="9dx-7B-UF8" secondAttribute="bottom" constant="-30" id="5Qe-d9-9zg"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9dx-7B-UF8" secondAttribute="trailing" id="Am8-U7-Y0E"/>
                             <constraint firstItem="xyR-CU-Iqv" firstAttribute="bottom" secondItem="vND-Aa-IoX" secondAttribute="bottom" id="F0q-VD-c0L"/>
                             <constraint firstItem="O1Q-Ht-7en" firstAttribute="bottom" secondItem="vND-Aa-IoX" secondAttribute="bottom" id="HIa-uH-jep"/>
-                            <constraint firstItem="O1Q-Ht-7en" firstAttribute="leading" secondItem="ZGh-TF-EHj" secondAttribute="trailing" constant="8" id="bVo-AR-m4P"/>
-                            <constraint firstItem="ZGh-TF-EHj" firstAttribute="leading" secondItem="xyR-CU-Iqv" secondAttribute="trailing" constant="8" id="iXz-y8-by2"/>
+                            <constraint firstItem="O1Q-Ht-7en" firstAttribute="leading" secondItem="ZGh-TF-EHj" secondAttribute="trailing" constant="10" id="bVo-AR-m4P"/>
+                            <constraint firstItem="ZGh-TF-EHj" firstAttribute="leading" secondItem="xyR-CU-Iqv" secondAttribute="trailing" constant="10" id="iXz-y8-by2"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vND-Aa-IoX" secondAttribute="trailing" constant="16" id="n6t-6A-RkF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="9dx-7B-UF8" secondAttribute="bottom" id="wQV-Fb-yNB"/>
                             <constraint firstItem="9dx-7B-UF8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="y5O-UU-M8l"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Map" id="IX9-SZ-cyP">
                         <leftBarButtonItems>
@@ -140,19 +152,19 @@
             <objects>
                 <tableViewController id="M2I-4I-QZC" customClass="FileListViewController" customModule="GPXTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hC8-RE-Bch">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="IPf-mT-6Iy" style="IBUITableViewCellStyleDefault" id="Hy1-Bt-n4g">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hy1-Bt-n4g" id="mRv-bF-AnQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IPf-mT-6Iy">
-                                            <rect key="frame" x="16" y="0.0" width="343" height="43.666666666666664"/>
+                                            <rect key="frame" x="16" y="0.0" width="343" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -189,7 +201,7 @@
             <objects>
                 <navigationController id="V0e-X3-Ie0" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Kn0-0n-Pgq">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -202,10 +214,21 @@
         </scene>
     </scenes>
     <resources>
-        <image name="green_pin" width="40" height="40"/>
-        <image name="red_pin" width="40" height="40"/>
-        <image name="route" width="40" height="40"/>
-        <image name="satellite_black" width="36" height="36"/>
-        <image name="satellite_white" width="36" height="36"/>
+        <image name="mappin.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="photo" catalog="system" width="128" height="93"/>
+        <image name="photo.fill" catalog="system" width="128" height="93"/>
+        <image name="scribble" catalog="system" width="128" height="118"/>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

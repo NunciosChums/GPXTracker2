@@ -8,16 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		7D14ADB82082337B007C17DA /* samples in Resources */ = {isa = PBXBuildFile; fileRef = 7D14ADB72082337B007C17DA /* samples */; };
+		7D2BF25925A5DD1300570B7C /* LocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2BF25825A5DD1300570B7C /* LocationProvider.swift */; };
+		7D2BF25E25A5DE4600570B7C /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2BF25D25A5DE4600570B7C /* FileManager.swift */; };
+		7D2BF26225A5E02200570B7C /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2BF26125A5E02200570B7C /* UserDefaults.swift */; };
 		7D3E0764207A08B500EF3F00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3E0763207A08B500EF3F00 /* AppDelegate.swift */; };
 		7D3E0766207A08B500EF3F00 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3E0765207A08B500EF3F00 /* MapViewController.swift */; };
 		7D3E0769207A08B500EF3F00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D3E0767207A08B500EF3F00 /* Main.storyboard */; };
 		7D3E076B207A08B600EF3F00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D3E076A207A08B600EF3F00 /* Assets.xcassets */; };
 		7D3E076E207A08B600EF3F00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D3E076C207A08B600EF3F00 /* LaunchScreen.storyboard */; };
-		7D51CAD02081F5B4007465BE /* FileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D51CACF2081F5B4007465BE /* FileController.swift */; };
 		7D51CAD32081F73D007465BE /* GTFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D51CAD22081F73D007465BE /* GTFile.swift */; };
 		7D8A7ADD25A5BB0C00F882F9 /* Kanna in Frameworks */ = {isa = PBXBuildFile; productRef = 7D8A7ADC25A5BB0C00F882F9 /* Kanna */; };
 		7D8A7AE125A5BB3E00F882F9 /* PKHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 7D8A7AE025A5BB3E00F882F9 /* PKHUD */; };
 		7D8A7AE525A5BBB300F882F9 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 7D8A7AE425A5BBB300F882F9 /* Zip */; };
+		7D8A7B4025A5C46A00F882F9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8A7B3F25A5C46A00F882F9 /* SceneDelegate.swift */; };
+		7D8A7B7025A5C60800F882F9 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8A7B6F25A5C60800F882F9 /* Logger.swift */; };
+		7D8A7B7425A5C63400F882F9 /* ObjcExceptionBridging in Frameworks */ = {isa = PBXBuildFile; productRef = 7D8A7B7325A5C63400F882F9 /* ObjcExceptionBridging */; };
+		7D8A7B7625A5C63400F882F9 /* XCGLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 7D8A7B7525A5C63400F882F9 /* XCGLogger */; };
 		7DA532F9208B4AA4000CF90A /* TCXParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA532F8208B4AA4000CF90A /* TCXParser.swift */; };
 		7DA532FB208B4F30000CF90A /* KMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA532FA208B4F30000CF90A /* KMLParser.swift */; };
 		7DA532FD208B5784000CF90A /* KMZParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA532FC208B5784000CF90A /* KMZParser.swift */; };
@@ -33,6 +39,9 @@
 
 /* Begin PBXFileReference section */
 		7D14ADB72082337B007C17DA /* samples */ = {isa = PBXFileReference; lastKnownFileType = folder; name = samples; path = ../../samples; sourceTree = "<group>"; };
+		7D2BF25825A5DD1300570B7C /* LocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProvider.swift; sourceTree = "<group>"; };
+		7D2BF25D25A5DE4600570B7C /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
+		7D2BF26125A5E02200570B7C /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		7D3E0760207A08B500EF3F00 /* GPXTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GPXTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D3E0763207A08B500EF3F00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7D3E0765207A08B500EF3F00 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -40,9 +49,9 @@
 		7D3E076A207A08B600EF3F00 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7D3E076D207A08B600EF3F00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7D3E076F207A08B600EF3F00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7D3E0778207A096A00EF3F00 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		7D51CACF2081F5B4007465BE /* FileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileController.swift; sourceTree = "<group>"; };
 		7D51CAD22081F73D007465BE /* GTFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTFile.swift; sourceTree = "<group>"; };
+		7D8A7B3F25A5C46A00F882F9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		7D8A7B6F25A5C60800F882F9 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		7DA532F8208B4AA4000CF90A /* TCXParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCXParser.swift; sourceTree = "<group>"; };
 		7DA532FA208B4F30000CF90A /* KMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMLParser.swift; sourceTree = "<group>"; };
 		7DA532FC208B5784000CF90A /* KMZParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMZParser.swift; sourceTree = "<group>"; };
@@ -61,21 +70,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D8A7B7425A5C63400F882F9 /* ObjcExceptionBridging in Frameworks */,
 				7D8A7AE525A5BBB300F882F9 /* Zip in Frameworks */,
 				7D8A7ADD25A5BB0C00F882F9 /* Kanna in Frameworks */,
 				7D8A7AE125A5BB3E00F882F9 /* PKHUD in Frameworks */,
+				7D8A7B7625A5C63400F882F9 /* XCGLogger in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7D2BF25B25A5DE2B00570B7C /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				7D2BF25D25A5DE4600570B7C /* FileManager.swift */,
+				7D2BF26125A5E02200570B7C /* UserDefaults.swift */,
+			);
+			path = extension;
+			sourceTree = "<group>";
+		};
 		7D3E0757207A08B500EF3F00 = {
 			isa = PBXGroup;
 			children = (
 				7D3E0762207A08B500EF3F00 /* GPXTracker */,
 				7D3E0761207A08B500EF3F00 /* Products */,
-				7D3E0775207A096300EF3F00 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -91,12 +110,14 @@
 			isa = PBXGroup;
 			children = (
 				7D14ADB72082337B007C17DA /* samples */,
-				7D51CAD12081F72F007465BE /* models */,
-				7DD0242F20833253000A465F /* parsers */,
+				7D2BF25B25A5DE2B00570B7C /* extension */,
+				7D51CAD12081F72F007465BE /* model */,
+				7D8A7B6E25A5C5F200F882F9 /* util */,
+				7DD0242F20833253000A465F /* parser */,
 				7D3E0763207A08B500EF3F00 /* AppDelegate.swift */,
+				7D8A7B3F25A5C46A00F882F9 /* SceneDelegate.swift */,
 				7D3E0765207A08B500EF3F00 /* MapViewController.swift */,
 				7DC69018207A245F00447E9B /* FileListViewController.swift */,
-				7D51CACF2081F5B4007465BE /* FileController.swift */,
 				7DC6901A207A2FCC00447E9B /* Const.swift */,
 				7D3E0767207A08B500EF3F00 /* Main.storyboard */,
 				7D3E076A207A08B600EF3F00 /* Assets.xcassets */,
@@ -106,15 +127,7 @@
 			path = GPXTracker;
 			sourceTree = "<group>";
 		};
-		7D3E0775207A096300EF3F00 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				7D3E0778207A096A00EF3F00 /* CoreLocation.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		7D51CAD12081F72F007465BE /* models */ = {
+		7D51CAD12081F72F007465BE /* model */ = {
 			isa = PBXGroup;
 			children = (
 				7D51CAD22081F73D007465BE /* GTFile.swift */,
@@ -122,10 +135,19 @@
 				7DD0243220833DF1000A465F /* GTPin.swift */,
 				7DD0243420833F00000A465F /* GTPolyline.swift */,
 			);
-			path = models;
+			path = model;
 			sourceTree = "<group>";
 		};
-		7DD0242F20833253000A465F /* parsers */ = {
+		7D8A7B6E25A5C5F200F882F9 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				7D8A7B6F25A5C60800F882F9 /* Logger.swift */,
+				7D2BF25825A5DD1300570B7C /* LocationProvider.swift */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
+		7DD0242F20833253000A465F /* parser */ = {
 			isa = PBXGroup;
 			children = (
 				7DD0243020833294000A465F /* ParserController.swift */,
@@ -135,7 +157,7 @@
 				7DA532FA208B4F30000CF90A /* KMLParser.swift */,
 				7DA532FC208B5784000CF90A /* KMZParser.swift */,
 			);
-			path = parsers;
+			path = parser;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,6 +180,8 @@
 				7D8A7ADC25A5BB0C00F882F9 /* Kanna */,
 				7D8A7AE025A5BB3E00F882F9 /* PKHUD */,
 				7D8A7AE425A5BBB300F882F9 /* Zip */,
+				7D8A7B7325A5C63400F882F9 /* ObjcExceptionBridging */,
+				7D8A7B7525A5C63400F882F9 /* XCGLogger */,
 			);
 			productName = GPXTracker3;
 			productReference = 7D3E0760207A08B500EF3F00 /* GPXTracker.app */;
@@ -197,6 +221,7 @@
 				7D8A7ADB25A5BB0C00F882F9 /* XCRemoteSwiftPackageReference "Kanna" */,
 				7D8A7ADF25A5BB3E00F882F9 /* XCRemoteSwiftPackageReference "PKHUD" */,
 				7D8A7AE325A5BBB300F882F9 /* XCRemoteSwiftPackageReference "Zip" */,
+				7D8A7B7225A5C63400F882F9 /* XCRemoteSwiftPackageReference "XCGLogger" */,
 			);
 			productRefGroup = 7D3E0761207A08B500EF3F00 /* Products */;
 			projectDirPath = "";
@@ -229,13 +254,17 @@
 				7DD0243320833DF1000A465F /* GTPin.swift in Sources */,
 				7D3E0766207A08B500EF3F00 /* MapViewController.swift in Sources */,
 				7DD024392083436C000A465F /* GPXParser.swift in Sources */,
+				7D2BF25925A5DD1300570B7C /* LocationProvider.swift in Sources */,
 				7DA532FB208B4F30000CF90A /* KMLParser.swift in Sources */,
 				7D51CAD32081F73D007465BE /* GTFile.swift in Sources */,
 				7DC6901B207A2FCC00447E9B /* Const.swift in Sources */,
 				7D3E0764207A08B500EF3F00 /* AppDelegate.swift in Sources */,
-				7D51CAD02081F5B4007465BE /* FileController.swift in Sources */,
+				7D8A7B4025A5C46A00F882F9 /* SceneDelegate.swift in Sources */,
+				7D2BF25E25A5DE4600570B7C /* FileManager.swift in Sources */,
+				7D8A7B7025A5C60800F882F9 /* Logger.swift in Sources */,
 				7DA532F9208B4AA4000CF90A /* TCXParser.swift in Sources */,
 				7DD0243D20834456000A465F /* BaseParser.swift in Sources */,
+				7D2BF26225A5E02200570B7C /* UserDefaults.swift in Sources */,
 				7DD0243B20834391000A465F /* GTLine.swift in Sources */,
 				7DD0243520833F00000A465F /* GTPolyline.swift in Sources */,
 				7DC69019207A245F00447E9B /* FileListViewController.swift in Sources */,
@@ -299,7 +328,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -319,7 +348,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -361,7 +390,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -375,7 +404,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -391,12 +420,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3.8;
 				DEVELOPMENT_TEAM = 37DX6YRT9T;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/GPXTracker/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -416,12 +442,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3.8;
 				DEVELOPMENT_TEAM = 37DX6YRT9T;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/GPXTracker/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -482,6 +505,14 @@
 				minimumVersion = 2.1.1;
 			};
 		};
+		7D8A7B7225A5C63400F882F9 /* XCRemoteSwiftPackageReference "XCGLogger" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/DaveWoodCom/XCGLogger";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -499,6 +530,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7D8A7AE325A5BBB300F882F9 /* XCRemoteSwiftPackageReference "Zip" */;
 			productName = Zip;
+		};
+		7D8A7B7325A5C63400F882F9 /* ObjcExceptionBridging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7D8A7B7225A5C63400F882F9 /* XCRemoteSwiftPackageReference "XCGLogger" */;
+			productName = ObjcExceptionBridging;
+		};
+		7D8A7B7525A5C63400F882F9 /* XCGLogger */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7D8A7B7225A5C63400F882F9 /* XCRemoteSwiftPackageReference "XCGLogger" */;
+			productName = XCGLogger;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

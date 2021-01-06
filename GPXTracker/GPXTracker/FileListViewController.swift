@@ -11,9 +11,9 @@ class FileListViewController: UITableViewController {
       navigationItem.leftBarButtonItems = []
     }
 
-    if !UserDefaults.standard.bool(forKey: IS_FIRST_RUN) {
-      FileController.copyBundleToFolder()
-      UserDefaults.standard.set(true, forKey: IS_FIRST_RUN)
+    if !UserDefaults.isFirstRun {
+      FileManager.default.copyBundleToDocumentDirectory()
+      UserDefaults.isFirstRun = true
     }
 
     reload()
@@ -43,7 +43,7 @@ class FileListViewController: UITableViewController {
     HUD.show(.progress)
 
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-      self.items = FileController.files()
+      self.items = FileManager.default.files()
       self.tableView.reloadData()
       HUD.hide()
     }
@@ -69,7 +69,7 @@ class FileListViewController: UITableViewController {
   override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
       let row = indexPath.row
-      FileController.delete(file: items[row])
+      FileManager.default.delete(file: items[row])
       items.remove(at: row)
       tableView.deleteRows(at: [indexPath], with: .fade)
     }

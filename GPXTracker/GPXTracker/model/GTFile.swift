@@ -19,7 +19,7 @@ class GTFile {
   /// /xxx/yyy/Document/
   let documentFolderPath: String
 
-  /// /xxx/yyy/Document/unzip/
+  /// /xxx/yyy/Document/unzip/zzzz
   let unzippedFolderPath: String
 
   /// /xxx/yyy/Document/unzip/aaa/doc.kml
@@ -97,7 +97,7 @@ class GTFile {
 
       try FileManager.default.removeItem(at: tempFileUrl)
     } catch {
-      print(error.localizedDescription)
+      log.warning(error.localizedDescription)
     }
   }
 

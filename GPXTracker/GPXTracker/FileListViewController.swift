@@ -78,7 +78,7 @@ class FileListViewController: UITableViewController {
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     NotificationCenter.default.post(name: Notification.Name(rawValue: SELECTED_FILE),
                                     object: nil,
-                                    userInfo: [SELECTED_FILE_PATH: self.items[indexPath.row]])
+                                    userInfo: [SELECTED_FILE_PATH: items[indexPath.row]])
     close()
   }
 }

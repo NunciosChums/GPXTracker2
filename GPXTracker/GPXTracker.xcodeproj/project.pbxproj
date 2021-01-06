@@ -3,11 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7D14ADB62082328D007C17DA /* Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D14ADB52082328D007C17DA /* Zip.framework */; };
 		7D14ADB82082337B007C17DA /* samples in Resources */ = {isa = PBXBuildFile; fileRef = 7D14ADB72082337B007C17DA /* samples */; };
 		7D3E0764207A08B500EF3F00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3E0763207A08B500EF3F00 /* AppDelegate.swift */; };
 		7D3E0766207A08B500EF3F00 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3E0765207A08B500EF3F00 /* MapViewController.swift */; };
@@ -16,11 +15,12 @@
 		7D3E076E207A08B600EF3F00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D3E076C207A08B600EF3F00 /* LaunchScreen.storyboard */; };
 		7D51CAD02081F5B4007465BE /* FileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D51CACF2081F5B4007465BE /* FileController.swift */; };
 		7D51CAD32081F73D007465BE /* GTFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D51CAD22081F73D007465BE /* GTFile.swift */; };
+		7D8A7ADD25A5BB0C00F882F9 /* Kanna in Frameworks */ = {isa = PBXBuildFile; productRef = 7D8A7ADC25A5BB0C00F882F9 /* Kanna */; };
+		7D8A7AE125A5BB3E00F882F9 /* PKHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 7D8A7AE025A5BB3E00F882F9 /* PKHUD */; };
+		7D8A7AE525A5BBB300F882F9 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 7D8A7AE425A5BBB300F882F9 /* Zip */; };
 		7DA532F9208B4AA4000CF90A /* TCXParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA532F8208B4AA4000CF90A /* TCXParser.swift */; };
 		7DA532FB208B4F30000CF90A /* KMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA532FA208B4F30000CF90A /* KMLParser.swift */; };
 		7DA532FD208B5784000CF90A /* KMZParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA532FC208B5784000CF90A /* KMZParser.swift */; };
-		7DC69015207A16D800447E9B /* PKHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DC69013207A16D800447E9B /* PKHUD.framework */; };
-		7DC69016207A16D800447E9B /* Kanna.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DC69014207A16D800447E9B /* Kanna.framework */; };
 		7DC69019207A245F00447E9B /* FileListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC69018207A245F00447E9B /* FileListViewController.swift */; };
 		7DC6901B207A2FCC00447E9B /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC6901A207A2FCC00447E9B /* Const.swift */; };
 		7DD0243120833294000A465F /* ParserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD0243020833294000A465F /* ParserController.swift */; };
@@ -32,7 +32,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7D14ADB52082328D007C17DA /* Zip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Zip.framework; path = Carthage/Build/iOS/Zip.framework; sourceTree = "<group>"; };
 		7D14ADB72082337B007C17DA /* samples */ = {isa = PBXFileReference; lastKnownFileType = folder; name = samples; path = ../../samples; sourceTree = "<group>"; };
 		7D3E0760207A08B500EF3F00 /* GPXTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GPXTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D3E0763207A08B500EF3F00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -47,8 +46,6 @@
 		7DA532F8208B4AA4000CF90A /* TCXParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCXParser.swift; sourceTree = "<group>"; };
 		7DA532FA208B4F30000CF90A /* KMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMLParser.swift; sourceTree = "<group>"; };
 		7DA532FC208B5784000CF90A /* KMZParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMZParser.swift; sourceTree = "<group>"; };
-		7DC69013207A16D800447E9B /* PKHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PKHUD.framework; path = Carthage/Build/iOS/PKHUD.framework; sourceTree = "<group>"; };
-		7DC69014207A16D800447E9B /* Kanna.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kanna.framework; path = Carthage/Build/iOS/Kanna.framework; sourceTree = "<group>"; };
 		7DC69018207A245F00447E9B /* FileListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileListViewController.swift; sourceTree = "<group>"; };
 		7DC6901A207A2FCC00447E9B /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		7DD0243020833294000A465F /* ParserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserController.swift; sourceTree = "<group>"; };
@@ -64,9 +61,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7DC69015207A16D800447E9B /* PKHUD.framework in Frameworks */,
-				7DC69016207A16D800447E9B /* Kanna.framework in Frameworks */,
-				7D14ADB62082328D007C17DA /* Zip.framework in Frameworks */,
+				7D8A7AE525A5BBB300F882F9 /* Zip in Frameworks */,
+				7D8A7ADD25A5BB0C00F882F9 /* Kanna in Frameworks */,
+				7D8A7AE125A5BB3E00F882F9 /* PKHUD in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,9 +109,6 @@
 		7D3E0775207A096300EF3F00 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7D14ADB52082328D007C17DA /* Zip.framework */,
-				7DC69014207A16D800447E9B /* Kanna.framework */,
-				7DC69013207A16D800447E9B /* PKHUD.framework */,
 				7D3E0778207A096A00EF3F00 /* CoreLocation.framework */,
 			);
 			name = Frameworks;
@@ -154,13 +148,17 @@
 				7D3E075C207A08B500EF3F00 /* Sources */,
 				7D3E075D207A08B500EF3F00 /* Frameworks */,
 				7D3E075E207A08B500EF3F00 /* Resources */,
-				7DC69017207A178F00447E9B /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = GPXTracker;
+			packageProductDependencies = (
+				7D8A7ADC25A5BB0C00F882F9 /* Kanna */,
+				7D8A7AE025A5BB3E00F882F9 /* PKHUD */,
+				7D8A7AE425A5BBB300F882F9 /* Zip */,
+			);
 			productName = GPXTracker3;
 			productReference = 7D3E0760207A08B500EF3F00 /* GPXTracker.app */;
 			productType = "com.apple.product-type.application";
@@ -172,7 +170,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1230;
 				ORGANIZATIONNAME = susemi99;
 				TargetAttributes = {
 					7D3E075F207A08B500EF3F00 = {
@@ -195,6 +193,11 @@
 				Base,
 			);
 			mainGroup = 7D3E0757207A08B500EF3F00;
+			packageReferences = (
+				7D8A7ADB25A5BB0C00F882F9 /* XCRemoteSwiftPackageReference "Kanna" */,
+				7D8A7ADF25A5BB3E00F882F9 /* XCRemoteSwiftPackageReference "PKHUD" */,
+				7D8A7AE325A5BBB300F882F9 /* XCRemoteSwiftPackageReference "Zip" */,
+			);
 			productRefGroup = 7D3E0761207A08B500EF3F00 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -217,25 +220,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		7DC69017207A178F00447E9B /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Kanna.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/PKHUD.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Zip.framework",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7D3E075C207A08B500EF3F00 /* Sources */ = {
@@ -308,6 +292,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -369,6 +354,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -470,6 +456,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7D8A7ADB25A5BB0C00F882F9 /* XCRemoteSwiftPackageReference "Kanna" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tid-kijyun/Kanna";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.2.4;
+			};
+		};
+		7D8A7ADF25A5BB3E00F882F9 /* XCRemoteSwiftPackageReference "PKHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pkluz/PKHUD";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.4.0;
+			};
+		};
+		7D8A7AE325A5BBB300F882F9 /* XCRemoteSwiftPackageReference "Zip" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/marmelroy/Zip";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7D8A7ADC25A5BB0C00F882F9 /* Kanna */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7D8A7ADB25A5BB0C00F882F9 /* XCRemoteSwiftPackageReference "Kanna" */;
+			productName = Kanna;
+		};
+		7D8A7AE025A5BB3E00F882F9 /* PKHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7D8A7ADF25A5BB3E00F882F9 /* XCRemoteSwiftPackageReference "PKHUD" */;
+			productName = PKHUD;
+		};
+		7D8A7AE425A5BBB300F882F9 /* Zip */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7D8A7AE325A5BBB300F882F9 /* XCRemoteSwiftPackageReference "Zip" */;
+			productName = Zip;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7D3E0758207A08B500EF3F00 /* Project object */;
 }

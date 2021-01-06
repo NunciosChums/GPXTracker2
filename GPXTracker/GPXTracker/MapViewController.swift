@@ -221,7 +221,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
       let imageUrl = URL(string: url)
       let request = URLRequest(url: imageUrl!)
 
-      let session = URLSession.shared.dataTask(with: request) { data, response, error in
+      let session = URLSession.shared.dataTask(with: request) { data, _, error in
         if error == nil {
           DispatchQueue.main.async {
             imagePinView.image = UIImage(data: data!)

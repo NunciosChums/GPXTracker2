@@ -22,7 +22,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    calcBottomMargin()
     registerObserver()
     addGoToCurrentLocationBarButtonItem()
 
@@ -41,13 +40,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     let currentLocationItem = MKUserTrackingBarButtonItem(mapView: mapView)
     navigationItem.setRightBarButton(currentLocationItem, animated: true)
     currentLocationItem.perform(currentLocationItem.action)
-  }
-
-  func calcBottomMargin() {
-    if #available(iOS 11.0, *) {
-      let hasTopNotch = UIApplication.shared.delegate?.window??.safeAreaInsets.top ?? 0 > 20
-      bottomMarginConstraint.constant = hasTopNotch ? -34 : 0
-    }
   }
 
   func registerObserver() {

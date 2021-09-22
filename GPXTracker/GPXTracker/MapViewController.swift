@@ -187,9 +187,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     pinView.animatesDrop = true
     pinView.pinTintColor = pin.color
 
+    var configuration = UIButton.Configuration.filled()
+    configuration.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 12, bottom: 29, trailing: 12)
+    
     let navigationButton = UIButton(type: .custom)
+    navigationButton.configuration = configuration
     navigationButton.setImage(UIImage(systemName: "car.fill")?.withTintColor(UIColor.white, renderingMode: .alwaysOriginal), for: .normal)
-    navigationButton.imageEdgeInsets = UIEdgeInsets(top: 16, left: 12, bottom: 29, right: 12)
     navigationButton.frame = CGRect(x: 0, y: 0, width: 50, height: 64)
     navigationButton.backgroundColor = UIColor(red: 0, green: 122 / 255, blue: 255 / 255, alpha: 1)
     pinView.leftCalloutAccessoryView = navigationButton

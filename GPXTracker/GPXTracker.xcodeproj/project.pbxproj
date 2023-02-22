@@ -348,7 +348,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -404,7 +404,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -490,7 +490,7 @@
 			repositoryURL = "https://github.com/tid-kijyun/Kanna";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.2.4;
+				minimumVersion = 5.2.7;
 			};
 		};
 		7D8A7ADF25A5BB3E00F882F9 /* XCRemoteSwiftPackageReference "PKHUD" */ = {
@@ -506,7 +506,7 @@
 			repositoryURL = "https://github.com/marmelroy/Zip";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.1.1;
+				minimumVersion = 2.1.2;
 			};
 		};
 		7D8A7B7225A5C63400F882F9 /* XCRemoteSwiftPackageReference "XCGLogger" */ = {

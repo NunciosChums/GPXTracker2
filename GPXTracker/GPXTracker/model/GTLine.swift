@@ -13,7 +13,7 @@ class GTLine {
     polyline.strokeColor = color
     polyline.lineWidth = lineWidth
 
-    startPin = GTPin(title: START, coordinate: coordinates.first!, color: MKPinAnnotationView.greenPinColor())
-    endPin = GTPin(title: END, coordinate: coordinates.last!, color: MKPinAnnotationView.redPinColor())
+    startPin = GTPin(title: START, coordinate: coordinates.first!, color: .green)
+    endPin = GTPin(title: END, coordinate: coordinates.last!, color: .red)
   }
 }

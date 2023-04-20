@@ -21,16 +21,16 @@ class KMLParser: BaseParser {
 
     for style in xml.css("Style") {
       guard let id: String = style["id"],
-        let href = style.css("href").first?.text
-        else { continue }
+            let href = style.css("href").first?.text
+      else { continue }
 
       iconStyles.append(IconStyle(id: id.replacingOccurrences(of: "-normal", with: ""), href: href))
     }
 
     for styleMap in xml.css("StyleMap") {
       guard let id: String = styleMap["id"],
-        let normal = styleMap.css("Pair styleUrl").first?.text?.replacingOccurrences(of: "#", with: "")
-        else { continue }
+            let normal = styleMap.css("Pair styleUrl").first?.text?.replacingOccurrences(of: "#", with: "")
+      else { continue }
 
       for iconStyle in iconStyles {
         if iconStyle.id == normal {
@@ -72,7 +72,7 @@ class KMLParser: BaseParser {
 
       for lineStyle in style.css("LineStyle") {
         guard let width = lineStyle.css("width").first?.text,
-          let color = lineStyle.css("color").first?.text else { continue }
+              let color = lineStyle.css("color").first?.text else { continue }
 
         lineStyles.append(LineStyle(id: id.replacingOccurrences(of: "-normal", with: ""),
                                     color: KMLParser.stringToColor(hexString: "#" + color), width: width))
@@ -81,8 +81,8 @@ class KMLParser: BaseParser {
 
     for styleMap in xml.css("StyleMap") {
       guard let id: String = styleMap["id"],
-        let normal = styleMap.css("Pair styleUrl").first?.text?.replacingOccurrences(of: "#", with: "")
-        else { continue }
+            let normal = styleMap.css("Pair styleUrl").first?.text?.replacingOccurrences(of: "#", with: "")
+      else { continue }
 
       for lineStyle in lineStyles {
         if lineStyle.id == normal {

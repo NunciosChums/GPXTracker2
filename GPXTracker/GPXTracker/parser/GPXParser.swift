@@ -19,12 +19,12 @@ class GPXParser: BaseParser {
 
     for wpt in xml.css("wpt") {
       guard let lon = wpt["lon"],
-        let lat = wpt["lat"],
-        let name: String = wpt.css("name").first?.text
-        else { continue }
+            let lat = wpt["lat"],
+            let name: String = wpt.css("name").first?.text
+      else { continue }
 
       let location = CLLocationCoordinate2D(latitude: (lat as NSString).doubleValue, longitude: (lon as NSString).doubleValue)
-      result.append(GTPin(title: name, coordinate: location, color: MKPinAnnotationView.purplePinColor()))
+      result.append(GTPin(title: name, coordinate: location, color: .purple))
     }
 
     return result
@@ -43,7 +43,7 @@ class GPXParser: BaseParser {
 
     var result: [GTLine] = []
     if !locations.isEmpty {
-      result.append(GTLine(coordinates: &locations, color: UIColor.blue, lineWidth: 3))
+      result.append(GTLine(coordinates: &locations, color: .systemRed, lineWidth: 4))
     }
 
     return result

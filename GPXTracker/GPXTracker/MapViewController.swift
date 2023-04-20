@@ -182,10 +182,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 
     let pin = annotation as! GTPin
     let reuseId = pin.identifier
-    let pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+    let pinView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
     pinView.canShowCallout = true
-    pinView.animatesDrop = true
-    pinView.pinTintColor = pin.color
+    pinView.animatesWhenAdded = true
+    pinView.markerTintColor = pin.color
 
     var configuration = UIButton.Configuration.filled()
     configuration.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 12, bottom: 29, trailing: 12)

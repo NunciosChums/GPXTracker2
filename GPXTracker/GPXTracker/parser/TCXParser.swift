@@ -19,12 +19,12 @@ class TCXParser: BaseParser {
 
     for point in xml.css("CoursePoint") {
       guard let name: String = point.css("Name").first?.text,
-        let lat: NSString = point.css("LatitudeDegrees").first?.text as NSString?,
-        let lon: NSString = point.css("LongitudeDegrees").first?.text as NSString?
-        else { continue }
+            let lat: NSString = point.css("LatitudeDegrees").first?.text as NSString?,
+            let lon: NSString = point.css("LongitudeDegrees").first?.text as NSString?
+      else { continue }
 
       let location = CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue)
-      var color: UIColor = MKPinAnnotationView.purplePinColor()
+      var color: UIColor = .purple
 
       if let type: String = point.css("PointType").first?.text {
         switch type.lowercased() {
@@ -66,8 +66,8 @@ class TCXParser: BaseParser {
     for point in xml.css("Trackpoint") {
       for position in point.css("Position") {
         guard let lat: NSString = position.css("LatitudeDegrees").first?.text as NSString?,
-          let lon: NSString = position.css("LongitudeDegrees").first?.text as NSString?
-          else { continue }
+              let lon: NSString = position.css("LongitudeDegrees").first?.text as NSString?
+        else { continue }
 
         locations.append(CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue))
       }
@@ -75,7 +75,7 @@ class TCXParser: BaseParser {
 
     var result: [GTLine] = []
     if !locations.isEmpty {
-      result.append(GTLine(coordinates: &locations, color: UIColor.blue, lineWidth: 3))
+      result.append(GTLine(coordinates: &locations, color: .systemRed, lineWidth: 4))
     }
     return result
   }

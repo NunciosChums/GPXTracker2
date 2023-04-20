@@ -6,11 +6,11 @@ class GTPolyline: MKPolyline {
   var lineWidth: CGFloat
 
   override init() {
-    strokeColor = UIColor.blue
-    lineWidth = 3
+    strokeColor = .systemRed
+    lineWidth = 4
   }
 
-  func set(color: UIColor, width: CGFloat = 3) {
+  func set(color: UIColor, width: CGFloat = 4) {
     strokeColor = color
     lineWidth = width
   }

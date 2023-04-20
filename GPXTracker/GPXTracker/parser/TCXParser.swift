@@ -24,33 +24,33 @@ class TCXParser: BaseParser {
       else { continue }
 
       let location = CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue)
-      var color: UIColor = .purple
+      var color: UIColor = .systemPurple
 
       if let type: String = point.css("PointType").first?.text {
         switch type.lowercased() {
         case "right":
-          color = UIColor.yellow
+          color = .yellow
 
         case "left":
-          color = UIColor.orange
+          color = .orange
 
         case "danger":
-          color = UIColor.magenta
+          color = .magenta
 
         case "water":
-          color = UIColor.cyan
+          color = .cyan
 
         case "submmit":
-          color = UIColor.gray
+          color = .gray
 
         case "food":
-          color = UIColor.brown
+          color = .brown
 
         case "straight":
-          color = UIColor.black
+          color = .black
 
         default:
-          color = UIColor.purple
+          color = .systemPurple
         }
       }
 

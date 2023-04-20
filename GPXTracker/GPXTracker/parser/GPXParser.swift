@@ -24,7 +24,7 @@ class GPXParser: BaseParser {
       else { continue }
 
       let location = CLLocationCoordinate2D(latitude: (lat as NSString).doubleValue, longitude: (lon as NSString).doubleValue)
-      result.append(GTPin(title: name, coordinate: location, color: .purple))
+      result.append(GTPin(title: name, coordinate: location, color: .systemPurple))
     }
 
     return result

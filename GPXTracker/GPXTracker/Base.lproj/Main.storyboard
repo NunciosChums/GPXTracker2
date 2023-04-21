@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RfK-FD-74p">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RfK-FD-74p">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,7 +14,7 @@
             <objects>
                 <navigationController id="RfK-FD-74p" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="RPn-Pa-IWC">
-                        <rect key="frame" x="0.0" y="44" width="428" height="44"/>
+                        <rect key="frame" x="0.0" y="47" width="428" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -33,7 +34,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9dx-7B-UF8">
-                                <rect key="frame" x="0.0" y="88" width="428" height="838"/>
+                                <rect key="frame" x="0.0" y="91" width="428" height="835"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="fCe-Dd-MWK"/>
                                 </connections>
@@ -61,7 +62,7 @@
                                     <constraint firstAttribute="height" constant="40" id="Mdf-8m-1K8"/>
                                     <constraint firstAttribute="width" constant="40" id="vRn-MG-H44"/>
                                 </constraints>
-                                <color key="tintColor" systemColor="systemBlueColor"/>
+                                <color key="tintColor" systemColor="systemRedColor"/>
                                 <state key="normal" image="scribble" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="40"/>
                                 </state>
@@ -151,12 +152,12 @@
             <objects>
                 <tableViewController id="M2I-4I-QZC" customClass="FileListViewController" customModule="GPXTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hC8-RE-Bch">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="872"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="916"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="IPf-mT-6Iy" style="IBUITableViewCellStyleDefault" id="Hy1-Bt-n4g">
-                                <rect key="frame" x="0.0" y="44.666666030883789" width="428" height="43.666667938232422"/>
+                                <rect key="frame" x="0.0" y="50" width="428" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hy1-Bt-n4g" id="mRv-bF-AnQ">
                                     <rect key="frame" x="0.0" y="0.0" width="428" height="43.666667938232422"/>
@@ -213,15 +214,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="mappin.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="mappin.circle.fill" catalog="system" width="128" height="123"/>
         <image name="photo" catalog="system" width="128" height="93"/>
         <image name="photo.fill" catalog="system" width="128" height="93"/>
-        <image name="scribble" catalog="system" width="128" height="118"/>
+        <image name="scribble" catalog="system" width="128" height="117"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

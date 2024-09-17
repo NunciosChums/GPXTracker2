@@ -8,7 +8,6 @@ This app complies with the relevant laws, regulations and guidelines of the Repu
 
 "Personal information processing policy" means the guidelines that the company must adhere to so that the user can safely use the service by protecting the valuable personal information of the user.
 
-
 ## Collection of personal information
 
 We use only the location information necessary to provide the service during use.

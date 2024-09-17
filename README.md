@@ -8,8 +8,6 @@ Display GPX, TCX, KML, KMZ route on Apple map for bicycle
 
 * Export KML by Google Map http://www.youtube.com/watch?v=hDluVIuJGOo
 
-* How to use GPX Tracker  http://www.youtube.com/watch?v=zN4hl9Lkcb4
-
 * AppStore https://itunes.apple.com/app/gpx-tracker/id434117340?mt=8
 
 * Report issue [here](https://github.com/NunciosChums/GPXTracker2/issues) or send email to me contain your kml/gpx/tcx/kmz files.

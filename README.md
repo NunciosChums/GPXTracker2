@@ -12,4 +12,4 @@ Display GPX, TCX, KML, KMZ route on Apple map for bicycle
 
 * AppStore https://itunes.apple.com/app/gpx-tracker/id434117340?mt=8
 
-* Report issue http://susemi99.github.io/GPX-Tracker-2/ or send email to me contain your kml/gpx/tcx/kmz files.
+* Report issue [here](https://github.com/NunciosChums/GPXTracker2/issues) or send email to me contain your kml/gpx/tcx/kmz files.

@@ -3,7 +3,6 @@ import SwiftUI
 struct FileListView: View {
   @Environment(AppState.self) private var appState
   @Environment(\.dismiss) private var dismiss
-
   var body: some View {
     List {
       ForEach(appState.files, id: \.path) { file in

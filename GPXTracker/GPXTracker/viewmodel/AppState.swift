@@ -60,6 +60,7 @@ final class AppState {
   }
 
   func selectFile(_ file: GTFile) {
+    selectedPin = nil
     filePathForShare = file.path
     parseFile(file)
   }

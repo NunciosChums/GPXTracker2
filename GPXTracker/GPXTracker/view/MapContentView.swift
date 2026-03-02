@@ -224,13 +224,11 @@ struct PinDetailCard: View {
     }
     .padding(.horizontal, 16)
     .padding(.vertical, 12)
-    // portrait 기준 너비 고정 — landscape에서 과도하게 넓어지는 것 방지
-    .frame(width: min(UIScreen.main.bounds.width, UIScreen.main.bounds.height) - 24)
+    .frame(maxWidth: 400, alignment: .leading)
     .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 16))
     .shadow(color: .black.opacity(0.15), radius: 8, y: 2)
     .padding(.bottom, 8)
-    .frame(maxWidth: .infinity, alignment: .leading)
-    .padding(.leading, 12)
+    .padding(.horizontal, 12)
   }
 }
 

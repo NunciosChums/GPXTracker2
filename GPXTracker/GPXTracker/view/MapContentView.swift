@@ -43,6 +43,9 @@ struct MapContentView: View {
       UserAnnotation()
     }
     .mapStyle(appState.mapStyle)
+    .onChange(of: appState.cameraPosition) {
+      UIApplication.shared.isIdleTimerDisabled = appState.cameraPosition.followsUserLocation
+    }
     .onTapGesture {
       if appState.selectedPin != nil {
         appState.selectedPin = nil
@@ -58,9 +61,11 @@ struct MapContentView: View {
       VStack(spacing: 0) {
         // 핀 상세 카드 — 선택된 핀이 있을 때만 표시
         if let pin = appState.selectedPin {
-          PinDetailCard(pin: pin) {
+          PinDetailCard(pin: pin, onMoveTo: {
+            appState.moveToPin(pin)
+          }, onDismiss: {
             appState.selectedPin = nil
-          }
+          })
           .transition(.move(edge: .bottom).combined(with: .opacity))
         }
         controlButtons
@@ -164,6 +169,7 @@ struct ImagePinView: View {
 
 struct PinDetailCard: View {
   let pin: GTPin
+  let onMoveTo: () -> Void
   let onDismiss: () -> Void
 
   var body: some View {
@@ -197,8 +203,17 @@ struct PinDetailCard: View {
         }
       }
 
-      // 둘째 줄: 네비게이션 버튼들
+      // 둘째 줄: 위치 이동 + 네비게이션 버튼들
       HStack(spacing: 8) {
+        // 해당 핀 위치로 줌 이동
+        Button(action: onMoveTo) {
+          Image(systemName: "scope")
+            .font(.system(size: 15, weight: .medium))
+            .foregroundStyle(.white)
+            .frame(width: 36, height: 36)
+            .background(.gray, in: Circle())
+        }
+        Spacer()
         NavigateButton(pin: pin, mode: MKLaunchOptionsDirectionsModeDriving,
                        icon: "car.fill", color: .blue, onDismiss: onDismiss)
         NavigateButton(pin: pin, mode: MKLaunchOptionsDirectionsModeWalking,

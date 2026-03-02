@@ -16,7 +16,7 @@ final class AppState {
 
   // MARK: - Map UI State
   var isHybridMap: Bool = UserDefaults.isHybridMap
-  var cameraPosition: MapCameraPosition = .userLocation(fallback: .automatic)
+  var cameraPosition: MapCameraPosition = .automatic
   var filePathForShare: URL? = nil
 
   // MARK: - Pin Detail Sheet
@@ -118,6 +118,17 @@ final class AppState {
     let pin = pins[endPinIndex]
     moveTo(coordinate: pin.coordinate)
     endPinIndex = (endPinIndex + 1) % pins.count
+  }
+
+  func moveToPin(_ pin: GTPin) {
+    guard CLLocationCoordinate2DIsValid(pin.coordinate) else { return }
+    let region = MKCoordinateRegion(
+      center: pin.coordinate,
+      span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
+    )
+    withAnimation {
+      cameraPosition = .region(region)
+    }
   }
 
   // MARK: - Private

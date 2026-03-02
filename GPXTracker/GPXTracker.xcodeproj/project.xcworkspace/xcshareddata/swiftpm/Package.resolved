@@ -1,21 +1,13 @@
 {
+  "originHash" : "625a8a3570108fdd0a0c181f1afcde86131f93d0c06efaa3dc422e34c3b7e814",
   "pins" : [
     {
       "identity" : "kanna",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/tid-kijyun/Kanna",
       "state" : {
-        "revision" : "f9e4922223dd0d3dfbf02ca70812cf5531fc0593",
-        "version" : "5.2.7"
-      }
-    },
-    {
-      "identity" : "pkhud",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/pkluz/PKHUD",
-      "state" : {
-        "revision" : "8fd26f23057c6bebd6695524b1c3e05e93aba571",
-        "version" : "5.4.0"
+        "revision" : "41c3d28ea0eac07e4551b28def9de1ede702e739",
+        "version" : "5.3.0"
       }
     },
     {
@@ -23,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/DaveWoodCom/XCGLogger",
       "state" : {
-        "revision" : "a9c4667b247928a29bdd41be2ec2c8d304215a54",
-        "version" : "7.0.1"
+        "revision" : "4def3c1c772ca90ad5e7bfc8ac437c3b0b4276cf",
+        "version" : "7.1.5"
       }
     },
     {
@@ -37,5 +29,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }

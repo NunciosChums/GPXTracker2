@@ -1,4 +1,3 @@
-import PKHUD
 import UIKit
 
 class FileListViewController: UITableViewController {
@@ -36,14 +35,14 @@ class FileListViewController: UITableViewController {
   func reload() {
     items.removeAll()
 
-    HUD.show(.progress)
+    ProgressHUD.show()
 
     DispatchQueue.global(qos: .userInitiated).async { [weak self] in
       let files = FileManager.default.files()
       DispatchQueue.main.async { [weak self] in
         self?.items = files
         self?.tableView.reloadData()
-        HUD.hide()
+        ProgressHUD.hide()
       }
     }
   }

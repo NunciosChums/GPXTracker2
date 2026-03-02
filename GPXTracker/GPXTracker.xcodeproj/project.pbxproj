@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		048887E22F5549B700CE54AC /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048887E12F5549B700CE54AC /* ProgressHUD.swift */; };
 		7D14ADB82082337B007C17DA /* samples in Resources */ = {isa = PBXBuildFile; fileRef = 7D14ADB72082337B007C17DA /* samples */; };
 		7D2BF25925A5DD1300570B7C /* LocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2BF25825A5DD1300570B7C /* LocationProvider.swift */; };
 		7D2BF25E25A5DE4600570B7C /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2BF25D25A5DE4600570B7C /* FileManager.swift */; };
@@ -18,7 +19,6 @@
 		7D3E076E207A08B600EF3F00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D3E076C207A08B600EF3F00 /* LaunchScreen.storyboard */; };
 		7D51CAD32081F73D007465BE /* GTFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D51CAD22081F73D007465BE /* GTFile.swift */; };
 		7D8A7ADD25A5BB0C00F882F9 /* Kanna in Frameworks */ = {isa = PBXBuildFile; productRef = 7D8A7ADC25A5BB0C00F882F9 /* Kanna */; };
-		7D8A7AE125A5BB3E00F882F9 /* PKHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 7D8A7AE025A5BB3E00F882F9 /* PKHUD */; };
 		7D8A7AE525A5BBB300F882F9 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 7D8A7AE425A5BBB300F882F9 /* Zip */; };
 		7D8A7B4025A5C46A00F882F9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8A7B3F25A5C46A00F882F9 /* SceneDelegate.swift */; };
 		7D8A7B7025A5C60800F882F9 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8A7B6F25A5C60800F882F9 /* Logger.swift */; };
@@ -38,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		048887E12F5549B700CE54AC /* ProgressHUD.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; tabWidth = 2; };
 		7D14ADB72082337B007C17DA /* samples */ = {isa = PBXFileReference; lastKnownFileType = folder; name = samples; path = ../../samples; sourceTree = "<group>"; };
 		7D2BF25825A5DD1300570B7C /* LocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProvider.swift; sourceTree = "<group>"; };
 		7D2BF25D25A5DE4600570B7C /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
@@ -73,7 +74,6 @@
 				7D8A7B7425A5C63400F882F9 /* ObjcExceptionBridging in Frameworks */,
 				7D8A7AE525A5BBB300F882F9 /* Zip in Frameworks */,
 				7D8A7ADD25A5BB0C00F882F9 /* Kanna in Frameworks */,
-				7D8A7AE125A5BB3E00F882F9 /* PKHUD in Frameworks */,
 				7D8A7B7625A5C63400F882F9 /* XCGLogger in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -143,6 +143,7 @@
 			children = (
 				7D8A7B6F25A5C60800F882F9 /* Logger.swift */,
 				7D2BF25825A5DD1300570B7C /* LocationProvider.swift */,
+				048887E12F5549B700CE54AC /* ProgressHUD.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -178,7 +179,6 @@
 			name = GPXTracker;
 			packageProductDependencies = (
 				7D8A7ADC25A5BB0C00F882F9 /* Kanna */,
-				7D8A7AE025A5BB3E00F882F9 /* PKHUD */,
 				7D8A7AE425A5BBB300F882F9 /* Zip */,
 				7D8A7B7325A5C63400F882F9 /* ObjcExceptionBridging */,
 				7D8A7B7525A5C63400F882F9 /* XCGLogger */,
@@ -219,7 +219,6 @@
 			mainGroup = 7D3E0757207A08B500EF3F00;
 			packageReferences = (
 				7D8A7ADB25A5BB0C00F882F9 /* XCRemoteSwiftPackageReference "Kanna" */,
-				7D8A7ADF25A5BB3E00F882F9 /* XCRemoteSwiftPackageReference "PKHUD" */,
 				7D8A7AE325A5BBB300F882F9 /* XCRemoteSwiftPackageReference "Zip" */,
 				7D8A7B7225A5C63400F882F9 /* XCRemoteSwiftPackageReference "XCGLogger" */,
 			);
@@ -270,6 +269,7 @@
 				7DD0243520833F00000A465F /* GTPolyline.swift in Sources */,
 				7DC69019207A245F00447E9B /* FileListViewController.swift in Sources */,
 				7DD0243120833294000A465F /* ParserController.swift in Sources */,
+				048887E22F5549B700CE54AC /* ProgressHUD.swift in Sources */,
 				7DA532FD208B5784000CF90A /* KMZParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -500,14 +500,6 @@
 				minimumVersion = 5.2.7;
 			};
 		};
-		7D8A7ADF25A5BB3E00F882F9 /* XCRemoteSwiftPackageReference "PKHUD" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pkluz/PKHUD";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.4.0;
-			};
-		};
 		7D8A7AE325A5BBB300F882F9 /* XCRemoteSwiftPackageReference "Zip" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/marmelroy/Zip";
@@ -531,11 +523,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7D8A7ADB25A5BB0C00F882F9 /* XCRemoteSwiftPackageReference "Kanna" */;
 			productName = Kanna;
-		};
-		7D8A7AE025A5BB3E00F882F9 /* PKHUD */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7D8A7ADF25A5BB3E00F882F9 /* XCRemoteSwiftPackageReference "PKHUD" */;
-			productName = PKHUD;
 		};
 		7D8A7AE425A5BBB300F882F9 /* Zip */ = {
 			isa = XCSwiftPackageProductDependency;

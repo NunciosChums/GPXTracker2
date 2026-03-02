@@ -1,6 +1,5 @@
 import CoreLocation
 import MapKit
-import PKHUD
 import UIKit
 
 class MapViewController: UIViewController, MKMapViewDelegate {
@@ -103,7 +102,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
           let file = userInfo[SELECTED_FILE_PATH]
     else { return }
 
-    HUD.show(.progress)
+    ProgressHUD.show()
     filePathForShare = file.path.path
 
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -180,7 +179,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
       endPins.append(line.endPin)
     }
 
-    HUD.hide()
+    ProgressHUD.hide()
 
     zoomToFit()
   }

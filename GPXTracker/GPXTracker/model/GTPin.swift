@@ -1,15 +1,15 @@
-import Foundation
-import MapKit
+import CoreLocation
+import SwiftUI
 
-class GTPin: NSObject, MKAnnotation {
-  let identifier: String
-  let title: String?
+struct GTPin: Identifiable, Sendable {
+  let id: UUID
+  let title: String
   let coordinate: CLLocationCoordinate2D
-  let color: UIColor
+  let color: Color
   var iconUrl: String?
 
-  init(title: String, coordinate: CLLocationCoordinate2D, color: UIColor = .systemPurple) {
-    identifier = UUID().uuidString
+  init(title: String, coordinate: CLLocationCoordinate2D, color: Color = .purple) {
+    id = UUID()
     self.title = title
     self.coordinate = coordinate
     self.color = color
@@ -17,10 +17,10 @@ class GTPin: NSObject, MKAnnotation {
   }
 
   init(title: String, coordinate: CLLocationCoordinate2D, iconUrl: String = "") {
-    identifier = UUID().uuidString
+    id = UUID()
     self.title = title
     self.coordinate = coordinate
-    color = .systemPurple
-    self.iconUrl = iconUrl.count == 0 ? nil : iconUrl
+    color = .purple
+    self.iconUrl = iconUrl.isEmpty ? nil : iconUrl
   }
 }

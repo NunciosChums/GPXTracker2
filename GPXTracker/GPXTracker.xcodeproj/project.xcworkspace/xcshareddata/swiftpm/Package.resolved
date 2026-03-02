@@ -1,5 +1,5 @@
 {
-  "originHash" : "625a8a3570108fdd0a0c181f1afcde86131f93d0c06efaa3dc422e34c3b7e814",
+  "originHash" : "fcacfa0a357dea0654e06dd2851ff685664420d70e0d1ece20dda5ea1c41e88d",
   "pins" : [
     {
       "identity" : "kanna",
@@ -8,15 +8,6 @@
       "state" : {
         "revision" : "41c3d28ea0eac07e4551b28def9de1ede702e739",
         "version" : "5.3.0"
-      }
-    },
-    {
-      "identity" : "xcglogger",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/DaveWoodCom/XCGLogger",
-      "state" : {
-        "revision" : "4def3c1c772ca90ad5e7bfc8ac437c3b0b4276cf",
-        "version" : "7.1.5"
       }
     },
     {

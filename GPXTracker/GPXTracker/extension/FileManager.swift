@@ -41,7 +41,7 @@ extension FileManager {
   func files(in directory: URL) -> [GTFile] {
     var result = [GTFile]()
 
-    if directory.absoluteString.contains(UNZIP_FOLDER_NAME) {
+    if directory.absoluteString.contains("unzip") {
       return result
     }
 
@@ -68,7 +68,7 @@ extension FileManager {
         try removeItem(atPath: file.unzippedFolderPath)
       }
     } catch {
-      log.warning(error.localizedDescription)
+      log.warning("\(error.localizedDescription)")
     }
   }
 }

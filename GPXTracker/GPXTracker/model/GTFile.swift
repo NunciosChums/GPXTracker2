@@ -1,8 +1,9 @@
 import Foundation
 import Zip
 
-class GTFile {
-  private let KMZ_DOC_KML = "doc.kml"
+final class GTFile: Sendable {
+  private let unzipFolderName = "unzip"
+  private let kmzDocKml = "doc.kml"
 
   /// file:///xxx/yyy/Document/aaa.kmz
   let path: URL
@@ -37,7 +38,6 @@ class GTFile {
     if path.deletingLastPathComponent().path.hasSuffix("/Inbox") {
       documentFolderPath = path.deletingLastPathComponent().deletingLastPathComponent().path
     } else if FileManager.default.isUbiquitousItem(at: path) {
-      // file in iCloud Drive (downloaded or not)
       _ = path.startAccessingSecurityScopedResource()
 
       do {
@@ -54,15 +54,21 @@ class GTFile {
       documentFolderPath = path.deletingLastPathComponent().path
     }
 
+    let unzipFolder = "unzip"
     if file.pathExtension.lowercased() == "kmz" {
-      unzippedFolderPath = "\(documentFolderPath)/\(UNZIP_FOLDER_NAME)/\(name.hashValue)"
-      xmlFileFullPath = "\(unzippedFolderPath)/\(KMZ_DOC_KML)"
+      unzippedFolderPath = "\(documentFolderPath)/\(unzipFolder)/\(name.hashValue)"
+      xmlFileFullPath = "\(unzippedFolderPath)/doc.kml"
 
-      if !isUnzipped() {
-        unzip()
+      if !FileManager.default.fileExists(atPath: xmlFileFullPath) {
+        GTFile.performUnzip(
+          path: path,
+          documentFolderPath: documentFolderPath,
+          name: name,
+          unzippedFolderPath: "\(documentFolderPath)/\(unzipFolder)/\(name.hashValue)"
+        )
       }
     } else {
-      unzippedFolderPath = "" // not use
+      unzippedFolderPath = ""
 
       if FileManager.default.isUbiquitousItem(at: path) {
         xmlFileFullPath = "\(documentFolderPath)/\(fullName)"
@@ -75,23 +81,17 @@ class GTFile {
     }
   }
 
-  func isUnzipped() -> Bool {
-    return FileManager.default.fileExists(atPath: xmlFileFullPath)
-  }
-
-  func unzip() {
-    let tempFile = "\(documentFolderPath)/\(name.hashValue)"
-    let tempFileFullPath = "\(tempFile).zip"
+  private static func performUnzip(path: URL, documentFolderPath: String, name: String, unzippedFolderPath: String) {
+    let tempFileFullPath = "\(documentFolderPath)/\(name.hashValue).zip"
     let tempFileUrl = URL(fileURLWithPath: tempFileFullPath)
     do {
       try FileManager.default.copyItem(atPath: path.path, toPath: tempFileFullPath)
       try Zip.unzipFile(tempFileUrl,
                         destination: URL(fileURLWithPath: unzippedFolderPath),
                         overwrite: true, password: nil)
-
       try FileManager.default.removeItem(at: tempFileUrl)
     } catch {
-      log.warning(error.localizedDescription)
+      log.warning("unzip failed: \(error.localizedDescription)")
     }
   }
 
@@ -99,19 +99,8 @@ class GTFile {
     return "file://\(unzippedFolderPath)/"
   }
 
-  func isKML() -> Bool {
-    return fileExtension.lowercased() == "kml"
-  }
-
-  func isGPX() -> Bool {
-    return fileExtension.lowercased() == "gpx"
-  }
-
-  func isTCX() -> Bool {
-    return fileExtension.lowercased() == "tcx"
-  }
-
-  func isKMZ() -> Bool {
-    return fileExtension.lowercased() == "kmz"
-  }
+  func isKML() -> Bool { fileExtension.lowercased() == "kml" }
+  func isGPX() -> Bool { fileExtension.lowercased() == "gpx" }
+  func isTCX() -> Bool { fileExtension.lowercased() == "tcx" }
+  func isKMZ() -> Bool { fileExtension.lowercased() == "kmz" }
 }

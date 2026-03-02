@@ -1,5 +1,0 @@
-let UNZIP_FOLDER_NAME = "unzip"
-let SELECTED_FILE = "selected_file"
-let SELECTED_FILE_PATH = "selected_file_path"
-let START = "start"
-let END = "end"

@@ -1,20 +1,21 @@
-import Foundation
-import MapKit
+import CoreLocation
+import SwiftUI
 
-class GTLine {
+struct GTLine: Identifiable, Sendable {
+  let id: UUID
   let coordinates: [CLLocationCoordinate2D]
-  let polyline: GTPolyline
+  let strokeColor: Color
+  let lineWidth: CGFloat
   let startPin: GTPin
   let endPin: GTPin
 
-  init?(coordinates: inout [CLLocationCoordinate2D], color: UIColor, lineWidth: CGFloat = 4) {
+  init?(coordinates: [CLLocationCoordinate2D], color: Color, lineWidth: CGFloat = 4) {
     guard let first = coordinates.first, let last = coordinates.last else { return nil }
+    id = UUID()
     self.coordinates = coordinates
-    polyline = GTPolyline(coordinates: &coordinates, count: coordinates.count)
-    polyline.strokeColor = color
-    polyline.lineWidth = lineWidth
-
-    startPin = GTPin(title: START, coordinate: first, color: .systemGreen)
-    endPin = GTPin(title: END, coordinate: last, color: .red)
+    strokeColor = color
+    self.lineWidth = lineWidth
+    startPin = GTPin(title: "start", coordinate: first, color: .green)
+    endPin = GTPin(title: "end", coordinate: last, color: .red)
   }
 }

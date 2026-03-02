@@ -1,6 +1,7 @@
 import Foundation
 import Kanna
 import MapKit
+import SwiftUI
 
 class TCXParser: BaseParser {
   let xml: XMLDocument
@@ -24,33 +25,18 @@ class TCXParser: BaseParser {
       else { continue }
 
       let location = CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue)
-      var color: UIColor = .systemPurple
+      var color: Color = .purple
 
       if let type: String = point.css("PointType").first?.text {
         switch type.lowercased() {
-        case "right":
-          color = .yellow
-
-        case "left":
-          color = .orange
-
-        case "danger":
-          color = .magenta
-
-        case "water":
-          color = .cyan
-
-        case "summit":
-          color = .gray
-
-        case "food":
-          color = .brown
-
-        case "straight":
-          color = .black
-
-        default:
-          color = .systemPurple
+        case "right":   color = .yellow
+        case "left":    color = .orange
+        case "danger":  color = .pink
+        case "water":   color = .cyan
+        case "summit":  color = .gray
+        case "food":    color = .brown
+        case "straight": color = .black
+        default:        color = .purple
         }
       }
 
@@ -74,7 +60,7 @@ class TCXParser: BaseParser {
     }
 
     var result: [GTLine] = []
-    if let line = GTLine(coordinates: &locations, color: .systemRed, lineWidth: 4) {
+    if let line = GTLine(coordinates: locations, color: .red, lineWidth: 4) {
       result.append(line)
     }
     return result

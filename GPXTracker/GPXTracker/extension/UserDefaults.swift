@@ -1,33 +1,20 @@
-//
-//  UserDefaults.swift
-//  GPXTracker
-//
-//  Created by 진창훈 on 2021/01/06.
-//  Copyright © 2021 susemi99. All rights reserved.
-//
-
-import MapKit
+import Foundation
 
 extension UserDefaults {
   private enum Keys {
-    static let IS_FIRST_RUN = "is_first_run_v2"
-    static let MAP_TYPE = "map_type_v2"
+    static let isFirstRun = "is_first_run_v2"
+    static let isHybridMap = "is_hybrid_map_v3"
   }
 
   /// 샘플 파일 복사가 완료되었는가?
   static var hasLaunchedBefore: Bool {
-    get { return standard.bool(forKey: Keys.IS_FIRST_RUN) }
-    set { standard.set(newValue, forKey: Keys.IS_FIRST_RUN) }
+    get { standard.bool(forKey: Keys.isFirstRun) }
+    set { standard.set(newValue, forKey: Keys.isFirstRun) }
   }
 
-  /// 지도 종류(기본, 위성)
-  static var mapType: MKMapType {
-    get {
-      let type = MKMapType.standard
-      return MKMapType(rawValue: MKMapType.RawValue(standard.integer(forKey: Keys.MAP_TYPE))) ?? type
-    }
-    set {
-      standard.set(newValue.rawValue, forKey: Keys.MAP_TYPE)
-    }
+  /// 위성 지도 모드인가?
+  static var isHybridMap: Bool {
+    get { standard.bool(forKey: Keys.isHybridMap) }
+    set { standard.set(newValue, forKey: Keys.isHybridMap) }
   }
 }

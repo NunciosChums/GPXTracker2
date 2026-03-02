@@ -1,6 +1,7 @@
 import Foundation
 import Kanna
 import MapKit
+import SwiftUI
 
 class GPXParser: BaseParser {
   let xml: XMLDocument
@@ -24,7 +25,7 @@ class GPXParser: BaseParser {
       else { continue }
 
       let location = CLLocationCoordinate2D(latitude: (lat as NSString).doubleValue, longitude: (lon as NSString).doubleValue)
-      result.append(GTPin(title: name, coordinate: location, color: .systemPurple))
+      result.append(GTPin(title: name, coordinate: location, color: .purple))
     }
 
     return result
@@ -39,7 +40,7 @@ class GPXParser: BaseParser {
         trkLocations.append(location)
       }
     }
-    if let line = GTLine(coordinates: &trkLocations, color: .systemRed, lineWidth: 4) {
+    if let line = GTLine(coordinates: trkLocations, color: .red, lineWidth: 4) {
       result.append(line)
     }
 
@@ -49,7 +50,7 @@ class GPXParser: BaseParser {
         rteLocations.append(location)
       }
     }
-    if let line = GTLine(coordinates: &rteLocations, color: .systemBlue, lineWidth: 4) {
+    if let line = GTLine(coordinates: rteLocations, color: .blue, lineWidth: 4) {
       result.append(line)
     }
 

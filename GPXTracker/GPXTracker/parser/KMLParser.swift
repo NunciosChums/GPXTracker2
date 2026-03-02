@@ -1,6 +1,7 @@
 import Foundation
 import Kanna
 import MapKit
+import SwiftUI
 
 class KMLParser: BaseParser {
   let xml: XMLDocument
@@ -17,7 +18,6 @@ class KMLParser: BaseParser {
   func places() -> [GTPin]? {
     var result: [GTPin] = []
 
-    // Build icon style dictionary for O(1) lookup
     var iconStyleMap: [String: String] = [:]
 
     for style in xml.css("Style") {
@@ -64,7 +64,6 @@ class KMLParser: BaseParser {
   }
 
   func lines() -> [GTLine]? {
-    // Build line style dictionary for O(1) lookup
     var lineStyleMap: [String: LineStyle] = [:]
 
     for style in xml.css("Style") {
@@ -113,7 +112,7 @@ class KMLParser: BaseParser {
           locations.append(CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue))
         }
 
-        if let gtLine = GTLine(coordinates: &locations,
+        if let gtLine = GTLine(coordinates: locations,
                                color: lineStyle.color,
                                lineWidth: CGFloat((lineStyle.width as NSString).floatValue)) {
           result.append(gtLine)
@@ -124,10 +123,8 @@ class KMLParser: BaseParser {
     return result
   }
 
-  // hexString #ffF08641, ff: a, f0: b, 86: g, 41: r
-  class func stringToColor(hexString: String) -> UIColor {
-    let r, g, b, a: CGFloat
-
+  // KML color format: #ffBBGGRR (alpha, blue, green, red)
+  class func stringToColor(hexString: String) -> Color {
     if hexString.hasPrefix("#") {
       let start = hexString.index(hexString.startIndex, offsetBy: 1)
       let hexColor = hexString[start...]
@@ -137,17 +134,15 @@ class KMLParser: BaseParser {
         var hexNumber: UInt64 = 0
 
         if scanner.scanHexInt64(&hexNumber) {
-          a = CGFloat((hexNumber & 0xFF00_0000) >> 24) / 255
-          b = CGFloat((hexNumber & 0x00FF_0000) >> 16) / 255
-          g = CGFloat((hexNumber & 0x0000_FF00) >> 8) / 255
-          r = CGFloat(hexNumber & 0x0000_00FF) / 255
-
-          return UIColor(red: r, green: g, blue: b, alpha: a)
+          let a = Double((hexNumber & 0xFF00_0000) >> 24) / 255
+          let b = Double((hexNumber & 0x00FF_0000) >> 16) / 255
+          let g = Double((hexNumber & 0x0000_FF00) >> 8) / 255
+          let r = Double(hexNumber & 0x0000_00FF) / 255
+          return Color(red: r, green: g, blue: b, opacity: a)
         }
       }
     }
-
-    return UIColor.blue
+    return .blue
   }
 
   struct IconStyle {
@@ -156,7 +151,7 @@ class KMLParser: BaseParser {
   }
 
   struct LineStyle {
-    var color: UIColor
+    var color: Color
     var width: String
   }
 }

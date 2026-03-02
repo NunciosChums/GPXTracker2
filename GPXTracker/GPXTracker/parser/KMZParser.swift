@@ -20,7 +20,9 @@ class KMZParser: BaseParser {
   func places() -> [GTPin]? {
     kmlParser.places()?.map { pin in
       if let iconUrl = pin.iconUrl, !iconUrl.hasPrefix("http") {
-        pin.iconUrl = imageFolderPath + iconUrl
+        var updated = pin
+        updated.iconUrl = imageFolderPath + iconUrl
+        return updated
       }
       return pin
     }

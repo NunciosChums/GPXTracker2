@@ -17,14 +17,15 @@ class KMLParser: BaseParser {
   func places() -> [GTPin]? {
     var result: [GTPin] = []
 
-    var iconStyles: [IconStyle] = []
+    // Build icon style dictionary for O(1) lookup
+    var iconStyleMap: [String: String] = [:]
 
     for style in xml.css("Style") {
       guard let id: String = style["id"],
             let href = style.css("href").first?.text
       else { continue }
 
-      iconStyles.append(IconStyle(id: id.replacingOccurrences(of: "-normal", with: ""), href: href))
+      iconStyleMap[id.replacingOccurrences(of: "-normal", with: "")] = href
     }
 
     for styleMap in xml.css("StyleMap") {
@@ -32,31 +33,29 @@ class KMLParser: BaseParser {
             let normal = styleMap.css("Pair styleUrl").first?.text?.replacingOccurrences(of: "#", with: "")
       else { continue }
 
-      for iconStyle in iconStyles {
-        if iconStyle.id == normal {
-          iconStyles.append(IconStyle(id: id, href: iconStyle.href))
-          break
-        }
+      if let href = iconStyleMap[normal] {
+        iconStyleMap[id] = href
       }
     }
 
     for placemark in xml.css("Placemark") {
       guard let name: String = placemark.css("name").first?.text else { continue }
 
-      for _ in placemark.css("Point") {
-        guard let coordinates = placemark.css("coordinates").first?.text else { continue }
+      for point in placemark.css("Point") {
+        guard let coordinates = point.css("coordinates").first?.text else { continue }
 
         let split = coordinates.components(separatedBy: ",")
-        let lon: NSString = split[0].trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) as NSString
-        let lat: NSString = split[1].trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) as NSString
+        guard split.count >= 2 else { continue }
+
+        let lon: NSString = split[0].trimmingCharacters(in: .whitespacesAndNewlines) as NSString
+        let lat: NSString = split[1].trimmingCharacters(in: .whitespacesAndNewlines) as NSString
         let location = CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue)
+
         guard let styleUrlString = placemark.css("styleUrl").first?.text else { continue }
         let styleUrl = styleUrlString.replacingOccurrences(of: "#", with: "")
 
-        for icon in iconStyles {
-          if icon.id == styleUrl {
-            result.append(GTPin(title: name, coordinate: location, iconUrl: icon.href))
-          }
+        if let href = iconStyleMap[styleUrl] {
+          result.append(GTPin(title: name, coordinate: location, iconUrl: href))
         }
       }
     }
@@ -65,17 +64,18 @@ class KMLParser: BaseParser {
   }
 
   func lines() -> [GTLine]? {
-    var lineStyles: [LineStyle] = []
+    // Build line style dictionary for O(1) lookup
+    var lineStyleMap: [String: LineStyle] = [:]
 
     for style in xml.css("Style") {
-      let id = style["id"]!
+      guard let id: String = style["id"] else { continue }
 
       for lineStyle in style.css("LineStyle") {
         guard let width = lineStyle.css("width").first?.text,
               let color = lineStyle.css("color").first?.text else { continue }
 
-        lineStyles.append(LineStyle(id: id.replacingOccurrences(of: "-normal", with: ""),
-                                    color: KMLParser.stringToColor(hexString: "#" + color), width: width))
+        lineStyleMap[id.replacingOccurrences(of: "-normal", with: "")] =
+          LineStyle(color: KMLParser.stringToColor(hexString: "#" + color), width: width)
       }
     }
 
@@ -84,11 +84,8 @@ class KMLParser: BaseParser {
             let normal = styleMap.css("Pair styleUrl").first?.text?.replacingOccurrences(of: "#", with: "")
       else { continue }
 
-      for lineStyle in lineStyles {
-        if lineStyle.id == normal {
-          lineStyles.append(LineStyle(id: id, color: lineStyle.color, width: lineStyle.width))
-          break
-        }
+      if let lineStyle = lineStyleMap[normal] {
+        lineStyleMap[id] = lineStyle
       }
     }
 
@@ -97,6 +94,8 @@ class KMLParser: BaseParser {
     for placemark in xml.css("Placemark") {
       guard let styleUrlString = placemark.css("styleUrl").first?.text else { continue }
       let styleUrl = styleUrlString.replacingOccurrences(of: "#", with: "")
+
+      guard let lineStyle = lineStyleMap[styleUrl] else { continue }
 
       for lineString in placemark.css("LineString") {
         guard let coordinatesString = lineString.css("coordinates").first?.text else { continue }
@@ -107,18 +106,17 @@ class KMLParser: BaseParser {
 
         for line in splitLine {
           let split = line.split { $0 == "," }.map(String.init)
+          guard split.count >= 2 else { continue }
+
           let lon: NSString = split[0] as NSString
           let lat: NSString = split[1] as NSString
-          let location = CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue)
-          locations.append(location)
+          locations.append(CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue))
         }
 
-        for lineStyle in lineStyles {
-          if lineStyle.id == styleUrl {
-            result.append(GTLine(coordinates: &locations,
-                                 color: lineStyle.color,
-                                 lineWidth: CGFloat((lineStyle.width as NSString).floatValue)))
-          }
+        if let gtLine = GTLine(coordinates: &locations,
+                               color: lineStyle.color,
+                               lineWidth: CGFloat((lineStyle.width as NSString).floatValue)) {
+          result.append(gtLine)
         }
       }
     }
@@ -126,7 +124,7 @@ class KMLParser: BaseParser {
     return result
   }
 
-  // hexString #ffF08641, ff: a, f0: b, 86: b, 41: r
+  // hexString #ffF08641, ff: a, f0: b, 86: g, 41: r
   class func stringToColor(hexString: String) -> UIColor {
     let r, g, b, a: CGFloat
 
@@ -158,14 +156,7 @@ class KMLParser: BaseParser {
   }
 
   struct LineStyle {
-    var id: String
     var color: UIColor
     var width: String
-  }
-
-  struct Placemark {
-    var name: String
-    var styleUrl: String
-    var coordinates: String
   }
 }

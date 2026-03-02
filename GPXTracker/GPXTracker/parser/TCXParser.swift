@@ -40,7 +40,7 @@ class TCXParser: BaseParser {
         case "water":
           color = .cyan
 
-        case "submmit":
+        case "summit":
           color = .gray
 
         case "food":
@@ -74,8 +74,8 @@ class TCXParser: BaseParser {
     }
 
     var result: [GTLine] = []
-    if !locations.isEmpty {
-      result.append(GTLine(coordinates: &locations, color: .systemRed, lineWidth: 4))
+    if let line = GTLine(coordinates: &locations, color: .systemRed, lineWidth: 4) {
+      result.append(line)
     }
     return result
   }

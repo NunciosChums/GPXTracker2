@@ -18,21 +18,12 @@ class KMZParser: BaseParser {
   }
 
   func places() -> [GTPin]? {
-    var places: [GTPin] = []
-
-    kmlParser.places()?.forEach { pin in
-      let newPin = pin
-
-      if let iconUrl = pin.iconUrl {
-        if !iconUrl.hasPrefix("http") {
-          newPin.iconUrl = imageFolderPath + iconUrl
-        }
+    kmlParser.places()?.map { pin in
+      if let iconUrl = pin.iconUrl, !iconUrl.hasPrefix("http") {
+        pin.iconUrl = imageFolderPath + iconUrl
       }
-
-      places.append(newPin)
+      return pin
     }
-
-    return places
   }
 
   func lines() -> [GTLine]? {

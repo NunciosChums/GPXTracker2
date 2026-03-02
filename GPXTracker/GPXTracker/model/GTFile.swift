@@ -31,37 +31,31 @@ class GTFile {
     fileExtension = path.pathExtension
     fullName = path.lastPathComponent
 
-    let documentsFolder = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+    let documentsFolder = FileManager.default.documentDirectory
     let downloadedFileFullPath = "\(documentsFolder.path)/\(fullName)"
 
     if path.deletingLastPathComponent().path.hasSuffix("/Inbox") {
       documentFolderPath = path.deletingLastPathComponent().deletingLastPathComponent().path
-    } else if FileManager.default.isUbiquitousItem(at: path) || !FileManager.default.fileExists(atPath: downloadedFileFullPath) {
-      // file in iCloud Document and not downloaded
+    } else if FileManager.default.isUbiquitousItem(at: path) {
+      // file in iCloud Drive (downloaded or not)
       _ = path.startAccessingSecurityScopedResource()
 
       do {
         try FileManager.default.startDownloadingUbiquitousItem(at: path)
-
-        var isDownloaded = false
-        while !isDownloaded {
-          if FileManager.default.fileExists(atPath: path.path) {
-            isDownloaded = true
-          }
+        if FileManager.default.fileExists(atPath: path.path) {
+          try FileManager.default.copyItem(atPath: path.path, toPath: downloadedFileFullPath)
         }
-
-        try FileManager.default.copyItem(atPath: path.path, toPath: downloadedFileFullPath)
       } catch {}
 
       documentFolderPath = documentsFolder.path
-    } else if FileManager.default.fileExists(atPath: downloadedFileFullPath) { // file in iCloud Document but downloaded
+    } else if FileManager.default.fileExists(atPath: downloadedFileFullPath) {
       documentFolderPath = documentsFolder.path
     } else {
       documentFolderPath = path.deletingLastPathComponent().path
     }
 
     if file.pathExtension.lowercased() == "kmz" {
-      unzippedFolderPath = "\(documentFolderPath)/\(UNZIP_FOLER_NAME)/\(name.hashValue)"
+      unzippedFolderPath = "\(documentFolderPath)/\(UNZIP_FOLDER_NAME)/\(name.hashValue)"
       xmlFileFullPath = "\(unzippedFolderPath)/\(KMZ_DOC_KML)"
 
       if !isUnzipped() {

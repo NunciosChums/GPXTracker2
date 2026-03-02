@@ -9,7 +9,7 @@ class GTPin: NSObject, MKAnnotation {
   var iconUrl: String?
 
   init(title: String, coordinate: CLLocationCoordinate2D, color: UIColor = .systemPurple) {
-    identifier = String(arc4random())
+    identifier = UUID().uuidString
     self.title = title
     self.coordinate = coordinate
     self.color = color
@@ -17,7 +17,7 @@ class GTPin: NSObject, MKAnnotation {
   }
 
   init(title: String, coordinate: CLLocationCoordinate2D, iconUrl: String = "") {
-    identifier = String(arc4random())
+    identifier = UUID().uuidString
     self.title = title
     self.coordinate = coordinate
     color = .systemPurple

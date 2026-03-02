@@ -16,6 +16,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
     // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
     guard let _ = (scene as? UIWindowScene) else { return }
+
+    // Handle files opened while the app was not running (e.g. via AirDrop)
+    if let urlContext = connectionOptions.urlContexts.first {
+      openFile(url: urlContext.url)
+    }
   }
 
   func sceneDidDisconnect(_ scene: UIScene) {
@@ -48,9 +53,37 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   
   func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
     guard let url = URLContexts.first?.url else { return }
-    
+    openFile(url: url)
+  }
+
+  private func openFile(url: URL) {
+    // Security-scoped resource access is required for URLs received from Files app or AirDrop
+    let needsSecurityScope = url.startAccessingSecurityScopedResource()
+    defer {
+      if needsSecurityScope {
+        url.stopAccessingSecurityScopedResource()
+      }
+    }
+
+    let documentsFolder = FileManager.default.documentDirectory
+    let destinationURL = documentsFolder.appendingPathComponent(url.lastPathComponent)
+
+    // Copy the file to the app's Documents folder so it can be accessed freely
+    if !FileManager.default.fileExists(atPath: destinationURL.path) {
+      do {
+        try FileManager.default.copyItem(at: url, to: destinationURL)
+      } catch {
+        log.warning("copy failed: \(error)")
+        // If copy fails, fall back to using the original URL directly
+        NotificationCenter.default.post(name: Notification.Name(rawValue: SELECTED_FILE),
+                                        object: nil,
+                                        userInfo: [SELECTED_FILE_PATH: GTFile(file: url)])
+        return
+      }
+    }
+
     NotificationCenter.default.post(name: Notification.Name(rawValue: SELECTED_FILE),
                                     object: nil,
-                                    userInfo: [SELECTED_FILE_PATH: GTFile(file: url)])
+                                    userInfo: [SELECTED_FILE_PATH: GTFile(file: destinationURL)])
   }
 }

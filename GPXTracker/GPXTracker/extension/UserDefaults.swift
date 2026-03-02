@@ -14,8 +14,8 @@ extension UserDefaults {
     static let MAP_TYPE = "map_type_v2"
   }
 
-  /// 최초 실행인가?
-  static var isFirstRun: Bool {
+  /// 샘플 파일 복사가 완료되었는가?
+  static var hasLaunchedBefore: Bool {
     get { return standard.bool(forKey: Keys.IS_FIRST_RUN) }
     set { standard.set(newValue, forKey: Keys.IS_FIRST_RUN) }
   }

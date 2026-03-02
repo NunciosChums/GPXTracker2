@@ -37,9 +37,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 
   func addGoToCurrentLocationBarButtonItem() {
     LocationProvider.shared.request()
-    let currentLocationItem = MKUserTrackingBarButtonItem(mapView: mapView)
-    navigationItem.setRightBarButton(currentLocationItem, animated: true)
-    currentLocationItem.perform(currentLocationItem.action)
+    let button = UIButton(type: .system)
+    button.setImage(UIImage(systemName: "location.fill"), for: .normal)
+    button.addTarget(self, action: #selector(currentLocationButtonTapped), for: .touchUpInside)
+    navigationItem.setRightBarButton(UIBarButtonItem(customView: button), animated: true)
+    mapView.setUserTrackingMode(.follow, animated: true)
   }
 
   func registerObserver() {
@@ -50,6 +52,31 @@ class MapViewController: UIViewController, MKMapViewDelegate {
   }
 
   // MARK: - User Action
+
+  @objc func currentLocationButtonTapped() {
+    switch mapView.userTrackingMode {
+    case .none:
+      mapView.setUserTrackingMode(.follow, animated: true)
+    case .follow:
+      mapView.setUserTrackingMode(.followWithHeading, animated: true)
+    case .followWithHeading:
+      mapView.setUserTrackingMode(.none, animated: true)
+    @unknown default:
+      mapView.setUserTrackingMode(.follow, animated: true)
+    }
+  }
+
+  func updateCurrentLocationButtonImage() {
+    guard let button = navigationItem.rightBarButtonItem?.customView as? UIButton else { return }
+    let imageName: String
+    switch mapView.userTrackingMode {
+    case .none: imageName = "location"
+    case .follow: imageName = "location.fill"
+    case .followWithHeading: imageName = "location.north.fill"
+    @unknown default: imageName = "location"
+    }
+    button.setImage(UIImage(systemName: imageName), for: .normal)
+  }
 
   @IBAction func toggleMapTypeButtonClicked(_ sender: Any) {
     let mapType = mapView.mapType == MKMapType.hybrid ? MKMapType.standard : MKMapType.hybrid
@@ -67,21 +94,16 @@ class MapViewController: UIViewController, MKMapViewDelegate {
   }
 
   func zoomToFit() {
-    mapView.annotations.forEach { annotation in
-      if annotation is GTPin {
-        allPoints.append(annotation.coordinate)
-      }
-    }
-
     let all = MKPolyline(coordinates: &allPoints, count: allPoints.count)
     mapView.setVisibleMapRect(all.boundingMapRect, edgePadding: UIEdgeInsets(top: 50, left: 50, bottom: 50, right: 50), animated: true)
   }
 
   @objc func fileSelected(notification: Notification) {
-    HUD.show(.progress)
+    guard let userInfo = notification.userInfo as? [String: GTFile],
+          let file = userInfo[SELECTED_FILE_PATH]
+    else { return }
 
-    let userInfo: [String: GTFile] = (notification as NSNotification).userInfo as! [String: GTFile]
-    let file: GTFile = userInfo[SELECTED_FILE_PATH]!
+    HUD.show(.progress)
     filePathForShare = file.path.path
 
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -164,9 +186,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
   }
 
   func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-    if overlay is GTPolyline {
+    if let polyline = overlay as? GTPolyline {
       let renderer = MKPolylineRenderer(overlay: overlay)
-      let polyline = overlay as! GTPolyline
       renderer.strokeColor = polyline.strokeColor
       renderer.lineWidth = polyline.lineWidth
       return renderer
@@ -176,56 +197,58 @@ class MapViewController: UIViewController, MKMapViewDelegate {
   }
 
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-    if !(annotation is GTPin) {
+    guard let pin = annotation as? GTPin else {
       return nil
     }
 
-    let pin = annotation as! GTPin
-    let reuseId = pin.identifier
-    let pinView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-    pinView.canShowCallout = true
-    pinView.animatesWhenAdded = true
-    pinView.markerTintColor = pin.color
-
+    let blueColor = UIColor(red: 0, green: 122 / 255, blue: 255 / 255, alpha: 1)
     var configuration = UIButton.Configuration.filled()
     configuration.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 12, bottom: 29, trailing: 12)
-    
-    let navigationButton = UIButton(type: .custom)
-    navigationButton.configuration = configuration
-    navigationButton.setImage(UIImage(systemName: "car.fill")?.withTintColor(UIColor.white, renderingMode: .alwaysOriginal), for: .normal)
+    configuration.baseBackgroundColor = blueColor
+    configuration.image = UIImage(systemName: "car.fill")?.withTintColor(.white, renderingMode: .alwaysOriginal)
+    configuration.background.cornerRadius = 0
+
+    let navigationButton = UIButton(configuration: configuration)
     navigationButton.frame = CGRect(x: 0, y: 0, width: 50, height: 64)
-    navigationButton.backgroundColor = UIColor(red: 0, green: 122 / 255, blue: 255 / 255, alpha: 1)
-    pinView.leftCalloutAccessoryView = navigationButton
 
-    if let url = pin.iconUrl {
-      let imagePinView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+    if let url = pin.iconUrl, let imageUrl = URL(string: url) {
+      let reuseId = "ImagePinView"
+      let imagePinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
+        ?? MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+      imagePinView.annotation = annotation
       imagePinView.canShowCallout = true
-      imagePinView.leftCalloutAccessoryView = pinView.leftCalloutAccessoryView
+      imagePinView.leftCalloutAccessoryView = navigationButton
 
-      let imageUrl = URL(string: url)
-      let request = URLRequest(url: imageUrl!)
-
-      let session = URLSession.shared.dataTask(with: request) { data, _, error in
-        if error == nil {
-          DispatchQueue.main.async {
-            imagePinView.image = UIImage(data: data!)
-          }
+      let request = URLRequest(url: imageUrl)
+      URLSession.shared.dataTask(with: request) { data, _, error in
+        guard error == nil, let data = data else { return }
+        DispatchQueue.main.async {
+          imagePinView.image = UIImage(data: data)
         }
-      }
-      session.resume()
+      }.resume()
 
       return imagePinView
     }
+
+    let reuseId = "MarkerPinView"
+    let pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKMarkerAnnotationView
+      ?? MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+    pinView.annotation = annotation
+    pinView.canShowCallout = true
+    pinView.animatesWhenAdded = true
+    pinView.markerTintColor = pin.color
+    pinView.leftCalloutAccessoryView = navigationButton
 
     return pinView
   }
 
   func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-    if control == view.leftCalloutAccessoryView {
-      let annotation = view.annotation
-      let placeMark = MKPlacemark(coordinate: annotation!.coordinate, addressDictionary: nil)
+    if control == view.leftCalloutAccessoryView,
+       let annotation = view.annotation
+    {
+      let placeMark = MKPlacemark(coordinate: annotation.coordinate)
       let mapItem = MKMapItem(placemark: placeMark)
-      mapItem.name = annotation!.title!
+      mapItem.name = annotation.title ?? ""
 
       let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
       mapItem.openInMaps(launchOptions: launchOptions)
@@ -233,6 +256,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
   }
 
   func mapView(_ mapView: MKMapView, didChange mode: MKUserTrackingMode, animated: Bool) {
-    UIApplication.shared.isIdleTimerDisabled = mode == MKUserTrackingMode.follow || mode == MKUserTrackingMode.followWithHeading
+    UIApplication.shared.isIdleTimerDisabled = mode == .follow || mode == .followWithHeading
+    updateCurrentLocationButtonImage()
   }
 }

@@ -31,27 +31,35 @@ class GPXParser: BaseParser {
   }
 
   func lines() -> [GTLine]? {
-    var locations: [CLLocationCoordinate2D] = []
-
-    for trkpt in xml.css("trkpt") {
-      locations.append(makeLocation(point: trkpt))
-    }
-
-    for rtept in xml.css("rtept") {
-      locations.append(makeLocation(point: rtept))
-    }
-
     var result: [GTLine] = []
-    if !locations.isEmpty {
-      result.append(GTLine(coordinates: &locations, color: .systemRed, lineWidth: 4))
+
+    var trkLocations: [CLLocationCoordinate2D] = []
+    for trkpt in xml.css("trkpt") {
+      if let location = makeLocation(point: trkpt) {
+        trkLocations.append(location)
+      }
+    }
+    if let line = GTLine(coordinates: &trkLocations, color: .systemRed, lineWidth: 4) {
+      result.append(line)
+    }
+
+    var rteLocations: [CLLocationCoordinate2D] = []
+    for rtept in xml.css("rtept") {
+      if let location = makeLocation(point: rtept) {
+        rteLocations.append(location)
+      }
+    }
+    if let line = GTLine(coordinates: &rteLocations, color: .systemBlue, lineWidth: 4) {
+      result.append(line)
     }
 
     return result
   }
 
-  private func makeLocation(point: XMLElement) -> CLLocationCoordinate2D {
-    let lon: NSString = point["lon"]! as NSString
-    let lat: NSString = point["lat"]! as NSString
-    return CLLocationCoordinate2D(latitude: lat.doubleValue, longitude: lon.doubleValue)
+  private func makeLocation(point: XMLElement) -> CLLocationCoordinate2D? {
+    guard let lonStr = point["lon"], let latStr = point["lat"] else { return nil }
+    let lon = (lonStr as NSString).doubleValue
+    let lat = (latStr as NSString).doubleValue
+    return CLLocationCoordinate2D(latitude: lat, longitude: lon)
   }
 }

@@ -12,14 +12,15 @@ class LocationProvider: NSObject, CLLocationManagerDelegate {
   static let shared = LocationProvider()
   private let manager = CLLocationManager()
 
-  func request() {
+  override init() {
+    super.init()
     manager.delegate = self
+  }
+
+  func request() {
     manager.requestWhenInUseAuthorization()
   }
 
-  func locationManager(_: CLLocationManager, didChangeAuthorization _: CLAuthorizationStatus) {
-//    if status == .authorizedWhenInUse {
-//      manager.startUpdatingLocation()
-//    }
+  func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
   }
 }

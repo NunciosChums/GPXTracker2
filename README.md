@@ -1,15 +1,20 @@
 # GPX Tracker2
+
 Display GPX, TCX, KML, KMZ route on Apple map for bicycle
 
 [![Platform](http://img.shields.io/badge/platform-ios-lightgrey.svg?style=flat)](https://developer.apple.com/resources/)
 [![Language](http://img.shields.io/badge/language-swift-orange.svg?style=flat)](https://developer.apple.com/swift)
 
-[![Available on the app store](http://merlos.github.io/iOS-Open-GPX-Tracker/images/download-app-store.svg)](https://itunes.apple.com/app/gpx-tracker/id434117340?mt=8) 
+[![Available on the app store](http://merlos.github.io/iOS-Open-GPX-Tracker/images/download-app-store.svg)](https://itunes.apple.com/app/gpx-tracker/id434117340?mt=8)
 
-* Export KML by Google Map http://www.youtube.com/watch?v=hDluVIuJGOo
+- Export KML by Google Map http://www.youtube.com/watch?v=hDluVIuJGOo
 
-* AppStore https://itunes.apple.com/app/gpx-tracker/id434117340?mt=8
+- AppStore https://itunes.apple.com/app/gpx-tracker/id434117340?mt=8
 
-* Report issue [here](https://github.com/NunciosChums/GPXTracker2/issues) or send email to me contain your kml/gpx/tcx/kmz files.
+- Report issue [here](https://github.com/NunciosChums/GPXTracker2/issues) or send email to me contain your kml/gpx/tcx/kmz files.
+
+---
+
+This app is the sole reason I maintain my Apple Developer Program membership ($99/year). Your sponsorship helps offset that cost and keeps GPX Tracker free and updated on the App Store.
 
 [![GitHub Sponsors](https://img.shields.io/badge/Sponsor-♡-ea4aaa?logo=github)](https://github.com/sponsors/NunciosChums)

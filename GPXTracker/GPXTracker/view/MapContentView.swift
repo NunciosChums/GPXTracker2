@@ -59,19 +59,27 @@ struct MapContentView: View {
     }
     // safeAreaInset 대신 overlay를 사용해 Apple 지도 로고가 왼쪽 하단 구석에 위치하도록 함
     .overlay(alignment: .bottom) {
-      VStack(spacing: 0) {
-        // 핀 상세 카드 — 선택된 핀이 있을 때만 표시
-        if let pin = appState.selectedPin {
-          PinDetailCard(pin: pin, onMoveTo: {
-            appState.moveToPin(pin)
-          }, onDismiss: {
-            appState.selectedPin = nil
-          })
-          .transition(.move(edge: .bottom).combined(with: .opacity))
+      GeometryReader { proxy in
+        let foldLeadingWidth = foldLeadingWidth(in: proxy)
+        VStack(spacing: 0) {
+          // 핀 상세 카드 — 선택된 핀이 있을 때만 표시
+          if let pin = appState.selectedPin {
+            PinDetailCard(pin: pin, onMoveTo: {
+              appState.moveToPin(pin)
+            }, onDismiss: {
+              appState.selectedPin = nil
+            })
+            // 아이폰 듀오를 반쯤 접으면 카드가 접힌 부분에 걸치지 않도록 앞쪽 영역에만 배치
+            .frame(maxWidth: foldLeadingWidth ?? .infinity)
+            .frame(maxWidth: .infinity, alignment: foldLeadingWidth == nil ? .center : .leading)
+            .transition(.move(edge: .bottom).combined(with: .opacity))
+          }
+          controlButtons
         }
-        controlButtons
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+        .animation(.easeInOut(duration: 0.25), value: appState.selectedPin?.id)
+        .animation(.easeInOut(duration: 0.25), value: foldLeadingWidth)
       }
-      .animation(.easeInOut(duration: 0.25), value: appState.selectedPin?.id)
     }
     .overlay {
       if appState.isParsingFile {
@@ -80,6 +88,15 @@ struct MapContentView: View {
           .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 16))
       }
     }
+  }
+
+  /// 화면을 좌우로 나누는 접힌 영역(아이폰 듀오의 힌지)이 활성화되어 있으면, 그 앞쪽 영역의 폭을 반환
+  private func foldLeadingWidth(in proxy: GeometryProxy) -> CGFloat? {
+    guard #available(iOS 27.1, *) else { return nil }
+    return proxy.reservedRegions(kind: .division)
+      .filter { $0.isActive && $0.frame.height > $0.frame.width && $0.frame.minX > 0 }
+      .map(\.frame.minX)
+      .min()
   }
 
   private var controlButtons: some View {

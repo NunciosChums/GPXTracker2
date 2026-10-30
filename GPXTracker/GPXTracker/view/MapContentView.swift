@@ -123,6 +123,7 @@ struct MapContentView: View {
         .foregroundStyle(.green)
         .mapControlStyle()
     }
+    .accessibilityLabel("Go to Start Point")
   }
 
   private var endPinButton: some View {
@@ -133,6 +134,7 @@ struct MapContentView: View {
         .foregroundStyle(.red)
         .mapControlStyle()
     }
+    .accessibilityLabel("Go to End Point")
   }
 
   private var zoomButton: some View {
@@ -142,6 +144,7 @@ struct MapContentView: View {
       Image(systemName: "arrow.up.left.and.arrow.down.right")
         .mapControlStyle()
     }
+    .accessibilityLabel("Show Entire Route")
   }
 
   private var mapTypeButton: some View {
@@ -151,6 +154,7 @@ struct MapContentView: View {
       Image(systemName: appState.isHybridMap ? "map.fill" : "map")
         .mapControlStyle()
     }
+    .accessibilityLabel(appState.isHybridMap ? "Switch to Standard Map" : "Switch to Satellite Map")
   }
 }
 
@@ -219,6 +223,7 @@ struct PinDetailCard: View {
             .font(.title2)
             .foregroundStyle(.secondary)
         }
+        .accessibilityLabel("Close")
       }
 
       // 둘째 줄: 위치 이동 + 네비게이션 버튼들
@@ -231,13 +236,14 @@ struct PinDetailCard: View {
             .frame(width: 36, height: 36)
             .background(.gray, in: Circle())
         }
+        .accessibilityLabel("Zoom to Pin")
         Spacer()
         NavigateButton(pin: pin, mode: MKLaunchOptionsDirectionsModeDriving,
-                       icon: "car.fill", color: .blue, onDismiss: onDismiss)
+                       icon: "car.fill", color: .blue, label: "Driving Directions", onDismiss: onDismiss)
         NavigateButton(pin: pin, mode: MKLaunchOptionsDirectionsModeWalking,
-                       icon: "figure.walk", color: .green, onDismiss: onDismiss)
+                       icon: "figure.walk", color: .green, label: "Walking Directions", onDismiss: onDismiss)
         NavigateButton(pin: pin, mode: MKLaunchOptionsDirectionsModeCycling,
-                       icon: "bicycle", color: .orange, onDismiss: onDismiss)
+                       icon: "bicycle", color: .orange, label: "Cycling Directions", onDismiss: onDismiss)
       }
     }
     .padding(.horizontal, 16)
@@ -257,6 +263,7 @@ private struct NavigateButton: View {
   let mode: String
   let icon: String
   let color: Color
+  let label: LocalizedStringKey
   let onDismiss: () -> Void
 
   var body: some View {
@@ -275,6 +282,7 @@ private struct NavigateButton: View {
         .frame(width: 36, height: 36)
         .background(color, in: Circle())
     }
+    .accessibilityLabel(label)
   }
 }
 

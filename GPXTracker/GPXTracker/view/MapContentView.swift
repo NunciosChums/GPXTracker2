@@ -57,7 +57,8 @@ struct MapContentView: View {
       MapCompass()
       MapScaleView()
     }
-    .safeAreaInset(edge: .bottom, spacing: 0) {
+    // safeAreaInset 대신 overlay를 사용해 Apple 지도 로고가 왼쪽 하단 구석에 위치하도록 함
+    .overlay(alignment: .bottom) {
       VStack(spacing: 0) {
         // 핀 상세 카드 — 선택된 핀이 있을 때만 표시
         if let pin = appState.selectedPin {
